@@ -533,7 +533,50 @@
       "verilogPractice": "Verilog practice",
       "verilogPracticeDesc": "Learner hub",
       "cvApprovals": "Scientist applications",
-      "cvApprovalsDesc": "CV & contracts"
+      "cvApprovalsDesc": "CV & contracts",
+      "labStaff": "Lab roles",
+      "labStaffDesc": "Promote members to lab head or demote"
     }
+  },
+  "directorLabStaff": {
+    "backToHub": "Back to director workspace",
+    "title": "Lab members & lab heads",
+    "subtitle": "Promote an active lab member to lab head, or demote a lab head back to member. Target accounts must sign in again for permissions to refresh.",
+    "filters": {
+      "allRoles": "All roles",
+      "member": "Lab member",
+      "truong_lab": "Lab head",
+      "searchPlaceholder": "Search name, email, student code",
+      "apply": "Apply"
+    },
+    "table": {
+      "name": "Name",
+      "email": "Email",
+      "department": "Department",
+      "role": "Role",
+      "status": "Status",
+      "actions": "Actions",
+      "empty": "No users match your filters.",
+      "loading": "Loading…",
+      "na": "—"
+    },
+    "actions": {
+      "promote": "Promote to lab head",
+      "demote": "Demote to member"
+    },
+    "confirmModal": {
+      "titlePromote": "Promote to lab head",
+      "titleDemote": "Demote to member",
+      "descriptionPromote": "Confirm promoting {{name}} to lab head? They should sign in again for full permissions.",
+      "descriptionDemote": "Confirm moving {{name}} from lab head back to lab member?",
+      "confirm": "Confirm",
+      "cancel": "Cancel"
+    },
+    "toasts": {
+      "loadFailed": "Could not load lab staff.",
+      "updated": "Role updated.",
+      "updateFailed": "Could not update role."
+    },
+    "pagination": "Page {{page}} / {{totalPages}} ({{total}} users)"
   }
 }

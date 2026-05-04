@@ -40,7 +40,7 @@
     "toasts": {
       "fetchFailed": "Không thể tải danh sách research"
     },
-    "title": "Research Database",
+    "title": "Kho lưu trữ nghiên cứu",
     "searchPlaceholder": "Tìm theo tiêu đề, tác giả, journal, DOI, mô tả, từ khóa (tag)...",
     "loading": "Initializing stream...",
     "emptyPublic": "Hiện không có bài nghiên cứu nào đang công khai.",

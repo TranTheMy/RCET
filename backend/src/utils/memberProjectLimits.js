@@ -10,8 +10,8 @@ const {
 const ACTIVE_PROJECT_STATUSES = [PROJECT_STATUS.PLANNING, PROJECT_STATUS.ACTIVE, PROJECT_STATUS.PAUSED];
 
 /**
- * Đếm số dự án (planning/active/paused) user **đã tham gia nhóm** (chủ trì hoặc có ProjectMember).
- * Không tính chỉ có bản cam kết pending (chưa vào danh sách thành viên).
+ * Đếm số dự án (planning/active/paused) user **đã tham gia nhóm** (có ProjectMember sau khi chấp nhận cam kết / join).
+ * Không tính chỉ được tag `leader_id` hoặc chỉ có cam kết pending (chưa vào danh sách thành viên).
  * Dùng cho giới hạn mời thành viên / join / assign leader.
  *
  * @param {object} [options]
@@ -19,12 +19,6 @@ const ACTIVE_PROJECT_STATUSES = [PROJECT_STATUS.PLANNING, PROJECT_STATUS.ACTIVE,
  */
 async function countMemberConfirmedActiveProjects(userId, transaction = undefined, options = {}) {
   const { excludeProjectId } = options;
-
-  const leaderProjects = await Project.findAll({
-    where: { leader_id: userId, status: { [Op.in]: ACTIVE_PROJECT_STATUSES } },
-    attributes: ['id'],
-    transaction,
-  });
 
   const membershipRows = await ProjectMember.findAll({
     where: { user_id: userId },
@@ -46,7 +40,8 @@ async function countMemberConfirmedActiveProjects(userId, transaction = undefine
     activeMemberProjectIds = rows.map((r) => r.id);
   }
 
-  let ids = [...new Set([...leaderProjects.map((p) => p.id), ...activeMemberProjectIds])];
+  /** Chỉ đếm khi đã có ProjectMember (đã chấp nhận tham gia). Không tính chỉ `leader_id` chưa vào nhóm. */
+  let ids = [...new Set([...activeMemberProjectIds])];
   if (excludeProjectId) {
     ids = ids.filter((id) => id !== excludeProjectId);
   }

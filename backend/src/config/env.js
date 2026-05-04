@@ -13,7 +13,7 @@ const env = {
     name: process.env.DB_NAME || 'vkslab_lab',
     user: process.env.DB_USER || 'sa',
     password: process.env.DB_PASSWORD || '1',
-    encrypt: String(process.env.DB_ENCRYPT).toLowerCase() === 'true',
+    encrypt: process.env.DB_ENCRYPT === 'false',
     /** Chuỗi semver cho Sequelize MSSQL (OFFSET/FETCH cần >= 11.0.0 ≈ SQL Server 2012+) */
     sqlServerVersion: process.env.SQL_SERVER_VERSION || '11.0.0',
   },

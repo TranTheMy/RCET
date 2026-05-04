@@ -162,7 +162,7 @@
     "kicker": "Document record",
     "publicRepoCta": "→ Public repository",
     "previewTitle": "Preview: {{title}}",
-    "previewHint": "Preview via API; use “New tab” for external links. If the frame errors, download or open a new tab.",
+    "previewHint": "Preview via API (JWT). If the frame fails or the format is unsupported, use Download in the right column.",
     "uncategorized": "General",
     "techSummary": "Technical summary",
     "noDescription": "No description provided.",

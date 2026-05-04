@@ -26,7 +26,7 @@ import MasterPlanTab from './tabs/MasterPlanTab';
 import RewardsTab from './tabs/RewardsTab';
 import CommitmentTab from './tabs/CommitmentTab';
 
-type RejectModalKind = 'participation' | 'declineLeader' | 'leaderExit';
+type RejectModalKind = 'participation' | 'declineLeader';
 
 const STATUS_CONFIG: Record<string, { label: string; color: string; glow: string; bg: string; border: string }> = {
   planning: { label: 'planning', color: 'text-cyan-400', glow: 'shadow-cyan-500/20', bg: 'bg-cyan-500/5', border: 'border-cyan-500/20' },
@@ -35,6 +35,25 @@ const STATUS_CONFIG: Record<string, { label: string; color: string; glow: string
   done: { label: 'done', color: 'text-blue-400', glow: 'shadow-blue-500/20', bg: 'bg-blue-500/5', border: 'border-blue-500/20' },
   archived: { label: 'archived', color: 'text-slate-500', glow: 'shadow-slate-500/10', bg: 'bg-slate-500/5', border: 'border-slate-500/20' },
 };
+
+/** Nhiều bản cam kết / thứ tự không ổn định — lấy bản mới nhất còn hiệu lực cho đúng luồng nút. */
+function pickViewerCommitment(
+  commitments: Array<{ user_id?: string; status?: string; created_at?: string; updated_at?: string }> | undefined,
+  userId: string | undefined,
+) {
+  if (!commitments?.length || !userId) return undefined;
+  const mine = commitments.filter((c) => c.user_id === userId);
+  if (!mine.length) return undefined;
+  const invalid = new Set(['b_rejected', 'terminated']);
+  const relevant = mine.filter((c) => c.status && !invalid.has(c.status));
+  const pool = relevant.length ? relevant : mine;
+  const byTime = [...pool].sort((a, b) => {
+    const ta = new Date(a.updated_at || a.created_at || 0).getTime();
+    const tb = new Date(b.updated_at || b.created_at || 0).getTime();
+    return tb - ta;
+  });
+  return byTime[0];
+}
 
 const ProjectDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -67,7 +86,8 @@ const ProjectDetail: React.FC = () => {
   /** Được gán leader_id khi tạo dự án (chưa chắc đã là chủ trì trong ProjectMember). */
   const designatedLeader = project?.leader_id === user?.id;
   const viewerMembership = project?.viewer_membership;
-  const isProjectLeader = viewerMembership?.role === 'leader';
+  const viewerPmRole = viewerMembership?.role != null ? String(viewerMembership.role).toLowerCase() : undefined;
+  const isProjectLeader = viewerPmRole === 'leader';
   const isTagMode = (project as any)?.participation_mode === 'TAG';
 
   // Mode 2: còn mở slot tự join (planning + chưa đủ required_members)
@@ -85,7 +105,7 @@ const ProjectDetail: React.FC = () => {
 
   // 1. Xác định cam kết của User hiện tại (Cực kỳ quan trọng để hiện nút)
   const myCommitment = useMemo(() => {
-    return (project as any)?.commitments?.find((c: any) => c.user_id === user?.id);
+    return pickViewerCommitment((project as any)?.commitments, user?.id);
   }, [project, user]);
 
   /**
@@ -95,8 +115,8 @@ const ProjectDetail: React.FC = () => {
   const hasAcceptedParticipation = Boolean(
     myCommitment?.status === 'b_approved' ||
       myCommitment?.status === 'active' ||
-      viewerMembership?.role === 'member' ||
-      viewerMembership?.role === 'leader',
+      viewerPmRole === 'member' ||
+      viewerPmRole === 'leader',
   );
 
   /** Chưa là chủ trì thật (ProjectMember LEADER): giao diện giống thành viên. */
@@ -150,21 +170,14 @@ const ProjectDetail: React.FC = () => {
       isTagMode &&
       hasAcceptedParticipation &&
       designatedLeader &&
-      viewerMembership?.role === 'member',
+      viewerPmRole === 'member' &&
+      !isProjectLeader,
   );
 
   const canShowRejectParticipation = Boolean(
     (project?.status === 'planning' || project?.status === 'paused') &&
       !isOpen &&
       myCommitment?.status === 'pending_b_approval',
-  );
-
-  /** Chủ trì thật (LEADER) rút hoàn toàn — reject API cũ. */
-  const canShowRejectLeaderExit = Boolean(
-    project?.status === 'planning' &&
-      !isOpen &&
-      hasAcceptedParticipation &&
-      isProjectLeader,
   );
 
   const loadProject = useCallback(async () => {
@@ -313,16 +326,10 @@ const ProjectDetail: React.FC = () => {
     setRejectReasonText('');
   };
 
-  const handleRejectLeaderExit = () => {
-    if (!project || !canShowRejectLeaderExit) return;
-    setRejectModalKind('leaderExit');
-    setRejectReasonText('');
-  };
-
   const handleConfirmRejectModal = async () => {
     if (!project || !rejectModalKind) return;
     const trimmed = rejectReasonText.trim();
-    if (rejectModalKind === 'participation' || rejectModalKind === 'leaderExit') {
+    if (rejectModalKind === 'participation') {
       if (!trimmed) {
         toast.error(t('projects:detail.reject.modal.reasonRequired'));
         return;
@@ -361,20 +368,6 @@ const ProjectDetail: React.FC = () => {
         setLeaderBusy(false);
       }
       return;
-    }
-    if (rejectModalKind === 'leaderExit') {
-      setRejecting(true);
-      try {
-        await projectService.rejectProject(project.id, { reason: trimmed });
-        toast.success(t('projects:detail.reject.toastLeaderExit'));
-        setRejectModalKind(null);
-        setRejectReasonText('');
-        navigate('/projects');
-      } catch {
-        toast.error(t('projects:detail.errors.rejectFailed'));
-      } finally {
-        setRejecting(false);
-      }
     }
   };
 
@@ -676,17 +669,6 @@ const ProjectDetail: React.FC = () => {
                       </button>
                     )}
 
-                    {canShowRejectLeaderExit && (
-                      <button
-                        type="button"
-                        onClick={handleRejectLeaderExit}
-                        disabled={joining || rejecting || leaderBusy}
-                        className="px-8 py-4 bg-red-500/10 border border-red-500/20 text-red-500 rounded-[24px] text-[11px] font-black uppercase tracking-widest transition-all hover:bg-red-500/20 disabled:opacity-50 flex items-center gap-2 shadow-lg shadow-red-500/10"
-                      >
-                        {rejecting ? <Loader2 size={16} className="animate-spin" /> : <XCircle size={16} />}
-                        {t('projects:detail.join.rejectLeader')}
-                      </button>
-                    )}
                     </div>
                     {canShowJoin && isLeaderPendingCommitment && (
                       <p className="text-[10px] text-slate-500 max-w-sm text-right leading-relaxed">

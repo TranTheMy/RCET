@@ -432,6 +432,37 @@ const emailTemplates = {
       </div>
     `,
   }),
+
+  /** Bảng tính thưởng dự án đã được Viện trưởng chốt sổ */
+  rewardSheetFinalized: (recipientName, finalizerName, projectName, projectUrl) => ({
+    subject: `Bảng tính thưởng đã chốt sổ: ${escapeHtml(projectName)} | VKsLab`,
+    html: `
+      <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 20px auto; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);">
+        <div style="background-color: #0f172a; padding: 25px; text-align: center; color: #ffffff;">
+          <h2 style="margin: 0; font-size: 18px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">VKsLab System</h2>
+        </div>
+        <div style="padding: 35px; background-color: #ffffff;">
+          <h3 style="color: #059669; font-size: 20px; font-weight: 600; margin-top: 0; margin-bottom: 15px;">Bảng tính thưởng đã chốt sổ</h3>
+          <p style="color: #334155; font-size: 15px; line-height: 1.6;">Xin chào <strong>${escapeHtml(recipientName)}</strong>,</p>
+          <p style="color: #334155; font-size: 15px; line-height: 1.6;">
+            <strong>${escapeHtml(finalizerName)}</strong> (Viện trưởng) đã <strong>chốt sổ</strong> bảng tính thưởng cho dự án <strong>${escapeHtml(projectName)}</strong>.
+          </p>
+          <p style="color: #334155; font-size: 15px; line-height: 1.6;">
+            Bạn có thể đăng nhập hệ thống để xem chi tiết và thông báo trong ứng dụng.
+          </p>
+          <div style="text-align: center; margin: 28px 0;">
+            <a href="${escapeHtml(projectUrl)}" style="display: inline-block; padding: 12px 28px; background-color: #059669; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px;">Mở trang dự án</a>
+          </div>
+          <p style="color: #64748b; font-size: 13px; line-height: 1.6;">Nếu nút không hoạt động, sao chép liên kết: ${escapeHtml(projectUrl)}</p>
+          <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 25px 0;" />
+          <p style="color: #475569; font-size: 13px; line-height: 1.5; margin: 0;">Trân trọng,<br><strong style="color: #0f172a;">Ban Quản trị VKsLab</strong></p>
+        </div>
+        <div style="background-color: #f8fafc; padding: 15px; text-align: center; font-size: 12px; color: #94a3b8; border-top: 1px solid #e2e8f0;">
+          Đây là email tự động từ hệ thống. Vui lòng không phản hồi trực tiếp email này.
+        </div>
+      </div>
+    `,
+  }),
 };
 
 /**

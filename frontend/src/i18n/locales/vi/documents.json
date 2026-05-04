@@ -162,7 +162,7 @@
     "kicker": "Hồ sơ tài liệu",
     "publicRepoCta": "→ Kho công khai",
     "previewTitle": "Xem trước: {{title}}",
-    "previewHint": "Xem trước qua API; link ngoài dùng « Tab mới ». Khung lỗi → tải xuống hoặc mở tab mới.",
+    "previewHint": "Xem trước qua API (JWT). Nếu khung lỗi hoặc định dạng không hỗ trợ, dùng tải xuống ở cột bên phải.",
     "uncategorized": "Chung",
     "techSummary": "Tóm tắt kỹ thuật",
     "noDescription": "Chưa có mô tả cho tài liệu này.",

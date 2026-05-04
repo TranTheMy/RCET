@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Search, Users, ArrowUpRight,
-  Cpu, ChevronDown, Filter, Plus, Binary
+  Cpu, ChevronDown, Filter, Plus, Binary, UserPlus,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -41,6 +41,15 @@ const STATUS_THEME: Record<string, { color: string; bg: string; border: string }
 const TAG_LIST: ProjectTag[] = ['AI/ML', 'FPGA', 'Robotics', 'Embedded', 'DSP', 'IoT', 'Other'];
 const STATUS_FILTER_KEYS = ['all', 'active', 'planning', 'done'] as const;
 
+/** Cơ chế SELF_JOIN: còn slot — khớp ProjectDetail (planning + chưa đủ required_members). */
+function isSelfJoinRegistrationOpen(project: Project): boolean {
+  if (project.participation_mode !== 'SELF_JOIN' || project.status !== 'planning') return false;
+  const req = project.required_members;
+  const cnt = project.member_count;
+  if (req != null && req > 0 && cnt != null && cnt >= req) return false;
+  return true;
+}
+
 // --- COMPONENT: PROJECT CARD ---
 const ProjectCard: React.FC<{
   project: Project;
@@ -53,6 +62,7 @@ const ProjectCard: React.FC<{
   const progress = project.task_progress 
     ? Math.round((project.task_progress.done / project.task_progress.total) * 100) || 0 
     : 0;
+  const registrationOpen = isSelfJoinRegistrationOpen(project);
 
   return (
     <motion.div
@@ -68,8 +78,19 @@ const ProjectCard: React.FC<{
           <Binary size={10} className="text-cyan-500" />
           <span className="text-[9px] font-mono font-black text-slate-400 uppercase tracking-widest">{project.code}</span>
         </div>
-        <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.15em] border ${theme.bg} ${theme.color} ${theme.border}`}>
-          {t(`projects:manager.status.${project.status}`)}
+        <div className="flex flex-wrap justify-end gap-2 max-w-[58%]">
+          {registrationOpen && (
+            <div
+              className="flex items-center gap-1.5 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.12em] border bg-violet-500/15 text-violet-200 border-violet-400/35 shadow-[0_0_20px_rgba(139,92,246,0.15)]"
+              title={t('projects:manager.registrationOpen')}
+            >
+              <UserPlus size={10} className="shrink-0 text-violet-300" />
+              {t('projects:manager.registrationOpen')}
+            </div>
+          )}
+          <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-[0.15em] border shrink-0 ${theme.bg} ${theme.color} ${theme.border}`}>
+            {t(`projects:manager.status.${project.status}`)}
+          </div>
         </div>
       </div>
 

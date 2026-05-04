@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const authRoutes = require('./auth.routes');
 const adminRoutes = require('./admin.routes');
+const directorRoutes = require('./director.routes');
 const projectRoutes = require('./project.routes');
 const userRoutes = require('./user.routes');
 const commitmentRoutes = require('./commitment.routes');
@@ -18,6 +19,7 @@ const searchRoutes = require('./search.routes');
 
 router.use('/auth', authRoutes);
 router.use('/admin', adminRoutes);
+router.use('/director', directorRoutes);
 router.use('/projects', projectRoutes);
 router.use('/users', userRoutes);
 router.use('/commitments', commitmentRoutes);

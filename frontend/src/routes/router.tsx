@@ -64,6 +64,8 @@ export const ROUTER = {
         CV_CONTRACT_VIEW: "/publication/cv-approvals/:id/contract/view",
         /** Viện trưởng: trung tâm tác vụ (xuất bản, Verilog, danh mục, …) */
         DIRECTOR_WORKSPACE: "/workspace/vien-truong",
+        /** Viện trưởng: bổ nhiệm / thu hồi trưởng lab */
+        DIRECTOR_LAB_STAFF: "/workspace/vien-truong/lab-staff",
     },
     ADMIN: {
         ADMIN_DASHBOARD: "/admin",

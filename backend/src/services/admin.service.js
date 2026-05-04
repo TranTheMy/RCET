@@ -3,6 +3,9 @@ const { User, ApprovalRequest, AuditLog, sequelize } = require('../models');
 const { APPROVAL_STATUS, USER_STATUS, AUDIT_ACTIONS, SYSTEM_ROLES } = require('../config/constants');
 const { sendMail, emailTemplates } = require('../utils/email');
 const auditService = require('./audit.service');
+const notificationService = require('./notification.service');
+const env = require('../config/env');
+const logger = require('../utils/logger');
 
 const normalizePagination = ({ page = 1, limit = 20 }) => {
   const safePage = Number.isFinite(page) ? Math.max(1, Number(page)) : 1;
@@ -82,6 +85,22 @@ const approveUser = async (requestId, adminId, { system_role, review_note }) => 
   if (approvedUser) {
     const template = emailTemplates.approvalSuccess(approvedUser.full_name, system_role);
     sendMail(approvedUser.email, template.subject, template.html);
+    const loginUrl = `${(env.clientUrl || 'http://localhost:5173').replace(/\/$/, '')}/login`;
+    try {
+      await notificationService.createAndPushNotification({
+        userId: approvedUser.id,
+        title: 'Tài khoản được duyệt',
+        message:
+          'Yêu cầu đăng ký của bạn đã được phê duyệt. Bạn có thể đăng nhập và sử dụng hệ thống.',
+        type: 'info',
+        actionUrl: loginUrl,
+        metadata: { kind: 'registration_approved' },
+        eventName: 'USER_REGISTRATION_APPROVED',
+        eventPayload: { system_role },
+      });
+    } catch (e) {
+      logger.error('approveUser in-app notification:', e?.message || e);
+    }
     await auditService.log(AUDIT_ACTIONS.APPROVAL_APPROVED, adminId, approvedUser.id, {
       system_role,
       review_note,
@@ -122,6 +141,21 @@ const rejectUser = async (requestId, adminId, { review_note }) => {
   if (rejectedUser) {
     const template = emailTemplates.approvalRejected(rejectedUser.full_name, review_note);
     sendMail(rejectedUser.email, template.subject, template.html);
+    const note = review_note && String(review_note).trim() ? ` Ghi chú: ${review_note}` : '';
+    try {
+      await notificationService.createAndPushNotification({
+        userId: rejectedUser.id,
+        title: 'Tài khoản không được duyệt',
+        message: `Yêu cầu đăng ký của bạn đã bị từ chối.${note}`,
+        type: 'warning',
+        actionUrl: null,
+        metadata: { kind: 'registration_rejected' },
+        eventName: 'USER_REGISTRATION_REJECTED',
+        eventPayload: {},
+      });
+    } catch (e) {
+      logger.error('rejectUser in-app notification:', e?.message || e);
+    }
     await auditService.log(AUDIT_ACTIONS.APPROVAL_REJECTED, adminId, rejectedUser.id, {
       review_note,
     });

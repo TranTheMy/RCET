@@ -109,20 +109,10 @@ class MemberDashboardService {
       attributes: ['role', 'joined_at']
     });
 
-    const leaderProjects = await Project.findAll({
-      where: {
-        leader_id: userId,
-        status: { [Op.in]: dashboardProjectStatuses },
-      },
-      attributes: ['id', 'name', 'code', 'status', 'end_date', 'created_at'],
-    });
-
     const projects = [];
-    const seenProjectIds = new Set();
 
     for (const pm of projectMembers) {
       const project = pm.project;
-      seenProjectIds.add(project.id);
 
       // Get task counts for this member in this project
       const taskStats = await this.getProjectTaskStats(userId, project.id);
@@ -146,27 +136,6 @@ class MemberDashboardService {
         report_rate: reportRate,
         at_risk: atRisk,
         next_milestones: nextMilestones.slice(0, 3) // Top 3
-      });
-    }
-
-    for (const project of leaderProjects) {
-      if (seenProjectIds.has(project.id)) continue;
-
-      const taskStats = await this.getProjectTaskStats(userId, project.id);
-      const reportRate = await this.getProjectReportRate(userId, project.id);
-      const nextMilestones = await this.getProjectNextMilestones(project.id);
-      const atRisk = reportRate < 70 || taskStats.overdue > 0;
-
-      projects.push({
-        id: project.id,
-        name: project.name,
-        code: project.code,
-        role: 'leader',
-        joined_at: project.created_at || null,
-        tasks: taskStats,
-        report_rate: reportRate,
-        at_risk: atRisk,
-        next_milestones: nextMilestones.slice(0, 3),
       });
     }
 

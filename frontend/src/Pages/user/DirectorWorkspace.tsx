@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import {
   User, FolderTree, BookOpen, Microscope, FileText, ClipboardList,
   Send, Library, PlusCircle, FolderOpen, ShieldCheck, Cpu,
-  Code2, Users, ChevronRight, LayoutGrid, Sparkles, ArchiveX, type LucideIcon
+  Code2, Users, UserCog, ChevronRight, LayoutGrid, Sparkles, ArchiveX, type LucideIcon
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { ROUTER } from '../../routes/router';
@@ -101,6 +101,7 @@ const DirectorWorkspace: React.FC = () => {
     { to: '/verilog/management', titleKey: 'user:directorWorkspace.links.verilogManage', descKey: 'user:directorWorkspace.links.verilogManageDesc', icon: Code2 },
     { to: '/verilog/all-submissions', titleKey: 'user:directorWorkspace.links.verilogSubmissions', descKey: 'user:directorWorkspace.links.verilogSubmissionsDesc', icon: LayoutGrid },
     { to: ROUTER.USER.CV_APPROVALS, titleKey: 'user:directorWorkspace.links.cvApprovals', descKey: 'user:directorWorkspace.links.cvApprovalsDesc', icon: Users },
+    { to: ROUTER.USER.DIRECTOR_LAB_STAFF, titleKey: 'user:directorWorkspace.links.labStaff', descKey: 'user:directorWorkspace.links.labStaffDesc', icon: UserCog },
   ];
 
   return (

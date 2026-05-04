@@ -40,7 +40,7 @@
     "toasts": {
       "fetchFailed": "Could not load research list"
     },
-    "title": "Research Database",
+    "title": "Research Catalog",
     "searchPlaceholder": "Search by title, author, journal, DOI, description, keywords (tags)...",
     "loading": "Initializing stream...",
     "emptyPublic": "There are no research papers currently published.",

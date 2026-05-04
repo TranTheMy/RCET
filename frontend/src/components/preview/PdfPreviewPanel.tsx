@@ -23,6 +23,8 @@ export interface PdfPreviewPanelProps {
   className?: string;
   /** false: ẩn thanh « Live preview » — dùng khi trang đã có tiêu đề / nút tải */
   showToolbar?: boolean;
+  /** false: ẩn link « Tab mới » trên thanh toolbar (vẫn có thể mở tab mới ở màn lỗi / không hỗ trợ nếu có URL) */
+  showToolbarNewTab?: boolean;
 }
 
 type BlobStatus = 'idle' | 'loading' | 'ready' | 'ready-docx' | 'error' | 'unsupported';
@@ -69,6 +71,7 @@ export const PdfPreviewPanel: React.FC<PdfPreviewPanelProps> = ({
   onRetryOpenTab,
   className = '',
   showToolbar = true,
+  showToolbarNewTab = true,
 }) => {
   const { t } = useTranslation();
   const objectUrlRef = useRef<string | null>(null);
@@ -199,7 +202,7 @@ export const PdfPreviewPanel: React.FC<PdfPreviewPanelProps> = ({
       {showToolbar ? (
         <div className="px-4 py-3 border-b border-white/5 flex items-center justify-between gap-3 bg-black/20">
           <span className="text-[10px] font-black uppercase tracking-[0.2em] text-cyan-500/90">{t('common:preview.livePreview')}</span>
-          {tabHref && (
+          {showToolbarNewTab && tabHref && (
             <a
               href={tabHref}
               target="_blank"

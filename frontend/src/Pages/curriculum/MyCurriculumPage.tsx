@@ -408,7 +408,7 @@ const MyCurriculumPage: React.FC = () => {
                         <button
                           type="button"
                           disabled={busyId === d.id}
-                          onClick={() => submit(d.id)}
+                          onClick={() => newVersion(d.id)}
                           className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-cyan-500 text-[#020617] text-[10px] font-[1000] uppercase tracking-widest hover:bg-cyan-400 disabled:opacity-50 transition-all"
                         >
                           {busyId === d.id ? <Loader2 className="animate-spin" size={16} /> : <Send size={16} strokeWidth={3} />}

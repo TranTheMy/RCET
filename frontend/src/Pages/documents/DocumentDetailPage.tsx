@@ -164,6 +164,7 @@ const DocumentDetailPage: React.FC = () => {
               gateLoading={loading}
               tabOpenUrl={directPdfUrl || openFileUrl}
               onRetryOpenTab={onDownload}
+              showToolbarNewTab={false}
             />
             <p className="mt-3 text-[9px] text-slate-600 text-center xl:text-left font-medium uppercase tracking-wider">
               {t('documents:detail.previewHint')}

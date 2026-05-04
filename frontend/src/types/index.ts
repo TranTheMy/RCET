@@ -330,6 +330,8 @@ export interface Project {
   awaiting_leader_assignment?: boolean;
   /** SELF_JOIN: số thành viên cần để đóng slot tự join */
   required_members?: number | null;
+  /** TAG = gán thành viên; SELF_JOIN = cơ chế 2, mở slot đăng ký */
+  participation_mode?: 'TAG' | 'SELF_JOIN';
 }
 
 export interface TaskSummary {

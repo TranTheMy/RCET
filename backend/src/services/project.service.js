@@ -60,6 +60,28 @@ const isProjectMember = async (projectId, userId) => {
   return member;
 };
 
+/** Chỉ hiển thị `Project.leader` (User) khi `leader_id` đã là chủ trì thật: có ProjectMember.role = LEADER. */
+const LEADER_ROLES_OR_LEGACY = { [Op.in]: [PROJECT_ROLES.LEADER, 'LEADER'] };
+
+async function batchProjectIdsWhereLeaderUserIsShown(projectIdLeaderPairs) {
+  const pairs = (projectIdLeaderPairs || []).filter((x) => x && x.id && x.leader_id);
+  if (pairs.length === 0) return new Set();
+  const uniqProjectIds = [...new Set(pairs.map((x) => x.id))];
+  const pms = await ProjectMember.findAll({
+    where: {
+      project_id: { [Op.in]: uniqProjectIds },
+      role: LEADER_ROLES_OR_LEGACY,
+    },
+    attributes: ['project_id', 'user_id'],
+  });
+  const pairKeys = new Set(pairs.map((x) => `${x.id}:${x.leader_id}`));
+  const out = new Set();
+  for (const pm of pms) {
+    if (pairKeys.has(`${pm.project_id}:${pm.user_id}`)) out.add(pm.project_id);
+  }
+  return out;
+}
+
 const isProjectLeader = async (projectId, userId) => {
   const project = await Project.findByPk(projectId);
   return project && project.leader_id === userId;
@@ -208,23 +230,13 @@ const assertInstituteRoleIsProjectParticipant = async (projectId, project, user)
 };
 
 const getMemberWorkloadSummary = async (userId) => {
-  const [memberships, leaderProjects] = await Promise.all([
-    ProjectMember.findAll({
-      where: { user_id: userId },
-      attributes: ['project_id'],
-    }),
-    Project.findAll({
-      where: { leader_id: userId },
-      attributes: ['id'],
-    }),
-  ]);
+  const memberships = await ProjectMember.findAll({
+    where: { user_id: userId },
+    attributes: ['project_id'],
+  });
 
-  const involvedProjectIds = [
-    ...new Set([
-      ...memberships.map((m) => m.project_id),
-      ...leaderProjects.map((p) => p.id),
-    ]),
-  ];
+  /** Chỉ dự án đã có ProjectMember; không tính chỉ `leader_id` (chủ trì dự kiến chưa vào nhóm). */
+  const involvedProjectIds = [...new Set(memberships.map((m) => m.project_id))];
 
   if (involvedProjectIds.length === 0) {
     return {
@@ -308,9 +320,13 @@ const ensureAssigneeWorkloadAvailable = async (assigneeId) => {
   return workload;
 };
 
-/** Thông báo cho người tạo / leader khi thành viên chấp nhận hoặc từ chối cam kết (My Commitments). */
-async function notifyCommitmentResponseStakeholders(projectId, actorUserId, decision, reason) {
+/**
+ * Thông báo cho người tạo / leader khi thành viên chấp nhận hoặc từ chối cam kết (My Commitments).
+ * @param {{ rejectedAsDesignatedLeader?: boolean }} [options] — Khi từ chối: true nếu lúc từ chối người đó là `leader_id` (chủ trì dự kiến); phải tính trước khi DB gỡ `leader_id`.
+ */
+async function notifyCommitmentResponseStakeholders(projectId, actorUserId, decision, reason, options = {}) {
   try {
+    const { rejectedAsDesignatedLeader = false } = options;
     const project = await Project.findByPk(projectId, {
       attributes: ['id', 'name', 'created_by', 'leader_id', 'party_a_id'],
     });
@@ -322,13 +338,27 @@ async function notifyCommitmentResponseStakeholders(projectId, actorUserId, deci
     const creatorId = project.created_by || project.party_a_id;
     const stakeholderIds = [...new Set([creatorId, project.leader_id].filter(Boolean))];
     const approved = decision === 'approved';
-    const title = approved ? 'Cam kết được chấp nhận' : 'Từ chối tham gia dự án';
     const reasonText = reason && String(reason).trim() ? ` Lý do: ${reason}` : '';
-    const message = approved
-      ? `${actorName} đã chấp nhận cam kết tham gia dự án "${project.name}".`
-      : `${actorName} đã từ chối tham gia dự án "${project.name}".${reasonText}`;
-    const type = approved ? 'success' : 'warning';
-    const eventName = approved ? 'PROJECT_COMMITMENT_APPROVED' : 'PROJECT_COMMITMENT_REJECTED';
+    let title;
+    let message;
+    let type;
+    let eventName;
+    if (approved) {
+      title = 'Cam kết được chấp nhận';
+      message = `${actorName} đã chấp nhận cam kết tham gia dự án "${project.name}".`;
+      type = 'success';
+      eventName = 'PROJECT_COMMITMENT_APPROVED';
+    } else if (rejectedAsDesignatedLeader) {
+      title = 'Từ chối vai trò chủ trì dự kiến';
+      message = `${actorName} đã từ chối vai trò chủ trì dự kiến cho dự án "${project.name}".${reasonText}`;
+      type = 'warning';
+      eventName = 'PROJECT_COMMITMENT_LEADER_NOMINATION_REJECTED';
+    } else {
+      title = 'Từ chối tham gia dự án';
+      message = `${actorName} đã từ chối tham gia dự án "${project.name}".${reasonText}`;
+      type = 'warning';
+      eventName = 'PROJECT_COMMITMENT_REJECTED';
+    }
     for (const uid of stakeholderIds) {
       if (uid === actorUserId) continue;
       await notificationService.createAndPushNotification({
@@ -337,7 +367,11 @@ async function notifyCommitmentResponseStakeholders(projectId, actorUserId, deci
         message,
         type,
         actionUrl: projectUrl,
-        metadata: { project_id: projectId, commitment_response: decision },
+        metadata: {
+          project_id: projectId,
+          commitment_response: decision,
+          ...(approved ? {} : { rejection_kind: rejectedAsDesignatedLeader ? 'leader_nomination' : 'member_invite' }),
+        },
         eventName,
         eventPayload: { project_id: projectId, actor_user_id: actorUserId },
       });
@@ -421,7 +455,13 @@ async function notifyAfterJoinProject(projectId, joinerUserId) {
   }
 }
 
-async function notifyProjectRejectStakeholders(projectId, rejecterUserId, reason, leaderReject) {
+/**
+ * @param {'member_invite'|'leader_resigned'|'decline_leader_nomination'} rejectKind
+ *   member_invite — từ chối tham gia / rời lời mời;
+ *   leader_resigned — chủ trì đã nhận vai trò chính thức rồi từ chối;
+ *   decline_leader_nomination — vẫn là thành viên, chỉ từ chối nhận chủ trì.
+ */
+async function notifyProjectRejectStakeholders(projectId, rejecterUserId, reason, rejectKind = 'member_invite') {
   try {
     const project = await Project.findByPk(projectId, {
       attributes: ['id', 'name', 'created_by', 'leader_id', 'party_a_id'],
@@ -434,12 +474,26 @@ async function notifyProjectRejectStakeholders(projectId, rejecterUserId, reason
     const creatorId = project.created_by || project.party_a_id;
     const stakeholderIds = [...new Set([creatorId, project.leader_id].filter(Boolean))];
     const reasonText = reason && String(reason).trim() ? ` Lý do: ${reason}` : '';
-    const title = leaderReject ? 'Leader từ chối chủ trì' : 'Từ chối tham gia dự án';
-    const message = leaderReject
-      ? `Leader ${rejecterName} đã từ chối chủ trì dự án "${project.name}". Dự án tạm dừng.${reasonText}`
-      : `${rejecterName} đã từ chối tham gia dự án "${project.name}".${reasonText}`;
-    const type = leaderReject ? 'alert' : 'warning';
-    const eventName = leaderReject ? 'PROJECT_LEADER_REJECTED' : 'PROJECT_INVITE_REJECTED';
+    let title;
+    let message;
+    let type;
+    let eventName;
+    if (rejectKind === 'leader_resigned') {
+      title = 'Leader từ chối chủ trì';
+      message = `Leader ${rejecterName} đã từ chối chủ trì dự án "${project.name}". Dự án tạm dừng.${reasonText}`;
+      type = 'alert';
+      eventName = 'PROJECT_LEADER_REJECTED';
+    } else if (rejectKind === 'decline_leader_nomination') {
+      title = 'Từ chối vai trò chủ trì';
+      message = `${rejecterName} đã từ chối vai trò chủ trì dự án "${project.name}" (vẫn là thành viên; cần chỉ định chủ trì mới).${reasonText}`;
+      type = 'warning';
+      eventName = 'PROJECT_LEADER_NOMINATION_DECLINED';
+    } else {
+      title = 'Từ chối tham gia dự án';
+      message = `${rejecterName} đã từ chối tham gia dự án "${project.name}".${reasonText}`;
+      type = 'warning';
+      eventName = 'PROJECT_INVITE_REJECTED';
+    }
     for (const uid of stakeholderIds) {
       if (uid === rejecterUserId) continue;
       await notificationService.createAndPushNotification({
@@ -448,13 +502,283 @@ async function notifyProjectRejectStakeholders(projectId, rejecterUserId, reason
         message,
         type,
         actionUrl: projectUrl,
-        metadata: { project_id: projectId },
+        metadata: { project_id: projectId, rejection_kind: rejectKind },
         eventName,
         eventPayload: { project_id: projectId, rejecter_user_id: rejecterUserId },
       });
     }
   } catch (e) {
     logger.error('notifyProjectRejectStakeholders:', e?.message || e);
+  }
+}
+
+function projectAppUrl(projectId) {
+  const base = (env.clientUrl || 'http://localhost:5173').replace(/\/$/, '');
+  return `${base}/projects/${projectId}`;
+}
+
+const PROJECT_STATUS_NOTIFY_LABEL_VI = {
+  [PROJECT_STATUS.PLANNING]: 'Lập kế hoạch',
+  [PROJECT_STATUS.ACTIVE]: 'Đang hoạt động',
+  [PROJECT_STATUS.PAUSED]: 'Tạm dừng',
+  [PROJECT_STATUS.DONE]: 'Hoàn thành',
+  [PROJECT_STATUS.ARCHIVED]: 'Lưu trữ',
+};
+
+/** Bên A + chủ trì + mọi thành viên trong ProjectMember (dedupe). */
+async function collectProjectAudienceUserIds(projectId) {
+  const project = await Project.findByPk(projectId, {
+    attributes: ['id', 'created_by', 'party_a_id', 'leader_id'],
+  });
+  if (!project) return [];
+  const creatorId = project.created_by || project.party_a_id;
+  const ids = new Set([creatorId, project.leader_id].filter(Boolean));
+  const rows = await ProjectMember.findAll({
+    where: { project_id: projectId },
+    attributes: ['user_id'],
+  });
+  for (const r of rows) ids.add(r.user_id);
+  return [...ids];
+}
+
+async function notifyLeaderRoleAcceptedStakeholders(projectId, newLeaderUserId) {
+  try {
+    const project = await Project.findByPk(projectId, {
+      attributes: ['name', 'created_by', 'party_a_id', 'leader_id'],
+    });
+    if (!project) return;
+    const actor = await User.findByPk(newLeaderUserId, { attributes: ['full_name'] });
+    const actorName = actor?.full_name || 'Chủ trì';
+    const audience = await collectProjectAudienceUserIds(projectId);
+    const url = projectAppUrl(projectId);
+    for (const uid of audience) {
+      if (uid === newLeaderUserId) continue;
+      await notificationService.createAndPushNotification({
+        userId: uid,
+        title: 'Chủ trì đã nhận vai trò',
+        message: `${actorName} đã chấp nhận vai trò chủ trì dự án "${project.name}".`,
+        type: 'info',
+        actionUrl: url,
+        metadata: { project_id: projectId },
+        eventName: 'PROJECT_LEADER_ROLE_ACCEPTED',
+        eventPayload: { project_id: projectId, leader_user_id: newLeaderUserId },
+      });
+    }
+  } catch (e) {
+    logger.error('notifyLeaderRoleAcceptedStakeholders:', e?.message || e);
+  }
+}
+
+async function notifyNewLeaderAssigned(projectId, newLeaderUserId, adminId) {
+  try {
+    const project = await Project.findByPk(projectId, { attributes: ['name'] });
+    if (!project) return;
+    const admin = await User.findByPk(adminId, { attributes: ['full_name'] });
+    const adminName = admin?.full_name || 'Ban lãnh đạo';
+    const url = projectAppUrl(projectId);
+    await notificationService.createAndPushNotification({
+      userId: newLeaderUserId,
+      title: 'Bạn được chỉ định chủ trì',
+      message: `${adminName} đã chỉ định bạn là chủ trì dự án "${project.name}".`,
+      type: 'info',
+      actionUrl: url,
+      metadata: { project_id: projectId },
+      eventName: 'PROJECT_LEADER_ASSIGNED',
+      eventPayload: { project_id: projectId, new_leader_user_id: newLeaderUserId },
+    });
+    const audience = await collectProjectAudienceUserIds(projectId);
+    for (const uid of audience) {
+      if (!uid || uid === newLeaderUserId || uid === adminId) continue;
+      await notificationService.createAndPushNotification({
+        userId: uid,
+        title: 'Chủ trì dự án mới',
+        message: `${adminName} đã chỉ định chủ trì mới cho dự án "${project.name}".`,
+        type: 'info',
+        actionUrl: url,
+        metadata: { project_id: projectId },
+        eventName: 'PROJECT_LEADER_ASSIGNED_TEAM',
+        eventPayload: { project_id: projectId, new_leader_user_id: newLeaderUserId },
+      });
+    }
+  } catch (e) {
+    logger.error('notifyNewLeaderAssigned:', e?.message || e);
+  }
+}
+
+async function notifyMemberRemovedFromProject(projectId, removedUserId, actorUserId) {
+  try {
+    const project = await Project.findByPk(projectId, { attributes: ['name'] });
+    if (!project) return;
+    const actor = await User.findByPk(actorUserId, { attributes: ['full_name'] });
+    const actorName = actor?.full_name || 'Quản lý dự án';
+    const url = projectAppUrl(projectId);
+    await notificationService.createAndPushNotification({
+      userId: removedUserId,
+      title: 'Rút khỏi dự án',
+      message: `Bạn đã bị gỡ khỏi dự án "${project.name}" bởi ${actorName}.`,
+      type: 'warning',
+      actionUrl: url,
+      metadata: { project_id: projectId },
+      eventName: 'PROJECT_MEMBER_REMOVED',
+      eventPayload: { project_id: projectId },
+    });
+  } catch (e) {
+    logger.error('notifyMemberRemovedFromProject:', e?.message || e);
+  }
+}
+
+async function notifyProjectStatusChangedToMembers(projectId, actorUserId, projectName, fromStatus, toStatus) {
+  try {
+    const audience = await collectProjectAudienceUserIds(projectId);
+    const actor = await User.findByPk(actorUserId, { attributes: ['full_name'] });
+    const actorName = actor?.full_name || 'Quản lý';
+    const fromLabel = PROJECT_STATUS_NOTIFY_LABEL_VI[fromStatus] || fromStatus;
+    const toLabel = PROJECT_STATUS_NOTIFY_LABEL_VI[toStatus] || toStatus;
+    const url = projectAppUrl(projectId);
+    for (const uid of audience) {
+      if (uid === actorUserId) continue;
+      await notificationService.createAndPushNotification({
+        userId: uid,
+        title: 'Trạng thái dự án thay đổi',
+        message: `${actorName} đã chuyển dự án "${projectName}" từ "${fromLabel}" sang "${toLabel}".`,
+        type: 'info',
+        actionUrl: url,
+        metadata: { project_id: projectId, from_status: fromStatus, to_status: toStatus },
+        eventName: 'PROJECT_STATUS_CHANGED',
+        eventPayload: { project_id: projectId, from_status: fromStatus, to_status: toStatus },
+      });
+    }
+  } catch (e) {
+    logger.error('notifyProjectStatusChangedToMembers:', e?.message || e);
+  }
+}
+
+async function notifyTaskAssigned(projectId, taskId, taskTitle, actorUserId, assigneeUserId) {
+  try {
+    const project = await Project.findByPk(projectId, { attributes: ['name'] });
+    const actor = await User.findByPk(actorUserId, { attributes: ['full_name'] });
+    const actorName = actor?.full_name || 'Quản lý';
+    const url = projectAppUrl(projectId);
+    await notificationService.createAndPushNotification({
+      userId: assigneeUserId,
+      title: 'Task mới được giao',
+      message: `${actorName} đã giao task "${taskTitle}" cho bạn trong dự án "${project?.name || ''}".`,
+      type: 'info',
+      actionUrl: url,
+      metadata: { project_id: projectId, task_id: taskId },
+      eventName: 'PROJECT_TASK_ASSIGNED',
+      eventPayload: { project_id: projectId, task_id: taskId },
+    });
+  } catch (e) {
+    logger.error('notifyTaskAssigned:', e?.message || e);
+  }
+}
+
+async function notifyTaskCompletedStakeholders(projectId, taskRow, completedByUserId) {
+  try {
+    const project = await Project.findByPk(projectId, {
+      attributes: ['name', 'leader_id', 'created_by', 'party_a_id'],
+    });
+    if (!project) return;
+    const completer = await User.findByPk(completedByUserId, { attributes: ['full_name'] });
+    const completerName = completer?.full_name || 'Thành viên';
+    const ids = new Set(
+      [project.leader_id, project.created_by || project.party_a_id, taskRow.created_by].filter(Boolean),
+    );
+    ids.delete(completedByUserId);
+    const url = projectAppUrl(projectId);
+    const title = taskRow.title || 'Task';
+    for (const uid of ids) {
+      await notificationService.createAndPushNotification({
+        userId: uid,
+        title: 'Task đã hoàn thành',
+        message: `${completerName} đã hoàn thành task "${title}" trong dự án "${project.name}".`,
+        type: 'info',
+        actionUrl: url,
+        metadata: { project_id: projectId, task_id: taskRow.id },
+        eventName: 'PROJECT_TASK_DONE',
+        eventPayload: { project_id: projectId, task_id: taskRow.id },
+      });
+    }
+  } catch (e) {
+    logger.error('notifyTaskCompletedStakeholders:', e?.message || e);
+  }
+}
+
+async function notifyMilestoneCreatedStakeholders(projectId, actorUserId, milestoneTitle) {
+  try {
+    const project = await Project.findByPk(projectId, { attributes: ['name'] });
+    if (!project) return;
+    const actor = await User.findByPk(actorUserId, { attributes: ['full_name'] });
+    const actorName = actor?.full_name || 'Quản lý';
+    const audience = await collectProjectAudienceUserIds(projectId);
+    const url = projectAppUrl(projectId);
+    for (const uid of audience) {
+      if (uid === actorUserId) continue;
+      await notificationService.createAndPushNotification({
+        userId: uid,
+        title: 'Milestone mới',
+        message: `${actorName} đã tạo milestone "${milestoneTitle}" trong dự án "${project.name}".`,
+        type: 'info',
+        actionUrl: url,
+        metadata: { project_id: projectId },
+        eventName: 'PROJECT_MILESTONE_CREATED',
+        eventPayload: { project_id: projectId },
+      });
+    }
+  } catch (e) {
+    logger.error('notifyMilestoneCreatedStakeholders:', e?.message || e);
+  }
+}
+
+async function notifyMilestoneCompletedStakeholders(projectId, actorUserId, milestoneTitle) {
+  try {
+    const project = await Project.findByPk(projectId, { attributes: ['name'] });
+    if (!project) return;
+    const actor = await User.findByPk(actorUserId, { attributes: ['full_name'] });
+    const actorName = actor?.full_name || 'Quản lý';
+    const audience = await collectProjectAudienceUserIds(projectId);
+    const url = projectAppUrl(projectId);
+    for (const uid of audience) {
+      if (uid === actorUserId) continue;
+      await notificationService.createAndPushNotification({
+        userId: uid,
+        title: 'Milestone hoàn thành',
+        message: `${actorName} đã đánh dấu hoàn thành milestone "${milestoneTitle}" trong dự án "${project.name}".`,
+        type: 'info',
+        actionUrl: url,
+        metadata: { project_id: projectId },
+        eventName: 'PROJECT_MILESTONE_DONE',
+        eventPayload: { project_id: projectId },
+      });
+    }
+  } catch (e) {
+    logger.error('notifyMilestoneCompletedStakeholders:', e?.message || e);
+  }
+}
+
+async function notifyWeeklyReportSubmitted(projectId, authorUserId, reportRow, projectName) {
+  try {
+    const audience = await collectProjectAudienceUserIds(projectId);
+    const author = await User.findByPk(authorUserId, { attributes: ['full_name'] });
+    const authorName = author?.full_name || 'Thành viên';
+    const url = projectAppUrl(projectId);
+    const late = reportRow.status === 'late' ? ' (nộp trễ)' : '';
+    for (const uid of audience) {
+      if (uid === authorUserId) continue;
+      await notificationService.createAndPushNotification({
+        userId: uid,
+        title: 'Báo cáo tuần đã nộp',
+        message: `${authorName} đã nộp báo cáo tuần ${reportRow.week_number}/${reportRow.year} cho dự án "${projectName}".${late}`,
+        type: 'info',
+        actionUrl: url,
+        metadata: { project_id: projectId, weekly_report_id: reportRow.id },
+        eventName: 'PROJECT_WEEKLY_REPORT_SUBMITTED',
+        eventPayload: { project_id: projectId, weekly_report_id: reportRow.id },
+      });
+    }
+  } catch (e) {
+    logger.error('notifyWeeklyReportSubmitted:', e?.message || e);
   }
 }
 
@@ -521,7 +845,7 @@ const listProjects = async ({ status, tag, page = 1, limit = 20 }, user) => {
 
   /** Dự án user đã từ chối cam kết (b_rejected) — không hiển thị trong danh sách (trừ BLĐ xem toàn bộ). */
   let rejectedCommitmentProjectIds = [];
-  /** Dự án user đã vào roster (PM hoặc leader_id) — dùng badge is_joined cho MEMBER. */
+  /** Dự án user đã vào roster (có ProjectMember — đã chấp nhận tham gia) — dùng badge is_joined cho MEMBER. */
   let rosterProjectIdsForMember = null;
   /** MEMBER: map project_id → trạng thái cam kết (badge chờ xác nhận). */
   let commitmentStatusByProjectId = null;
@@ -531,16 +855,7 @@ const listProjects = async ({ status, tag, page = 1, limit = 20 }, user) => {
       where: { user_id: user.id },
       attributes: ['project_id'],
     });
-    const leaderProjects = await Project.findAll({
-      where: { leader_id: user.id },
-      attributes: ['id'],
-    });
-    const rosterIds = [
-      ...new Set([
-        ...memberships.map((m) => m.project_id),
-        ...leaderProjects.map((p) => p.id),
-      ]),
-    ];
+    const rosterIds = [...new Set(memberships.map((m) => m.project_id))];
     if (user.system_role === SYSTEM_ROLES.MEMBER) {
       rosterProjectIdsForMember = new Set(rosterIds);
     }
@@ -638,6 +953,10 @@ const listProjects = async ({ status, tag, page = 1, limit = 20 }, user) => {
     }),
   ]);
 
+  const leaderShownProjectIds = await batchProjectIdsWhereLeaderUserIsShown(
+    rows.map((r) => ({ id: r.id, leader_id: r.leader_id })),
+  );
+
   const projectsWithStats = await Promise.all(rows.map(async (project) => {
     const p = project.toJSON();
 
@@ -670,12 +989,16 @@ const listProjects = async ({ status, tag, page = 1, limit = 20 }, user) => {
       at_risk: atRisk,
     };
 
+    if (!leaderShownProjectIds.has(p.id)) {
+      base.leader = null;
+    }
+
     if (
       user.system_role === SYSTEM_ROLES.MEMBER &&
       rosterProjectIdsForMember &&
       commitmentStatusByProjectId
     ) {
-      const joined = rosterProjectIdsForMember.has(p.id) || p.leader_id === user.id;
+      const joined = rosterProjectIdsForMember.has(p.id);
       const st = commitmentStatusByProjectId.get(p.id);
       return {
         ...base,
@@ -832,7 +1155,7 @@ const createProject = async (data, userId) => {
         required_members: null,    
       }, { transaction: t });
 
-      /** Chủ trì dự kiến chỉ ghi nhận trong ProjectMember sau khi họ chấp nhận cam kết (giống thành viên được tag). */
+      /** `leader_id` = chủ trì dự kiến (workflow). Hiển thị công khai `Project.leader` chỉ khi đã có ProjectMember LEADER. */
 
       const allMemberIds = [data.leader_id, data.party_a_id];
       if (data.members && data.members.length > 0) {
@@ -949,9 +1272,11 @@ const getProjectDetail = async (projectId, user) => {
   const memberCount = await ProjectMember.count({ where: { project_id: projectId } });
   const plain = project.toJSON();
   plain.viewer_membership = myPm ? { id: myPm.id, role: myPm.role } : null;
-  /** Đồng bộ với listMembers: chủ trì (leader_id) luôn hiển thị role leader cho viewer. */
-  if (plain.viewer_membership && project.leader_id === user.id) {
-    plain.viewer_membership.role = PROJECT_ROLES.LEADER;
+  const leaderShown = await batchProjectIdsWhereLeaderUserIsShown([
+    { id: project.id, leader_id: project.leader_id },
+  ]);
+  if (!leaderShown.has(project.id)) {
+    plain.leader = null;
   }
   plain.member_count = memberCount;
   return plain;
@@ -985,6 +1310,7 @@ const acceptLeaderRole = async (projectId, userId) => {
     project_id: projectId,
     note: 'Chủ trì dự kiến đã chấp nhận vai trò chủ trì.',
   });
+  void notifyLeaderRoleAcceptedStakeholders(projectId, userId);
   return { message: 'Đã ghi nhận vai trò chủ trì dự án.' };
 };
 
@@ -1030,7 +1356,12 @@ const declineLeaderRole = async (projectId, userId, reason) => {
     throw err;
   }
 
-  void notifyProjectRejectStakeholders(projectId, userId, reason || 'Từ chối vai trò chủ trì (vẫn là thành viên)', false);
+  void notifyProjectRejectStakeholders(
+    projectId,
+    userId,
+    reason || 'Từ chối vai trò chủ trì (vẫn là thành viên)',
+    'decline_leader_nomination',
+  );
   return {
     message:
       'Đã từ chối vai trò chủ trì. Bạn vẫn là thành viên dự án. Dự án đang lập kế hoạch và chờ Ban lãnh đạo chỉ định chủ trì mới.',
@@ -1111,6 +1442,8 @@ const updateProject = async (projectId, data, user) => {
       from_status: oldStatus,
       to_status: data.status,
     });
+    const displayName = data.name != null ? data.name : project.name;
+    void notifyProjectStatusChangedToMembers(projectId, user.id, displayName, oldStatus, data.status);
   }
 
   // =========================================================
@@ -1261,6 +1594,10 @@ const createTask = async (projectId, data, user) => {
     task_id: task.id,
   });
 
+  if (data.assignee_id && data.assignee_id !== user.id) {
+    void notifyTaskAssigned(projectId, task.id, task.title, user.id, data.assignee_id);
+  }
+
   return task;
 };
 
@@ -1302,6 +1639,8 @@ const updateTask = async (projectId, taskId, data, user) => {
     }
   }
 
+  const prevAssigneeId = task.assignee_id;
+  const prevStatus = task.status;
   await task.update(data);
 
   await auditService.log(AUDIT_ACTIONS.TASK_UPDATED, user.id, null, {
@@ -1309,6 +1648,14 @@ const updateTask = async (projectId, taskId, data, user) => {
     task_id: taskId,
     changes: data,
   });
+
+  if (data.assignee_id != null && data.assignee_id !== prevAssigneeId && data.assignee_id !== user.id) {
+    void notifyTaskAssigned(projectId, task.id, task.title, user.id, data.assignee_id);
+  }
+  const newStatus = data.status !== undefined ? data.status : task.status;
+  if (newStatus === TASK_STATUS.DONE && prevStatus !== TASK_STATUS.DONE) {
+    void notifyTaskCompletedStakeholders(projectId, task, user.id);
+  }
 
   return task;
 };
@@ -1396,10 +1743,12 @@ const listMembers = async (projectId, user) => {
     const memberData = m.toJSON();
     const userId = m.user_id;
 
-    // Một dự án một leader_id: chỉ user khớp leader_id hiển thị leader; dòng DB sai (2 leader) hiển thị member.
-    if (userId === leader_id) {
+    const isDbLeader =
+      memberData.role === PROJECT_ROLES.LEADER || memberData.role === 'LEADER';
+    // Chỉ hiển thị LEADER khi DB đã là LEADER và khớp leader_id; ứng viên chủ trì (leader_id + MEMBER) vẫn là member.
+    if (userId === leader_id && isDbLeader) {
       memberData.role = PROJECT_ROLES.LEADER;
-    } else if (memberData.role === PROJECT_ROLES.LEADER || memberData.role === 'LEADER') {
+    } else if (isDbLeader && userId !== leader_id) {
       memberData.role = PROJECT_ROLES.MEMBER;
     }
 
@@ -1569,6 +1918,8 @@ const removeMember = async (projectId, memberId, user) => {
     project_id: projectId,
   });
 
+  void notifyMemberRemovedFromProject(projectId, member.user_id, user.id);
+
   return { message: 'Member removed successfully' };
 };
 
@@ -1675,6 +2026,8 @@ const createMilestone = async (projectId, data, user) => {
     milestone_id: milestone.id,
   });
 
+  void notifyMilestoneCreatedStakeholders(projectId, user.id, milestone.title);
+
   return milestone;
 };
 
@@ -1698,6 +2051,8 @@ const updateMilestone = async (projectId, milestoneId, data, user) => {
     where: { id: milestoneId, project_id: projectId },
   });
   if (!milestone) throw { status: 404, message: 'Milestone not found' };
+
+  const wasDoneBefore = Boolean(milestone.done);
 
   // If marking as done
   const updateData = { ...data };
@@ -1757,6 +2112,10 @@ const updateMilestone = async (projectId, milestoneId, data, user) => {
     milestone_id: milestoneId,
     changes: data,
   });
+
+  if (updateData.done === true && !wasDoneBefore) {
+    void notifyMilestoneCompletedStakeholders(projectId, user.id, milestone.title);
+  }
 
   const result = milestone.toJSON();
   if (warning) result.warning = warning;
@@ -1954,6 +2313,7 @@ const createReport = async (projectId, data, user) => {
 
   const plain = report.toJSON();
   const parsed = parseReportContentPayload(plain.content);
+  void notifyWeeklyReportSubmitted(projectId, user.id, plain, project.name);
   return {
     ...plain,
     content: parsed.text || null,
@@ -2230,7 +2590,7 @@ const rejectProject = async (projectId, userId, reason) => {
       });
 
       await t.commit();
-      void notifyProjectRejectStakeholders(projectId, userId, reason, true);
+      void notifyProjectRejectStakeholders(projectId, userId, reason, 'leader_resigned');
       return { message: 'Leader đã từ chối. Dự án đang lập kế hoạch và chờ chỉ định chủ trì mới.' };
     }
 
@@ -2256,7 +2616,7 @@ const rejectProject = async (projectId, userId, reason) => {
     });
 
     await t.commit();
-    void notifyProjectRejectStakeholders(projectId, userId, reason, false);
+    void notifyProjectRejectStakeholders(projectId, userId, reason, 'member_invite');
     return { message: 'Đã từ chối tham gia.' };
   } catch (error) {
     await t.rollback();
@@ -2311,6 +2671,7 @@ const assignNewLeader = async (projectId, newLeaderId, adminId) => {
     }, { transaction: t });
 
     await t.commit();
+    void notifyNewLeaderAssigned(projectId, newLeaderId, adminId);
     return { message: 'Đã chỉ định chủ trì dự án mới.' };
   } catch (error) {
     await t.rollback();
@@ -2320,6 +2681,7 @@ const assignNewLeader = async (projectId, newLeaderId, adminId) => {
 
 module.exports = {
   listProjects,
+  batchProjectIdsWhereLeaderUserIsShown,
   countActiveProjectsPublic,
   checkCodeExists,
   createProject,

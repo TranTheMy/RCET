@@ -341,15 +341,28 @@ const bulkArchiveCommitments = async ({ commitmentIds, userId }) => {
 };
 
 const getMyCommitments = async (userId) => {
-  return await Commitment.findAll({
+  const commitments = await Commitment.findAll({
     where: { user_id: userId },
     include: [{
       model: Project,
-      attributes: ['id', 'name', 'code', 'model_type', 'party_a_percent', 'party_b_percent'],
-      include: [{ model: User, as: 'leader', attributes: ['full_name'] }]
+      attributes: ['id', 'name', 'code', 'model_type', 'party_a_percent', 'party_b_percent', 'leader_id'],
+      include: [{ model: User, as: 'leader', attributes: ['full_name'] }],
     }],
-    order: [['created_at', 'DESC']]
+    order: [['created_at', 'DESC']],
   });
+  const pairs = commitments
+    .map((c) => c.Project)
+    .filter(Boolean)
+    .map((p) => ({ id: p.id, leader_id: p.leader_id }));
+  const shown = await projectService.batchProjectIdsWhereLeaderUserIsShown(pairs);
+  for (const c of commitments) {
+    const P = c.Project;
+    if (!P || !P.leader_id) continue;
+    if (!shown.has(P.id)) {
+      P.setDataValue('leader', null);
+    }
+  }
+  return commitments;
 };
 
 const updateStatus = async (commitmentId, userId, data) => {
@@ -377,7 +390,16 @@ const updateStatus = async (commitmentId, userId, data) => {
   }
 
   const t = await sequelize.transaction();
+  let rejectedAsDesignatedLeader = false;
   try {
+    if (data.status === COMMITMENT_STATUS.B_REJECTED) {
+      const preProject = await Project.findByPk(commitment.project_id, {
+        attributes: ['leader_id'],
+        transaction: t,
+      });
+      rejectedAsDesignatedLeader = Boolean(preProject && preProject.leader_id === userId);
+    }
+
     await commitment.update(
       {
         status: data.status,
@@ -456,6 +478,7 @@ const updateStatus = async (commitmentId, userId, data) => {
     userId,
     data.status === COMMITMENT_STATUS.B_APPROVED ? 'approved' : 'rejected',
     data.status === COMMITMENT_STATUS.B_REJECTED ? (data.reason || null) : null,
+    { rejectedAsDesignatedLeader },
   );
 
   const reloaded = await commitment.reload();

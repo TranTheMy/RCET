@@ -291,6 +291,7 @@
     "unassigned": "Unassigned",
     "joined": "Joined",
     "pendingInvite": "Pending invite",
+    "registrationOpen": "Registration open",
     "members": "Members",
     "emptyTitle": "No matching projects",
     "emptyHint": "No projects found for the current filters",

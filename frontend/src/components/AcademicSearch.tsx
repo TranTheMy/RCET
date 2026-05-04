@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, generatePath } from 'react-router-dom';
+import { ROUTER } from '../routes/router';
 import { Search, Loader2, BookOpen, FileText, Presentation, Lightbulb } from 'lucide-react';
 import api from '../config/api';
-import { ROUTER } from '../routes/router';
 
 interface SearchItem {
   Id: number | string;
@@ -111,14 +111,23 @@ const AcademicSearch = ({ isScrolled, t }: AcademicSearchProps) => {
     setIsOpen(false);
     setQuery('');
 
-    const routes: Record<string, string> = {
-      project: ROUTER.USER.PROJECT_DETAIL.replace(':id', String(id)),
-      document: ROUTER.USER.DOCUMENTS_DETAIL.replace(':id', String(id)),
-      curriculum: ROUTER.USER.CURRICULUM_DETAIL.replace(':id', String(id)),
-      research: ROUTER.USER.RESEARCH_DETAIL.replace(':id', String(id)),
-    };
-
-    if (routes[type]) navigate(routes[type]);
+    const idStr = String(id);
+    switch (type) {
+      case 'project':
+        navigate(generatePath(ROUTER.USER.PROJECT_DETAIL, { id: idStr }));
+        break;
+      case 'document':
+        navigate(generatePath(ROUTER.USER.DOCUMENTS_DETAIL, { id: idStr }));
+        break;
+      case 'curriculum':
+        navigate(generatePath(ROUTER.USER.CURRICULUM_DETAIL, { id: idStr }));
+        break;
+      case 'research':
+        navigate(generatePath(ROUTER.USER.RESEARCH_DETAIL, { id: idStr }));
+        break;
+      default:
+        break;
+    }
   };
 
   const placeholder =

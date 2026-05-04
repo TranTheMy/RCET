@@ -32,6 +32,7 @@ import React, { lazy, Suspense, useEffect } from "react";
 import AdminMasterLayout from "./Pages/theme/themeAdmin/AdminMasterLayout";
 import UserProfile from "./Pages/user/UserProfile";
 import DirectorWorkspace from "./Pages/user/DirectorWorkspace";
+import DirectorLabStaffPage from "./Pages/user/DirectorLabStaffPage";
 import Research from "./Pages/Research";
 import Categories from "./Pages/user/Categories";
 import UserDashboard from "./Pages/user/DashBoard";
@@ -289,6 +290,18 @@ const RenderUserRouter = () => {
                           <PrivateRoute>
                             <VienTruongRoute>
                               <DirectorWorkspace />
+                            </VienTruongRoute>
+                          </PrivateRoute>
+                        </AdminLimitedRoute>
+                      }
+                    />
+                    <Route
+                      path={ROUTER.USER.DIRECTOR_LAB_STAFF}
+                      element={
+                        <AdminLimitedRoute>
+                          <PrivateRoute>
+                            <VienTruongRoute>
+                              <DirectorLabStaffPage />
                             </VienTruongRoute>
                           </PrivateRoute>
                         </AdminLimitedRoute>

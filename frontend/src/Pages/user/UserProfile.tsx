@@ -113,9 +113,12 @@ const UserProfile: React.FC = () => {
         const projects: Project[] = projPayload.projects ?? [];
         const items = resRes.data?.items ?? [];
         const completedProjects = projects.filter((p) => p.status === 'done').length;
-        const activeProjects = projects.filter((p) =>
-          ['planning', 'active', 'paused'].includes(p.status),
-        ).length;
+        const isLabMember = user.system_role === 'member';
+        const activeProjects = projects.filter((p) => {
+          if (!['planning', 'active', 'paused'].includes(p.status)) return false;
+          if (isLabMember && p.is_joined !== true) return false;
+          return true;
+        }).length;
         const approvedPapers = items.filter((r) => r.status === 'approved').length;
         setStats({ completedProjects, activeProjects, approvedPapers });
       } catch {

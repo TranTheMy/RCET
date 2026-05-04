@@ -534,7 +534,50 @@
       "verilogPractice": "Làm bài Verilog",
       "verilogPracticeDesc": "Hub học viên",
       "cvApprovals": "Duyệt hồ sơ nhà khoa học",
-      "cvApprovalsDesc": "CV & hợp đồng"
+      "cvApprovalsDesc": "CV & hợp đồng",
+      "labStaff": "Vai trò lab",
+      "labStaffDesc": "Bổ nhiệm thành viên lên trưởng lab hoặc thu hồi"
     }
+  },
+  "directorLabStaff": {
+    "backToHub": "Quay lại không gian làm việc",
+    "title": "Thành viên & trưởng lab",
+    "subtitle": "Nâng thành viên lab đang hoạt động lên trưởng lab, hoặc thu hồi trưởng lab về thành viên. Người được đổi vai trò nên đăng nhập lại để quyền cập nhật đầy đủ.",
+    "filters": {
+      "allRoles": "Mọi vai trò",
+      "member": "Thành viên lab",
+      "truong_lab": "Trưởng lab",
+      "searchPlaceholder": "Tìm theo tên, email, mã SV",
+      "apply": "Áp dụng"
+    },
+    "table": {
+      "name": "Họ tên",
+      "email": "Email",
+      "department": "Đơn vị",
+      "role": "Vai trò",
+      "status": "Trạng thái",
+      "actions": "Thao tác",
+      "empty": "Không có người dùng phù hợp bộ lọc.",
+      "loading": "Đang tải…",
+      "na": "—"
+    },
+    "actions": {
+      "promote": "Bổ nhiệm trưởng lab",
+      "demote": "Thu hồi về thành viên"
+    },
+    "confirmModal": {
+      "titlePromote": "Bổ nhiệm trưởng lab",
+      "titleDemote": "Thu hồi vai trò trưởng lab",
+      "descriptionPromote": "Xác nhận bổ nhiệm {{name}} làm trưởng lab? Người này nên đăng nhập lại để quyền cập nhật đầy đủ.",
+      "descriptionDemote": "Xác nhận chuyển {{name}} từ trưởng lab về thành viên lab?",
+      "confirm": "Xác nhận",
+      "cancel": "Hủy"
+    },
+    "toasts": {
+      "loadFailed": "Không tải được danh sách.",
+      "updated": "Đã cập nhật vai trò.",
+      "updateFailed": "Không cập nhật được vai trò."
+    },
+    "pagination": "Trang {{page}} / {{totalPages}} ({{total}} người)"
   }
 }
