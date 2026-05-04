@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, Loader2, BookOpen, FileText, Presentation, Lightbulb } from 'lucide-react';
 import api from '../config/api';
+import { ROUTER } from '../routes/router';
 
 interface SearchItem {
   Id: number | string;
@@ -111,10 +112,10 @@ const AcademicSearch = ({ isScrolled, t }: AcademicSearchProps) => {
     setQuery('');
 
     const routes: Record<string, string> = {
-      project: `/projects/${id}`,
-      document: `/documents/${id}`,
-      curriculum: `/curriculum/${id}`,
-      research: `/research/${id}`,
+      project: ROUTER.USER.PROJECT_DETAIL.replace(':id', String(id)),
+      document: ROUTER.USER.DOCUMENTS_DETAIL.replace(':id', String(id)),
+      curriculum: ROUTER.USER.CURRICULUM_DETAIL.replace(':id', String(id)),
+      research: ROUTER.USER.RESEARCH_DETAIL.replace(':id', String(id)),
     };
 
     if (routes[type]) navigate(routes[type]);

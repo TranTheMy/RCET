@@ -21,22 +21,54 @@ const aiRoutes = require('./routes/ai.routes');
 
 const app = express();
 app.set('etag', false);
+// Behind nginx reverse proxy in production.
+app.set('trust proxy', 1);
 
 // Security headers — disable CSP for Swagger UI; disable CORP to allow cross-origin access
 app.use(helmet({ contentSecurityPolicy: false, crossOriginResourcePolicy: false }));
 
-// CORS — allow dev frontend and any CLIENT_URL from env
-const allowedOrigins = [
-  process.env.CLIENT_URL || 'http://localhost:5173',
-  'http://localhost:5173',
-  'http://localhost:5174',
-  'http://localhost:3000',
-  'null' // allow file:// origin for local static test page usage
-];
+// CORS — allow dev frontend and configured domains (supports www/non-www + http/https variants)
+const localDevOrigins = ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:3000'];
+const rawConfiguredOrigins = [
+  process.env.CLIENT_URL,
+  process.env.FRONTEND_URL,
+  process.env.FRONTEND_ORIGIN,
+  process.env.ALLOWED_ORIGINS,
+]
+  .filter(Boolean)
+  .flatMap((value) => String(value)
+    .split(',')
+    .map((item) => item.trim())
+    .filter(Boolean));
+
+const allowedOrigins = new Set([...localDevOrigins, 'null']);
+
+const addHostVariants = (host) => {
+  if (!host) return;
+  allowedOrigins.add(`http://${host}`);
+  allowedOrigins.add(`https://${host}`);
+  allowedOrigins.add(`http://www.${host}`);
+  allowedOrigins.add(`https://www.${host}`);
+};
+
+rawConfiguredOrigins.forEach((rawOrigin) => {
+  try {
+    const parsed = new URL(rawOrigin);
+    allowedOrigins.add(parsed.origin);
+    addHostVariants(parsed.hostname.replace(/^www\./, ''));
+  } catch {
+    const normalized = rawOrigin
+      .replace(/^https?:\/\//, '')
+      .replace(/\/$/, '')
+      .replace(/^www\./, '');
+    addHostVariants(normalized);
+  }
+});
+
 const corsOptions = {
   origin: (origin, callback) => {
     // allow requests with no origin (mobile, curl, Postman)
-    if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
+    if (!origin || allowedOrigins.has(origin)) return callback(null, true);
     callback(new Error('Not allowed by CORS'));
   },
   credentials: true,
