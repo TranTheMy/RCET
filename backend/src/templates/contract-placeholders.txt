@@ -1,0 +1,25 @@
+Mặc định BE dùng: src/templates/Bản-cam-kết-NCKH-mẫu.docx (sau đó fallback scientist-contract-default.docx).
+
+Mẫu Bản-cam-kết-NCKH-mẫu.docx (bản chuẩn có tab chấm): backend tự điền dòng "Hôm nay, ngày …" và 8 ô sau nhãn (Bên A: họ tên, chức danh, đơn vị, email — Bên B: tương tự) theo payload API. Không cần thêm {{}} trong file đó.
+
+Để hệ thống điền tự động với mẫu tự soạn, trong Word thêm đúng chuỗi (một run liền nếu có thể; nếu Word tách run, docxtemplater vẫn xử lý được):
+
+partyAName
+partyAEmail
+partyAPhone
+partyAAddress
+partyATitle
+partyAWorkUnit
+partyBName
+partyBEmail
+partyBPhone
+partyBAddress
+partyBStudentId
+partyBFaculty
+contractDate
+contractLocation
+contractSummary
+
+Ví dụ: {{partyAName}}, {{contractDate}}
+
+Nếu mẫu không có các chuỗi trên, file vẫn upload lên Cloudinary nhưng không thay được nội dung động.

@@ -1,0 +1,236 @@
+{
+  "title": "Documents",
+  "myDocuments": "My documents",
+  "create": "Create document",
+  "update": "Update",
+  "back": "Back",
+  "list": {
+    "kicker": "Intelligence repository",
+    "title1": "Document",
+    "title2": "Assets",
+    "pendingReview": "Pending review",
+    "myWorkspace": "My workspace",
+    "newAsset": "New asset",
+    "searchPlaceholder": "Search document name, keywords...",
+    "filters": "Filters",
+    "allCategories": "All categories",
+    "clearFilters": "Clear filters",
+    "loading": "Loading library...",
+    "emptyTitle": "Empty document library",
+    "defaultDescription": "Internal guides and procedures.",
+    "uncategorized": "General",
+    "system": "System",
+    "updatedAt": "Updated: {{date}}",
+    "viewDetail": "View detail",
+    "page": "Page {{page}} / {{totalPages}}",
+    "verified": "Verified",
+    "errors": {
+      "fetchFailed": "Failed to load documents"
+    }
+  }
+  ,
+  "status": {
+    "draft": "Draft",
+    "pending": "Pending",
+    "published": "Approved",
+    "rejected": "Rejected",
+    "revision": "Needs changes",
+    "archived": "Archived"
+  },
+  "sourceType": {
+    "upload": "Upload",
+    "link": "Link"
+  },
+  "form": {
+    "document": "document",
+    "loading": "Initializing form...",
+    "draftHint": "Saving will create a draft (DRAFT) in your workspace.",
+    "sections": {
+      "core": "Core information",
+      "extra": "Source and additional information"
+    },
+    "fields": {
+      "title": "Title *",
+      "category": "Category *",
+      "docType": "Type",
+      "description": "Summary",
+      "manufacturer": "Manufacturer",
+      "externalUrl": "External URL",
+      "upload": "Upload document file"
+    },
+    "docTypes": {
+      "datasheet": "Datasheet",
+      "manual": "Manual",
+      "schematic": "Schematic"
+    },
+    "placeholders": {
+      "title": "Enter technical document title...",
+      "category": "-- Select category --",
+      "docType": "-- Optional --",
+      "description": "Additional info for review...",
+      "manufacturer": "e.g. Texas Instruments, Intel...",
+      "externalUrl": "https://..."
+    },
+    "dropHere": "Drag & drop or click to upload",
+    "supportedTypes": "Supported: PDF, DOCX, XLSX, CSV, TXT (max 50MB)",
+    "keepExistingFileHint": "* Leave empty to keep the current file.",
+    "cancelTask": "Cancel task",
+    "submitCreate": "Save as draft",
+    "submitUpdate": "Update draft",
+    "fileReady": "{{sizeMb}} MB - Ready",
+    "errors": {
+      "editNotAllowed": "You can only edit drafts or rejected documents",
+      "fetchFailed": "Failed to load document",
+      "titleRequired": "Title is required",
+      "categoryRequired": "Please select a category",
+      "sourceRequired": "File upload or source URL is required"
+    },
+    "toasts": {
+      "updatedDraft": "Draft saved — submit for review when ready",
+      "createdDraft": "Draft created. Please submit for review after finishing.",
+      "saveFailed": "Failed to save"
+    },
+    "tabs": {
+      "document": "Document",
+      "newCategory": "New category"
+    },
+    "categorySection": {
+      "title": "New category"
+    },
+    "categoryFields": {
+      "name": "Category name *",
+      "description": "Description (optional)"
+    },
+    "categoryPlaceholders": {
+      "name": "Enter category name...",
+      "description": "Short description (optional)..."
+    },
+    "categorySubmit": "Create category",
+    "categoryBackToDocument": "Back to document form",
+    "categoryToasts": {
+      "nameRequired": "Please enter a category name",
+      "created": "Category created. It is now selected in the form.",
+      "createFailed": "Could not create category"
+    },
+    "categoryErrors": {
+      "forbidden": "You do not have permission to create categories (director only)."
+    }
+  }
+  ,
+  "mine": {
+    "kicker": "Workspace",
+    "titlePrefix": "My",
+    "titleHighlight": "documents",
+    "loading": "Loading...",
+    "empty": "No matching records in your workspace.",
+    "tabs": {
+      "all": "All",
+      "draft": "Drafts",
+      "pending": "Pending",
+      "published": "Approved",
+      "rejected": "Rejected"
+    },
+    "status": {
+      "draft": "DRAFT",
+      "pending": "PENDING",
+      "published": "APPROVED",
+      "rejected": "REJECTED",
+      "revision": "NEEDS CHANGES",
+      "archived": "ARCHIVED"
+    },
+    "version": "VERSION: v{{version}}.0",
+    "sync": "Sync: {{time}}",
+    "reviewNote": "System feedback: {{note}}",
+    "actions": {
+      "view": "View",
+      "edit": "Edit",
+      "submit": "Submit",
+      "fixAndResubmit": "Fix & resubmit",
+      "newVersion": "Resubmit"
+    },
+    "toasts": {
+      "fetchFailed": "Failed to load your documents",
+      "autoApproved": "Auto-approved (Director role)",
+      "submitted": "Submitted for review",
+      "submitFailed": "Submit failed",
+      "newVersionCreated": "New version created",
+      "newVersionFailed": "Could not create a new version"
+    }
+  },
+  "detail": {
+    "loading": "Syncing...",
+    "kicker": "Document record",
+    "publicRepoCta": "→ Public repository",
+    "previewTitle": "Preview: {{title}}",
+    "previewHint": "Preview via API; use “New tab” for external links. If the frame errors, download or open a new tab.",
+    "uncategorized": "General",
+    "techSummary": "Technical summary",
+    "noDescription": "No description provided.",
+    "manufacturerLabel": "Source / manufacturer",
+    "internalSystem": "Internal system",
+    "systemData": "System data",
+    "dataSource": "Data source",
+    "lifecycle": "Document lifecycle",
+    "lastUpdated": "Last updated",
+    "systemRecord": "System record",
+    "initialCreated": "Initial record created",
+    "storage": "Storage",
+    "preview": "Preview",
+    "inline": "Inline",
+    "fileExt": {
+      "url": "URL",
+      "pdf": "PDF"
+    },
+    "actions": {
+      "download": "Download",
+      "externalLink": "External link",
+      "withdraw": "Withdraw (soft-delete)"
+    },
+    "withdrawConfirm": "Withdraw this document? Published items will disappear from the public library.",
+    "withdrawReasonLabel": "Withdrawal note (recommended for published items)",
+    "withdrawReasonPlaceholder": "Withdrawal note (recommended for published items)…",
+    "confirmModal": {
+      "title": "Withdraw document?",
+      "confirm": "Withdraw",
+      "cancel": "Cancel"
+    },
+    "errors": {
+      "missingId": "Missing id"
+    },
+    "toasts": {
+      "fetchFailed": "Failed to load document",
+      "noFileSource": "File source not found",
+      "downloadFailed": "Download failed",
+      "withdrawn": "Document withdrawn",
+      "withdrawFailed": "Could not withdraw"
+    }
+  },
+  "approvals": {
+    "titlePrefix": "Approval",
+    "titleHighlight": "matrix",
+    "subtitle": "Director role",
+    "queueLabel": "Pending queue",
+    "loading": "Scanning queue...",
+    "emptyTitle": "All clear",
+    "emptySubtitle": "No documents are waiting for director approval.",
+    "pendingChip": "Pending",
+    "idLabel": "ID: {{id}}",
+    "noDescription": "No detailed description provided for this record.",
+    "senderLabel": "Sender",
+    "versionLabel": "Version",
+    "notePlaceholder": "Enter notes or rejection reason...",
+    "actions": {
+      "approve": "Approve",
+      "reject": "Reject"
+    },
+    "toasts": {
+      "fetchFailed": "Failed to load pending approvals",
+      "approved": "Approved successfully",
+      "approveFailed": "Unable to approve",
+      "rejectNoteRequired": "Rejection reason is required (Audit Trail Log)",
+      "rejected": "Rejected and logged",
+      "rejectFailed": "Reject failed"
+    }
+  }
+}
+

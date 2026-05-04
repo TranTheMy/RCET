@@ -1,0 +1,312 @@
+{
+  "nav": {
+    "home": "Home",
+    "publications": "Publications",
+    "connection": "Connect",
+    "projects": "Projects",
+    "training": "Training",
+    "dashboard": "Dashboard",
+    "verilog": "Verilog"
+  },
+  "actions": {
+    "login": "Login",
+    "logout": "Logout",
+    "backToList": "Back",
+    "searchPlaceholder": "Search...",
+    "searchAria": "Search",
+    "cancel": "Cancel",
+    "close": "Close"
+  },
+  "errors": {
+    "generic": "Something went wrong"
+  },
+  "apiErrors": {
+    "emailAlreadyRegistered": "Email already registered",
+    "studentCodeInUse": "Student code already in use",
+    "invalidVerificationToken": "Invalid or expired verification token",
+    "invalidResetToken": "Invalid or expired reset token",
+    "userNotFound": "User not found",
+    "forgotPasswordHint": "If this email is registered, you will receive a password reset link.",
+    "resetSuccess": "Password reset successfully. Please log in with your new password.",
+    "currentPasswordIncorrect": "Current password is incorrect",
+    "passwordChanged": "Password changed successfully",
+    "userNoLongerExists": "User no longer exists",
+    "invalidRefreshToken": "Invalid or expired refresh token",
+    "googleAuthUserNotFound": "User not found after Google auth",
+    "emailVerifiedPending": "Email verified. Your account is pending admin approval.",
+    "joiFullNameMin": "Full name must be at least 2 characters",
+    "joiEmailInvalid": "Please provide a valid email address",
+    "joiPasswordComplexity": "Password must contain at least one uppercase, one lowercase, one digit, and one special character",
+    "joiPasswordMin": "Password must be at least 8 characters",
+    "rateLimit": "Too many requests, please try again later",
+    "rateLimitShort": "Too many requests, please try again shortly",
+    "projectNotFound": "Project not found",
+    "noProjectAccess": "You do not have access to this project",
+    "noPermissionUpdateProject": "You do not have permission to update this project",
+    "onlyTruongLabArchive": "Only truong_lab can archive a project",
+    "membersCannotCreateTasks": "Members cannot create tasks",
+    "assigneeNotMember": "Assignee is not a member of this project",
+    "taskNotFound": "Task not found",
+    "onlyOwnTasks": "You can only update your own tasks",
+    "membersOnlyTaskStatus": "Members can only update task status",
+    "userNotProjectMember": "User is not a member of this project",
+    "noPermissionAddMembers": "You do not have permission to add members",
+    "userNotFoundOrInactive": "User not found or not active",
+    "memberNotFound": "Member not found",
+    "cannotRemoveLeader": "Cannot remove the project leader",
+    "noPermissionCreateMilestones": "You do not have permission to create milestones",
+    "milestoneTaskLink": "Only non-completed tasks from this project can be linked to a milestone",
+    "noPermissionUpdateMilestones": "You do not have permission to update milestones",
+    "milestoneNotFound": "Milestone not found",
+    "reportWeekDuplicate": "Report for this week already submitted",
+    "forbidden": "Forbidden",
+    "gitRepoUpdated": "Git repository updated",
+    "webhookProcessed": "Webhook processed",
+    "memberRemoved": "Member removed successfully",
+    "commitmentIdsRequired": "Commitment IDs are required.",
+    "commitmentNotFound": "Commitment not found or unauthorized",
+    "commitmentOnlyPending": "Only pending commitments can be updated",
+    "validationError": "Validation error"
+  },
+  "language": {
+    "label": "Language",
+    "vi": "VI",
+    "en": "EN"
+  },
+  "status": {
+    "loading": "Sending..."
+  },
+  "table": {
+    "time": "Time",
+    "status": "Status",
+    "score": "Score"
+  },
+  "preview": {
+    "livePreview": "Live preview",
+    "newTab": "New tab",
+    "loading": "Loading preview…",
+    "unsupportedTitle": "This format can’t be previewed here (e.g. legacy Word .doc, Excel, PowerPoint) or the file is corrupted.",
+    "unsupportedHint": "You can preview .docx / .pdf in the frame; for .doc, open in a new tab with Word or convert to .docx/PDF.",
+    "blobErrorTitle": "Couldn’t load the file for inline preview. Open a new tab or download it from the right panel.",
+    "noSource": "No PDF source available for preview.",
+    "actions": {
+      "openNewTab": "Open file (new tab)",
+      "download": "Download",
+      "open": "Open file",
+      "tryOpen": "Try opening file"
+    }
+  }
+  ,
+  "notification": {
+    "ariaLabel": "Notifications",
+    "title": "Notifications",
+    "markAllRead": "Mark all as read",
+    "empty": "No notifications"
+  },
+  "footer": {
+    "labTagline": "Robotics & AI Chip Lab",
+    "description": "A core R&D ecosystem for AI chip design (NPU/ASIC) and autonomous robotic systems under FPT University.",
+    "systemIndex": {
+      "title": "System index",
+      "items": {
+        "platformIntro": "Platform overview",
+        "researchDatabase": "Research database",
+        "activeProjects": "Active projects",
+        "partnerNetwork": "Partner network"
+      }
+    },
+    "researchClusters": {
+      "title": "Key research clusters",
+      "items": {
+        "npu": "AI accelerator design (NPU)",
+        "slam": "Autonomous SLAM systems",
+        "edgeFpga": "Edge computing & FPGA",
+        "hri": "Human–robot interaction"
+      }
+    },
+    "contact": {
+      "title": "Contact",
+      "directEmail": "Direct email",
+      "emailValue": "collab@vkslab.lab",
+      "location": "Location",
+      "addressLine1": "Robotics & Embedded Systems research area,",
+      "addressLine2": "FPT University Campus, Da Nang."
+    },
+    "systemRunning": "System is running",
+    "version": "Version {{version}} © VKsLab Intelligence Hub",
+    "policies": {
+      "data": "Data policy",
+      "privacy": "Privacy policy"
+    }
+  }
+  ,
+  "contact": {
+    "kicker": "System: ready to collaborate",
+    "titlePrefix": "Connect",
+    "titleHighlight": "for technical collaboration.",
+    "subtitle": "Connect directly with the Chip & Robotics research team",
+    "stackOptions": [
+      "Digital IC design & SoC systems",
+      "Autonomous robotics & industrial automation",
+      "Control & sensing systems for smart vehicles",
+      "Other..."
+    ],
+    "form": {
+      "title": "Submit a research proposal",
+      "kicker": "Research & development workflow",
+      "fields": {
+        "org": "Organization / lab name",
+        "email": "Contact email",
+        "stack": "Technology interest",
+        "summary": "Proposal summary"
+      },
+      "placeholders": {
+        "org": "e.g., VKsLab Robotics Laboratory",
+        "email": "collab@domain.edu",
+        "summary": "Describe your research goals and required resources..."
+      },
+      "encryption": "End-to-end encryption enabled",
+      "submit": "Send proposal"
+    },
+    "location": {
+      "kicker": "Location",
+      "title": "Central laboratory",
+      "addressLabel": "Address:",
+      "addressValue": "Robotics & Embedded Systems research area, FPT University Campus, Da Nang, Vietnam.",
+      "emailLabel": "Email:",
+      "emailValue": "collab@vkslab.lab",
+      "tags": [
+        "Class 100 cleanroom",
+        "NVIDIA DGX servers",
+        "FPGA testing zone"
+      ]
+    },
+    "quick": {
+      "hotline": "Lab hotline",
+      "hotlineValue": "+84 (0) 236 730 1818",
+      "community": "Research community",
+      "communityDesc": "Connect with VKsLab’s research group on LinkedIn."
+    }
+  }
+  ,
+  "partners": {
+    "title": "Strategic alliance",
+    "subtitle": "Foundry & academic network",
+    "foundryPartner": "Foundry partner",
+    "items": {
+      "bosch": "Automotive AI",
+      "uniquify": "ASIC/SoC design",
+      "faraday": "Semiconductor IP",
+      "fptSoftware": "Digital transformation"
+    },
+    "footer": {
+      "foundryCertified": "Certified foundry access",
+      "nda": "NDA-secured collaboration",
+      "sync": "Data sync is active"
+    }
+  }
+  ,
+  "notFound": {
+    "titlePrefix": "Coordinates",
+    "titleHighlight": "Not found.",
+    "statusLabel": "Status",
+    "statusValue": "Request_Out_Of_Bounds",
+    "description": "The system couldn’t locate data at this route. The resource may have moved, or the access ID may be invalid.",
+    "actions": {
+      "back": "Go back",
+      "home": "Control station"
+    }
+  }
+  ,
+  "aiAssistant": {
+    "header": {
+      "title": "AI Assistant",
+      "subtitle": "VKsLab Smart Assistant"
+    },
+    "tabs": {
+      "chat": "Chat",
+      "notifications": "Notifications"
+    },
+    "actions": {
+      "enableAria": "Enable AI assistant",
+      "enable": "Enable assistant",
+      "disableTitle": "Disable AI assistant",
+      "disable": "Disable"
+    },
+    "dashNa": "N/A",
+    "chat": {
+      "welcomeTitle": "Hi, I’m the VKsLab AI Assistant",
+      "welcomeHint": "I’m here to help you with tasks, projects, deadlines, and weekly reports in the clearest way possible.",
+      "quick": [
+        "Help me prioritize today’s work",
+        "What’s my current project status?",
+        "Any risks I should watch out for?"
+      ],
+      "inputPlaceholder": "Type your question...",
+      "errors": {
+        "genericCannotProcess": "Sorry, I can’t process that request right now.",
+        "serviceUnavailable": "The AI service is temporarily unavailable. The API key may have expired.",
+        "connection": "Connection error. Please try again later."
+      }
+    },
+    "notifications": {
+      "loadFailed": "Could not load notifications",
+      "summary": {
+        "title": "Summary",
+        "pendingTasks": "Pending tasks",
+        "overdueTasks": "Overdue tasks",
+        "todayTasks": "Today’s tasks",
+        "activeProjects": "Active projects",
+        "overdueProjects": "Overdue projects",
+        "reportRate": "Report rate"
+      },
+      "empty": "No notifications. Everything looks good!",
+      "refresh": "Refresh notifications"
+    }
+  },
+  "guestInfoChat": {
+    "header": {
+      "title": "Ask about VKsLab",
+      "subtitle": "Public information from system docs"
+    },
+    "welcomeTitle": "Hello!",
+    "welcomeHint": "Ask about VKsLab: focus areas, training, flagship projects, and core platform features.",
+    "quick": [
+      "What is VKsLab and what does it focus on?",
+      "What are the core features of the platform?",
+      "Where is VKsLab located and how large is the team?"
+    ],
+    "inputPlaceholder": "Ask a question about VKsLab...",
+    "ariaToggle": "Open VKsLab info chat",
+    "ariaClose": "Close chat"
+  },
+  "header": {
+    "aiAssistantAria": "AI assistant",
+    "loadingDots": "...",
+    "publications": {
+      "researchPapers": "Research papers",
+      "booksAndPublications": "Books & publications",
+      "books": {
+        "curriculum": "Curriculum",
+        "documents": "Documents"
+      }
+    },
+    "connection": {
+      "info": "Information",
+      "portal": "Information portal",
+      "forums": "Forums"
+    },
+    "training": {
+      "verilog": "Verilog"
+    },
+    "userMenu": {
+      "directorWorkspace": "Director workspace",
+      "profile": "Profile",
+      "dashboard": "Dashboard",
+      "manageCategories": "Manage categories",
+      "manageVerilog": "Manage Verilog",
+      "viewVerilogSubmissions": "View Verilog submissions"
+    }
+  }
+}
+

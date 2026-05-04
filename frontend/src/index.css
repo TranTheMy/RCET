@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+/* Ẩn scrollbar nhưng vẫn cuộn (overflow-x/y-auto) — class no-scrollbar dùng nhiều nơi */
+@layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Đồng bộ scrollbar toàn hệ thống (dark neon nhẹ) */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #334155 #0f172a;
+  }
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #0f172a;
+    border-radius: 999px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #334155 0%, #475569 100%);
+    border-radius: 999px;
+    border: 2px solid #0f172a;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #06b6d4 0%, #0284c7 100%);
+  }
+}
+
+/* Home: marquee + shine — tách khỏi inline <style> để tránh parse lại mỗi lần vào trang */
+@keyframes vkslab-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-vkslab-marquee {
+  display: flex;
+  width: 200%;
+  animation: vkslab-marquee 40s linear infinite;
+  will-change: transform;
+}
+
+.animate-vkslab-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-vkslab-marquee {
+    animation: none;
+    transform: none;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 0.75rem;
+    column-gap: 2rem;
+    white-space: normal;
+  }
+}
+
+@keyframes vkslab-shine {
+  100% {
+    left: 125%;
+  }
+}
+
+.animate-vkslab-shine {
+  animation: vkslab-shine 0.8s ease-in-out;
+}

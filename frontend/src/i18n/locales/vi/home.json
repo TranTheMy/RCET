@@ -1,0 +1,174 @@
+{
+  "title": "Trang chủ",
+  "hero": {
+    "kicker": "VKsLab LAB • Hub of Innovation",
+    "badge": "Top 10 R&D Hub 2026",
+    "title": {
+      "line1": "Beyond",
+      "line2": "Research.",
+      "line3": "Impact."
+    },
+    "description": "Chúng tôi chuyển hóa tri thức hàn lâm thành các giải pháp công nghệ lõi, định hình tương lai của ngành vi mạch và tự động hóa toàn cầu.",
+    "actions": {
+      "transfer": "Hợp tác Chuyển giao",
+      "library": "Kho tri thức quốc tế"
+    }
+  },
+  "ticker": {
+    "fallback": [
+      "VKsLab Hub — nền tảng R&D & ấn phẩm kỹ thuật",
+      "FPT University Strategic R&D Hub",
+      "Kho công bố quốc tế cập nhật theo dữ liệu hệ thống",
+      "Partnership: Global Semiconductor Alliance"
+    ]
+  },
+  "stats": {
+    "q1q2": {
+      "label": "Công bố quốc tế Q1/Q2",
+      "highlight": "Academic Excellence"
+    },
+    "assets": {
+      "label": "Giáo trình & tài liệu kỹ thuật",
+      "highlight": "System Repository"
+    },
+    "activeProjects": {
+      "label": "Dự án đang thực thi",
+      "highlight": "Active Projects"
+    },
+    "roster": {
+      "label": "Đội ngũ lab (thành viên hoạt động)",
+      "highlight": "Elite Network"
+    }
+  },
+  "capabilities": {
+    "kicker": "Core Research Lab",
+    "title": {
+      "line1": "Làm chủ",
+      "line2": "Công nghệ Lõi."
+    },
+    "description": "Hệ thống VKsLab được thiết lập để hiện thực hóa các nghiên cứu phức tạp thành sản phẩm thương mại, giúp doanh nghiệp nội địa làm chủ phần cứng và trí tuệ nhân tạo.",
+    "features": {
+      "ieee": {
+        "title": "Tiêu chuẩn IEEE",
+        "desc": "Tuân thủ các quy chuẩn kỹ thuật quốc tế cao nhất."
+      },
+      "deepRd": {
+        "title": "R&D Chuyên sâu",
+        "desc": "Hàng nghìn giờ thử nghiệm Lab thực tế cho mỗi module."
+      }
+    },
+    "items": {
+      "customIcDesign": {
+        "title": "Custom IC Design",
+        "badge": "Semi-conductor",
+        "desc": "Thiết kế Chip ASIC/FPGA chuyên dụng trên tiến trình tiên tiến (65nm/28nm)."
+      },
+      "advancedRobotics": {
+        "title": "Advanced Robotics",
+        "badge": "Automation",
+        "desc": "Giải pháp điều khiển Robot chính xác cao và tích hợp trí tuệ nhân tạo biên (Edge AI)."
+      },
+      "smartMobility": {
+        "title": "Smart Mobility",
+        "badge": "Automotive",
+        "desc": "Tích hợp hệ thống điều khiển thông minh và các tính năng hỗ trợ lái xe tiên tiến ADAS."
+      }
+    }
+  },
+  "academic": {
+    "tagLabel": "Scientific Excellence",
+    "title": "Thành tựu xuất bản.",
+    "cta": "Thư viện công bố"
+  },
+  "pathfinder": {
+    "systemRules": {
+      "title": "Nội quy hệ thống",
+      "desc": "Quy định sử dụng nền tảng VKsLab, phân quyền theo vai trò và các nguyên tắc vận hành chung trong lab.",
+      "cta": "Xem nội quy"
+    },
+    "scientist": {
+      "title": "Dành cho Nhà khoa học",
+      "guest": {
+        "desc": "VKsLab luôn chào đón các chuyên gia gia nhập mạng lưới nghiên cứu quốc tế của chúng tôi.",
+        "cta": "Gửi hồ sơ CV",
+        "note": "Cần đăng nhập — bạn sẽ được chuyển tới trang đăng nhập."
+      },
+      "reviewer": {
+        "desc": "Xét duyệt hồ sơ ứng viên theo quy trình trưởng lab / viện trưởng và ghi nhận hợp đồng khi cần.",
+        "cta": "Duyệt CV"
+      },
+      "member": {
+        "desc": "Hệ thống đã ghi nhận tài khoản của bạn với vai trò {{roleLabel}} trong VKsLab. Bạn không cần nộp hồ sơ ứng tuyển qua kênh này.",
+        "roleLeader": "leader / điều phối nhóm",
+        "roleMember": "thành viên (member)",
+        "badge": "Đã có quyền thành viên"
+      },
+      "admin": {
+        "desc": "Tài khoản quản trị — quản lý người dùng và cấu hình hệ thống từ bảng điều khiển.",
+        "cta": "Mở bảng quản trị"
+      }
+    }
+  },
+  "partners": {
+    "title": "Đối tác chiến lược toàn cầu"
+  },
+  "systemRulesPage": {
+    "title": "Nội quy hệ thống VKsLab",
+    "intro": "Tài liệu này tóm tắt các quy định chung khi sử dụng cổng thông tin và dịch vụ nội bộ của VKsLab. Chi tiết theo từng module có thể được cập nhật bổ sung.",
+    "sections": {
+      "access": {
+        "heading": "Tài khoản và phân quyền",
+        "body": "Người dùng đăng nhập bằng tài khoản được cấp; mỗi vai trò (viện trưởng, trưởng lab, leader, thành viên, …) có phạm vi thao tác riêng trên dự án, xuất bản và đào tạo. Không chia sẻ mật khẩu và báo ngay khi nghi ngờ truy cập trái phép."
+      },
+      "publication": {
+        "heading": "Kho xuất bản & dữ liệu",
+        "body": "Nội dung nghiên cứu, giáo trình và tài liệu kỹ thuật tuân theo quy trình duyệt của lab. Tôn trọng bản quyền, trích dẫn và không đăng tải thông tin mật hoặc vi phạm hợp đồng đối tác."
+      },
+      "conduct": {
+        "heading": "Ứng xử và bảo mật",
+        "body": "Sử dụng diễn đàn và kênh liên lạc đúng mục đích học thuật/kỹ thuật. Không phát tán mã độc, spam hoặc nội dung xúc phạm. Tuân thủ chính sách bảo mật thông tin của tổ chức và đối tác."
+      },
+      "intellectualProperty": {
+        "heading": "Quyền sở hữu trí tuệ",
+        "body": "Tài liệu, giáo trình, bài giảng và kết quả nghiên cứu của VKsLab được bảo vệ bởi quyền sở hữu trí tuệ. Nghiêm cấm sao chép, chia sẻ, phát tán hoặc sử dụng cho mục đích thương mại mà không có sự cho phép bằng văn bản từ VKsLab."
+      },
+      "security": {
+        "heading": "Bảo mật",
+        "body": "Việc truy cập và sử dụng tài liệu, giáo trình cũng như kết quả nghiên cứu của VKsLab phải tuân thủ nghiêm ngặt các quy định về bảo mật thông tin. Mọi hành vi tiết lộ, chia sẻ hoặc sử dụng trái phép đều bị nghiêm cấm."
+      },
+      "privacy": {
+        "heading": "Quyền riêng tư",
+        "body": "VKsLab cam kết bảo vệ quyền riêng tư của người dùng. Thông tin cá nhân và dữ liệu liên quan đến hoạt động học tập, nghiên cứu sẽ được thu thập, lưu trữ và xử lý theo đúng quy định pháp luật về bảo vệ dữ liệu cá nhân."
+      },
+      "acceptableUse": {
+        "heading": "Sử dụng hợp lệ",
+        "body": "Người dùng chỉ được sử dụng hệ thống VKsLab cho mục đích học tập, nghiên cứu và công việc được cho phép. Nghiêm cấm sử dụng hệ thống vào các hoạt động vi phạm pháp luật, phát tán nội dung độc hại, spam hoặc gây ảnh hưởng tiêu cực đến hệ thống và người dùng khác."
+      },
+      "accountResponsibility": {
+        "heading": "Trách nhiệm tài khoản",
+        "body": "Người dùng chịu trách nhiệm bảo mật thông tin tài khoản của mình. Không được chia sẻ tài khoản cho người khác hoặc sử dụng tài khoản của người khác khi chưa được phép. Mọi hoạt động phát sinh từ tài khoản sẽ được xem là trách nhiệm của chủ tài khoản."
+      },
+      "contentIntegrity": {
+        "heading": "Tính toàn vẹn nội dung",
+        "body": "Người dùng không được chỉnh sửa, làm sai lệch hoặc xuyên tạc nội dung tài liệu, giáo trình và kết quả nghiên cứu. Mọi hành vi làm thay đổi tính chính xác của thông tin đều bị nghiêm cấm."
+      },
+      "systemSecurity": {
+        "heading": "An ninh hệ thống",
+        "body": "Nghiêm cấm mọi hành vi xâm nhập trái phép, khai thác lỗ hổng, reverse engineering, hoặc gây gián đoạn hoạt động của hệ thống VKsLab. Các hành vi tấn công hệ thống sẽ bị xử lý theo quy định pháp luật."
+      },
+      "dataUsage": {
+        "heading": "Sử dụng dữ liệu",
+        "body": "Dữ liệu thu thập từ hệ thống chỉ được sử dụng cho mục đích nội bộ hoặc theo phạm vi được cho phép. Việc trích xuất, phân tích hoặc sử dụng dữ liệu cho mục đích bên ngoài phải được sự chấp thuận của VKsLab."
+      },
+      "violationHandling": {
+        "heading": "Xử lý vi phạm",
+        "body": "VKsLab có quyền tạm khóa hoặc chấm dứt quyền truy cập của người dùng nếu phát hiện vi phạm nội quy. Tùy theo mức độ vi phạm, người dùng có thể bị xử lý kỷ luật hoặc truy cứu trách nhiệm theo quy định pháp luật."
+      },
+      "updatePolicy": {
+        "heading": "Cập nhật chính sách",
+        "body": "VKsLab có quyền thay đổi, cập nhật các nội quy và chính sách bất kỳ lúc nào nhằm phù hợp với tình hình thực tế và quy định pháp luật. Người dùng có trách nhiệm theo dõi và tuân thủ các thay đổi mới nhất."
+      }
+    },
+    "backHome": "Về trang chủ"
+  }
+}

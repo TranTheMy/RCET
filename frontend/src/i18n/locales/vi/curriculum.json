@@ -1,0 +1,221 @@
+{
+  "title": "Giáo trình",
+  "list": {
+    "kicker": "Intelligence Repository",
+    "titlePrefix": "Giáo trình",
+    "titleHighlight": "Tài liệu",
+    "actions": {
+      "pendingReview": "Chờ duyệt",
+      "myWorkspace": "Không gian của tôi",
+      "newAsset": "Tạo mới"
+    },
+    "searchPlaceholder": "Tìm kiếm tài liệu...",
+    "filters": {
+      "title": "Bộ lọc",
+      "allCategories": "Tất cả danh mục",
+      "allSources": "Mọi nguồn",
+      "clearAll": "Xóa lọc"
+    },
+    "source": {
+      "upload": "Tải lên (file)",
+      "link": "Liên kết (URL)"
+    },
+    "sort": {
+      "newest": "Mới nhất",
+      "oldest": "Cũ nhất",
+      "title": "Tiêu đề A-Z"
+    },
+    "empty": {
+      "title": "Không tìm thấy bản ghi nào",
+      "tryDifferentFilters": "Thử lại với bộ lọc khác"
+    },
+    "card": {
+      "verified": "Đã xác minh",
+      "noDescription": "Không có mô tả cho tài liệu này.",
+      "uncategorized": "Chưa phân loại",
+      "na": "N/A",
+      "approvedAt": "Ngày duyệt: {{date}}",
+      "analyze": "Xem chi tiết"
+    },
+    "pagination": {
+      "pageOf": "Trang {{page}} / {{totalPages}} ({{total}} bản ghi)",
+      "prevAria": "Trang trước",
+      "nextAria": "Trang sau"
+    },
+    "toasts": {
+      "dbError": "Lỗi kết nối cơ sở dữ liệu"
+    }
+  }
+  ,
+  "detail": {
+    "loading": "Đang đồng bộ...",
+    "back": "Quay lại kho lưu trữ",
+    "previewTitle": "Xem trước: {{title}}",
+    "previewHint": "Xem trước luôn qua API (JWT) để tránh CDN chặn iframe. Mở « Tab mới » nếu cần xem trực tiếp trên nguồn.",
+    "nodeProfile": "Node_Data_Profile",
+    "uncategorized": "Chưa phân loại",
+    "classifiedIdentity": "Danh tính ẩn",
+    "leadInvestigator": "Chủ nhiệm",
+    "formatPdf": "Định dạng: Application/PDF",
+    "abstractTitle": "Tóm tắt kỹ thuật",
+    "noDescription": "Không có mô tả trong cơ sở dữ liệu trung tâm.",
+    "trailTitle": "Dấu vết kiểm định",
+    "trail": {
+      "approved": "Đã duyệt & triển khai",
+      "initialized": "Khởi tạo bản ghi"
+    },
+    "meta": {
+      "standardFormat": "Định dạng chuẩn",
+      "viewDownload": "Xem + Tải xuống"
+    },
+    "actions": {
+      "download": "Tải xuống",
+      "externalSource": "Nguồn bên ngoài",
+      "withdraw": "Thu hồi (xóa mềm)"
+    },
+    "withdrawConfirm": "Thu hồi giáo trình này? Bản đã duyệt sẽ biến mất khỏi kho công khai.",
+    "withdrawReasonLabel": "Lý do thu hồi (khuyến nghị với bản đã duyệt)",
+    "withdrawReasonPlaceholder": "Lý do thu hồi (khuyến nghị với bản đã duyệt)…",
+    "confirmModal": {
+      "title": "Thu hồi giáo trình?",
+      "confirm": "Thu hồi",
+      "cancel": "Hủy"
+    },
+    "errors": {
+      "missingId": "Thiếu id"
+    },
+    "toasts": {
+      "fetchFailed": "Truy xuất hồ sơ thất bại",
+      "noFileSource": "Không tìm thấy nguồn tệp",
+      "downloadFailed": "Lỗi giao thức tải xuống",
+      "withdrawn": "Đã thu hồi giáo trình",
+      "withdrawFailed": "Không thể thu hồi"
+    }
+  }
+  ,
+  "form": {
+    "loading": "Đang khởi tạo trình soạn thảo...",
+    "title": {
+      "create": "Khởi tạo",
+      "edit": "Chỉnh sửa",
+      "asset": "Giáo trình"
+    },
+    "draftHintPrefix": "Dữ liệu sẽ được lưu dưới dạng",
+    "draftHintDraft": "DRAFT",
+    "draftHintSuffix": "Bạn cần gửi phê duyệt tại Workspace cá nhân.",
+    "fields": {
+      "title": "Tiêu đề / Định danh giáo trình *",
+      "authors": "Tác giả",
+      "category": "Danh mục / Phân loại *",
+      "description": "Mô tả tóm tắt"
+    },
+    "placeholders": {
+      "title": "Nhập tiêu đề kỹ thuật...",
+      "authors": "Tên các tác giả...",
+      "category": "-- Chọn danh mục --",
+      "description": "Mô tả nội dung cốt lõi của giáo trình...",
+      "sourceUrl": "https://cloud-storage.com/asset.pdf"
+    },
+    "source": {
+      "title": "Nguồn tài liệu",
+      "uploadLabel": "Tải lên tệp",
+      "urlLabel": "Liên kết URL nguồn",
+      "inheritingFile": "ĐANG KẾ THỪA FILE CŨ (CLICK ĐỂ THAY)",
+      "dropOrClick": "Kéo thả hoặc click để tải lên",
+      "openExisting": "Mở file hiện tại",
+      "priorityHint": "Lưu ý: Nếu cả hai nguồn cùng tồn tại, hệ thống sẽ ưu tiên tệp tin tải lên trực tiếp."
+    },
+    "actions": {
+      "discardExit": "Thoát",
+      "commit": "Lưu thay đổi",
+      "initDraft": "Tạo bản nháp"
+    },
+    "errors": {
+      "titleRequired": "Tiêu đề là định danh bắt buộc",
+      "categoryRequired": "Vui lòng phân loại danh mục",
+      "sourceRequired": "Yêu cầu tệp nguồn hoặc liên kết URL"
+    },
+    "toasts": {
+      "readFailed": "Không đọc được dữ liệu giáo trình",
+      "fetchFailed": "Giao thức truy xuất dữ liệu thất bại",
+      "updated": "Bản ghi đã được cập nhật thành công",
+      "createdDraft": "Bản nháp đã được khởi tạo thành công",
+      "saveFailed": "Lỗi lưu trữ dữ liệu"
+    }
+  }
+  ,
+  "approvals": {
+    "titlePrefix": "Trung tâm",
+    "titleHighlight": "phê duyệt",
+    "subtitle": "Quy trình phê duyệt cấp viện",
+    "pendingTask": "Tác vụ chờ",
+    "loading": "Đang tải hàng đợi bảo mật...",
+    "empty": {
+      "title": "Đã xử lý hết",
+      "hint": "Không còn giáo trình nào đang chờ phê duyệt."
+    },
+    "card": {
+      "ariaOpen": "Xem chi tiết giáo trình: {{title}}",
+      "awaitingDecision": "Chờ quyết định",
+      "noAbstract": "Không có tóm tắt kỹ thuật cho giáo trình này.",
+      "submittedBy": "Người gửi",
+      "notePlaceholder": "Nhập chỉ thị hoặc lý do từ chối..."
+    },
+    "actions": {
+      "approve": "Phê duyệt",
+      "reject": "Từ chối"
+    },
+    "toasts": {
+      "fetchFailed": "Giao thức truy xuất danh sách chờ duyệt thất bại",
+      "approved": "Hệ thống: Giáo trình đã được phê duyệt và phát hành",
+      "rejected": "Hệ thống: Đã từ chối và gửi phản hồi",
+      "approveFailed": "Lỗi xử lý phê duyệt",
+      "rejectFailed": "Lỗi xử lý từ chối",
+      "rejectReasonRequired": "Yêu cầu nhập lý do từ chối để hệ thống phản hồi tác giả"
+    }
+  }
+  ,
+  "status": {
+    "draft": "Bản nháp",
+    "pending": "Chờ duyệt",
+    "approved": "Đã duyệt",
+    "rejected": "Từ chối",
+    "revision": "Cần chỉnh sửa",
+    "archived": "Lưu trữ"
+  },
+  "mine": {
+    "toasts": {
+      "fetchFailed": "Giao thức truy xuất dữ liệu cá nhân thất bại",
+      "publishedReplaceApproved": "Đã xuất bản — phiên bản mới thay thế bản đã duyệt trước đó",
+      "submittedForReview": "Đã gửi yêu cầu phê duyệt",
+      "submitFailed": "Lỗi gửi yêu cầu",
+      "newDraftToReplacePublished": "Đã tạo bản nháp mới — chỉnh sửa rồi Submit để thay thế bản đang xuất bản",
+      "versionInitializedDraft": "Đã khởi tạo phiên bản kế thừa (Draft)",
+      "createVersionFailed": "Lỗi khởi tạo phiên bản"
+    },
+    "kicker": "Không gian làm việc cá nhân",
+    "titlePrefix": "Giáo trình",
+    "titleHighlight": "của tôi",
+    "actions": {
+      "backToLibrary": "Về thư viện giáo trình",
+      "libraryView": "Chế độ thư viện",
+      "newAsset": "Tạo mới",
+      "openDetails": "Xem chi tiết",
+      "edit": "Chỉnh sửa",
+      "submit": "Gửi duyệt",
+      "resubmit": "Gửi lại",
+      "updateVersion": "Cập nhật phiên bản"
+    },
+    "tabs": {
+      "all": "Tất cả",
+      "draft": "Bản nháp",
+      "pending": "Chờ duyệt",
+      "approved": "Đã duyệt",
+      "rejected": "Từ chối"
+    },
+    "loading": "Đang đồng bộ không gian làm việc...",
+    "empty": "Không có dữ liệu trong không gian làm việc",
+    "reviewerNote": "Ghi chú phản biện",
+    "version": "v{{version}}"
+  }
+}

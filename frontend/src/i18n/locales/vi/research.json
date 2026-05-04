@@ -1,0 +1,375 @@
+{
+  "title": "Nghiên cứu",
+  "impact": {
+    "noRank": "Chưa xếp hạng"
+  },
+  "hero": {
+    "kicker": "Lab #5 Intelligence Hub",
+    "description": "Nơi lưu trữ và điều phối các công trình nghiên cứu vi mạch, hệ thống tự hành và trí tuệ nhân tạo biên (Edge AI).",
+    "actions": {
+      "approvals": "Duyệt bài nghiên cứu",
+      "submit": "Viết bài nghiên cứu",
+      "mine": "Bài của tôi"
+    }
+  },
+  "filters": {
+    "button": "Bộ lọc",
+    "title": "Lọc theo thuộc tính",
+    "clear": "Xóa bộ lọc",
+    "closeAria": "Đóng",
+    "tags": "Từ khóa (tags)",
+    "tagsHint": "Chọn một hoặc nhiều tag — hiển thị bài có ít nhất một tag trùng.",
+    "impact": "Xếp hạng tạp chí (impact_rank)",
+    "impactHint": "Không chọn = tất cả hạng.",
+    "source": "Nguồn (source_type)",
+    "options": {
+      "all": "Tất cả",
+      "no": "Không",
+      "yesPeerReviewed": "Có (is_peer_reviewed)",
+      "yesOpenAccess": "Có (is_open_access)",
+      "upload": "Upload (file)",
+      "link": "Liên kết"
+    },
+    "apiHint": "Bộ lọc dùng các trường từ API: tags, impact_rank, is_peer_reviewed, is_open_access, source_type."
+  },
+  "sidebar": {
+    "verifiedTitle": "Verified Research",
+    "verifiedHint": "Tất cả bài báo đều được kiểm duyệt bởi hội đồng khoa học Lab #5."
+  },
+  "database": {
+    "toasts": {
+      "fetchFailed": "Không thể tải danh sách research"
+    },
+    "title": "Research Database",
+    "searchPlaceholder": "Tìm theo tiêu đề, tác giả, journal, DOI, mô tả, từ khóa (tag)...",
+    "loading": "Initializing stream...",
+    "emptyPublic": "Hiện không có bài nghiên cứu nào đang công khai.",
+    "emptyFiltered": "Không tìm thấy bài nghiên cứu nào phù hợp với bộ lọc hoặc từ khóa tìm kiếm.",
+    "sections": {
+      "downloadable": "Tài liệu có thể tải về ({{count}})",
+      "links": "Nghiên cứu tham khảo qua liên kết ({{count}})"
+    },
+    "pagination": {
+      "pageOf": "Trang {{page}} / {{totalPages}}",
+      "prevAriaDownload": "Trang trước (tải về)",
+      "nextAriaDownload": "Trang sau (tải về)",
+      "prevAriaLinks": "Trang trước (liên kết)",
+      "nextAriaLinks": "Trang sau (liên kết)"
+    },
+    "card": {
+      "journalFallback": "R&D Archive",
+      "rankPrefix": "Rank",
+      "na": "N/A",
+      "tagsAria": "Tags",
+      "downloadPdf": "PDF",
+      "externalLink": "External Link",
+      "unavailable": "Unavailable",
+      "citations": "{{count}}",
+      "downloadCta": "PDF",
+      "externalCta": "External Link"
+    }
+  },
+  "submit": {
+    "toasts": {
+      "maxTags": "Tối đa 24 tag",
+      "maxTagLength": "Mỗi tag tối đa 48 ký tự",
+      "requiredFields": "Vui lòng hoàn thiện các thông tin cần thiết",
+      "submitted": "Dữ liệu đã được nạp vào hệ thống chờ duyệt.",
+      "directorPublished": "Bài đã được ghi nhận (không cần chờ duyệt).",
+      "submitFailed": "Gửi bài thất bại"
+    },
+    "actions": {
+      "back": "Quay lại trang trước",
+      "mine": "Kho của tôi",
+      "submit": "Gửi bài"
+    },
+    "kicker": "Cổng nạp dữ liệu",
+    "titlePrefix": "Gửi",
+    "titleHighlight": "nghiên cứu",
+    "subtitle": "Nạp dữ liệu nghiên cứu mới vào kho lưu trữ trung tâm. Mọi mục nhập sẽ được kiểm duyệt bởi Hội đồng khoa học.",
+    "subtitleDirector": "Nạp dữ liệu nghiên cứu mới vào kho. Với vai trò viện trưởng, bài được ghi nhận ngay không cần chờ duyệt.",
+    "sections": {
+      "technical": "Thông tin kỹ thuật"
+    },
+    "impact": {
+      "noRankHint": "Tạp chí chưa có trong Scimago / không áp dụng Q1–Q4",
+      "q1Hint": "Quartile 1",
+      "q2Hint": "Quartile 2",
+      "q3Hint": "Quartile 3",
+      "q4Hint": "Quartile 4"
+    },
+    "fields": {
+      "title": {
+        "label": "Tiêu đề nghiên cứu *",
+        "sub": "Tên đầy đủ của bài nghiên cứu",
+        "placeholder": "Ví dụ: AI nâng cao trong y tế"
+      },
+      "authors": {
+        "label": "Tác giả *",
+        "sub": "Phân tách bằng dấu phẩy",
+        "placeholder": "Nguyễn Văn A, John Doe..."
+      },
+      "publishedDate": {
+        "label": "Ngày công bố *",
+        "sub": "Ngày phát hành chính thức"
+      },
+      "journal": {
+        "label": "Tạp chí / Hội nghị *",
+        "sub": "Nơi công bố",
+        "placeholder": "IEEE Access, CVPR..."
+      },
+      "pages": {
+        "label": "Số trang *",
+        "sub": "Phạm vi trang (10-20)",
+        "placeholder": "100-115"
+      },
+      "impact": {
+        "label": "Xếp hạng ảnh hưởng (Scimago)",
+        "sub": "Chọn Q1–Q4 nếu tạp chí có trong Scimago Journal Rankings; mặc định là chưa xếp hạng."
+      },
+      "publisher": {
+        "label": "Nhà xuất bản *",
+        "sub": "Đơn vị phát hành",
+        "placeholder": "Springer, Elsevier..."
+      },
+      "description": {
+        "label": "Tóm tắt nghiên cứu *",
+        "sub": "Tóm tắt ngắn gọn nội dung cốt lõi",
+        "placeholder": "Nhập tóm tắt nghiên cứu tại đây..."
+      },
+      "tags": {
+        "label": "Tags",
+        "sub": "Gợi ý cùng nhãn dự án — hoặc gõ tùy ý; Enter / phẩy để thêm (tối đa 24)",
+        "projectTags": "Nhãn dự án (Project)",
+        "placeholder": "Ví dụ: machine learning, FPGA, IoT…",
+        "removeAria": "Xóa tag {{tag}}"
+      }
+    },
+    "source": {
+      "title": "Nguồn tệp nộp",
+      "upload": "Tải tệp",
+      "link": "Liên kết",
+      "pickFile": "Chọn tệp nghiên cứu",
+      "fileHint": "PDF, Word, Excel, PowerPoint, ODF, RTF, TXT — tối đa 25MB",
+      "externalPdf": "Liên kết PDF ngoài"
+    },
+    "flags": {
+      "peerReviewed": "Bài đã qua phản biện",
+      "openAccess": "Chính sách truy cập mở",
+      "directorPublic": "Hiển thị trên trang công khai (viện trưởng)"
+    },
+    "protocol": {
+      "prefix": "Quy trình hệ thống:",
+      "body": "Dữ liệu sau khi nạp sẽ được mã hóa và chuyển tới hàng đợi phê duyệt. Bạn không thể chỉnh sửa trong quá trình xác minh.",
+      "bodyDirector": "Bài được ghi nhận ngay với vai trò viện trưởng. Bạn có thể chọn hiển thị công khai ở ô bên dưới."
+    },
+    "discard": {
+      "title": "Hủy nạp dữ liệu?",
+      "hint": "Mọi thông tin bạn đã nhập sẽ bị xóa vĩnh viễn khỏi cổng nạp. Bạn có chắc chắn muốn thoát về phòng thí nghiệm?",
+      "keepEditing": "Tiếp tục nhập",
+      "confirm": "Xác nhận Hủy"
+    }
+  },
+  "mine": {
+    "toasts": {
+      "fetchFailed": "Không thể tải danh sách bài đã gửi",
+      "deleted": "Đã thu hồi bài nghiên cứu",
+      "deleteFailed": "Không thể thu hồi",
+      "restored": "Đã khôi phục bài"
+    },
+    "kicker": "Kho dữ liệu cá nhân",
+    "titlePrefix": "Danh mục",
+    "titleHighlight": "nghiên cứu",
+    "actions": {
+      "refresh": "Làm mới",
+      "submit": "Gửi bài nghiên cứu",
+      "delete": "Thu hồi",
+      "restore": "Khôi phục",
+      "deleteConfirm": "Thu hồi bài này khỏi hệ thống? Bài đã công khai sẽ không còn hiển thị."
+    },
+    "tabs": {
+      "all": "Tất cả",
+      "pending": "Đang duyệt",
+      "approved": "Đã duyệt",
+      "rejected": "Từ chối",
+      "deleted": "Đã thu hồi"
+    },
+    "status": {
+      "pending": "Đang duyệt",
+      "approved": "Đã duyệt",
+      "rejected": "Từ chối",
+      "withdrawn": "Đã thu hồi"
+    },
+    "searchPlaceholder": "Tìm theo tiêu đề nghiên cứu...",
+    "loading": "Đang đồng bộ dữ liệu...",
+    "dash": "—",
+    "empty": {
+      "title": "Chưa có dữ liệu",
+      "hint": "Hệ thống chưa ghi nhận dữ liệu nghiên cứu của bạn.",
+      "cta": "Tạo mục đầu tiên"
+    },
+    "source": {
+      "label": "Nguồn dữ liệu"
+    },
+    "rejection": {
+      "title": "Lý do từ chối",
+      "resubmit": "Gửi lại bản đã chỉnh sửa →"
+    },
+    "withdrawReason": {
+      "label": "Lý do thu hồi (khuyến nghị với bài đã duyệt)",
+      "placeholder": "Ghi chú ngắn cho nhật ký hệ thống…"
+    },
+    "confirmModal": {
+      "title": "Thu hồi bài nghiên cứu?",
+      "confirm": "Thu hồi",
+      "cancel": "Hủy"
+    }
+  },
+  "withdrawn": {
+    "title": "Bài đã thu hồi",
+    "subtitle": "Khôi phục khi cần",
+    "backToApprovals": "← Hàng chờ duyệt",
+    "loading": "Đang tải…",
+    "empty": "Chưa có bài nào bị thu hồi.",
+    "restore": "Khôi phục",
+    "toasts": {
+      "fetchFailed": "Không tải được danh sách",
+      "restored": "Đã khôi phục",
+      "restoreFailed": "Không thể khôi phục"
+    }
+  },
+  "approvals": {
+    "toasts": {
+      "fetchFailed": "Không thể tải danh sách chờ duyệt",
+      "approvedPublic": "Đã duyệt và công khai bài nghiên cứu",
+      "approvedInternal": "Đã duyệt bài nghiên cứu (nội bộ)",
+      "approveFailed": "Duyệt thất bại",
+      "rejectReasonRequired": "Vui lòng nhập lý do từ chối (feedback)",
+      "rejected": "Đã gửi phản hồi từ chối",
+      "actionFailed": "Thao tác thất bại",
+      "withdrawn": "Đã thu hồi bài khỏi hàng chờ"
+    },
+    "titlePrefix": "Duyệt",
+    "titleHighlight": "nghiên cứu",
+    "queue": "Hàng chờ phê duyệt",
+    "role": "Viện trưởng",
+    "pending": "Chờ xử lý",
+    "loading": "Đang tải danh sách…",
+    "withdrawnLink": "Bài đã thu hồi",
+    "confirmWithdraw": {
+      "title": "Thu hồi khỏi hàng chờ?",
+      "description": "Bài sẽ bị gỡ khỏi hàng chờ duyệt và không còn hiển thị cho đến khi được gửi lại."
+    },
+    "empty": {
+      "title": "Không có bài chờ duyệt",
+      "hint": "Hiện không có đề xuất nghiên cứu nào cần Viện trưởng phê duyệt."
+    },
+    "badge": {
+      "pending": "Chờ duyệt"
+    },
+    "submittedAt": "Nộp",
+    "public": {
+      "label": "Công khai",
+      "hint": "Bật: khách chưa đăng nhập thấy bài này",
+      "footerHint": "Duyệt với Public bật sẽ hiển thị cho khách; tắt sẽ chỉ hiển thị nội bộ."
+    },
+    "note": {
+      "label": "Ghi chú / lý do",
+      "placeholder": "Ghi chú khi duyệt hoặc lý do từ chối…"
+    },
+    "actions": {
+      "approve": "Duyệt",
+      "reject": "Từ chối",
+      "withdraw": "Thu hồi khỏi hàng chờ"
+    }
+  },
+  "detail": {
+    "toasts": {
+      "fetchFailed": "Không thể tải bài research",
+      "withdrawn": "Đã thu hồi bài",
+      "restored": "Đã khôi phục bài"
+    },
+    "errors": {
+      "missingId": "Thiếu id"
+    },
+    "actions": {
+      "back": "Quay lại kho nghiên cứu",
+      "withdraw": "Thu hồi bài",
+      "restore": "Khôi phục bài"
+    },
+    "deletedBanner": "Bài này đã được thu hồi khỏi kho công khai.",
+    "withdrawReason": {
+      "label": "Lý do thu hồi (khuyến nghị)",
+      "placeholder": "Ghi chú ngắn…"
+    },
+    "loading": "Đang đồng bộ dữ liệu nút...",
+    "empty": {
+      "title": "Mục không còn khả dụng",
+      "hint": "Nút dữ liệu được yêu cầu không còn truy cập được qua cổng công khai."
+    },
+    "attachment": {
+      "title": "Tài liệu đính kèm (upload)",
+      "previewTitle": "Toàn văn: {{title}}",
+      "hint": "Chỉ hiển thị khi bài có file tải lên hệ thống; bài chỉ gắn link ngoài dùng nút bên phải."
+    },
+    "badges": {
+      "globalNode": "GLOBAL NODE"
+    },
+    "tags": "Từ khóa",
+    "meta": {
+      "authors": "Principal Investigator",
+      "releaseEpoch": "Release Epoch",
+      "sourceType": "Source Type"
+    },
+    "summaryTitle": "Research Summary",
+    "tech": {
+      "doi": "Digital Object Identifier (DOI)",
+      "citations": "Intelligence Citations",
+      "references": "{{count}} References"
+    },
+    "gateway": {
+      "title": "Cổng tài nguyên",
+      "hint": "Truy cập toàn văn tài liệu nghiên cứu thông qua cổng kết nối an toàn.",
+      "fetchPdf": "Tải tài liệu PDF",
+      "external": "Mở liên kết ngoài",
+      "unavailable": "Không có nội dung"
+    },
+    "metadata": {
+      "title": "Metadata Context",
+      "publisher": "Publisher Hub",
+      "journal": "Journal / Venue",
+      "volumeIssue": "Volume / Issue",
+      "volumeIssueValue": "VOL.{{volume}} // ISS.{{issue}}",
+      "pagination": "Pagination"
+    },
+    "verifiedFooter": "Verified Intelligence Node",
+    "fallback": {
+      "unspecified": "UNSPECIFIED",
+      "dataNotFound": "DATA_NOT_FOUND",
+      "na": "N/A"
+    }
+  },
+  "awards": {
+    "tagLabel": "Distinguished Publications",
+    "title": "Nghiên cứu tiêu biểu.",
+    "rankPrefix": "Rank",
+    "noRank": "No Rank",
+    "journalFallback": "R&D Archive",
+    "openSource": "Open Source",
+    "confidential": "Confidential",
+    "citations": "{{count}} Citations",
+    "badges": {
+      "bestPaper": "Best Paper Award",
+      "topImpact": "Top 1% Impact"
+    },
+    "pagination": {
+      "showing": "Hiển thị {{start}}–{{end}} / {{total}} bài",
+      "prevAria": "Trang trước",
+      "nextAria": "Trang sau",
+      "pageOf": "Trang {{page}} / {{totalPages}}"
+    },
+    "toasts": {
+      "fetchFailed": "Không tải được danh sách nghiên cứu tiêu biểu"
+    }
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "title": "Curriculum",
+  "list": {
+    "kicker": "Intelligence Repository",
+    "titlePrefix": "Curriculum",
+    "titleHighlight": "Assets",
+    "actions": {
+      "pendingReview": "Pending review",
+      "myWorkspace": "My workspace",
+      "newAsset": "New asset"
+    },
+    "searchPlaceholder": "Search assets...",
+    "filters": {
+      "title": "Filters",
+      "allCategories": "All categories",
+      "allSources": "All sources",
+      "clearAll": "Clear all"
+    },
+    "source": {
+      "upload": "Upload (file)",
+      "link": "Link (URL)"
+    },
+    "sort": {
+      "newest": "Newest",
+      "oldest": "Oldest",
+      "title": "Title A–Z"
+    },
+    "empty": {
+      "title": "No records found",
+      "tryDifferentFilters": "Try different filters"
+    },
+    "card": {
+      "verified": "Verified",
+      "noDescription": "No description provided for this asset.",
+      "uncategorized": "Uncategorized",
+      "na": "N/A",
+      "approvedAt": "Approved: {{date}}",
+      "analyze": "View record"
+    },
+    "pagination": {
+      "pageOf": "Page {{page}} / {{totalPages}} ({{total}} items)",
+      "prevAria": "Previous page",
+      "nextAria": "Next page"
+    },
+    "toasts": {
+      "dbError": "Database connection error"
+    }
+  }
+  ,
+  "detail": {
+    "loading": "Syncing...",
+    "back": "Return to archives",
+    "previewTitle": "Preview: {{title}}",
+    "previewHint": "Preview is loaded via API (JWT) to avoid CDN iframe blocking. Open a new tab if you need the original source.",
+    "nodeProfile": "Node_Data_Profile",
+    "uncategorized": "Uncategorized",
+    "classifiedIdentity": "Classified identity",
+    "leadInvestigator": "Lead investigator",
+    "formatPdf": "Format: Application/PDF",
+    "abstractTitle": "Technical abstract",
+    "noDescription": "No description found in the central database.",
+    "trailTitle": "Validation trail",
+    "trail": {
+      "approved": "Approved & deployed",
+      "initialized": "Record initialized"
+    },
+    "meta": {
+      "standardFormat": "Standard format",
+      "viewDownload": "View + Download"
+    },
+    "actions": {
+      "download": "Download",
+      "externalSource": "External source",
+      "withdraw": "Withdraw (soft-delete)"
+    },
+    "withdrawConfirm": "Withdraw this curriculum? Published items will disappear from the public library.",
+    "withdrawReasonLabel": "Withdrawal note (recommended for approved items)",
+    "withdrawReasonPlaceholder": "Withdrawal note (recommended for approved items)…",
+    "confirmModal": {
+      "title": "Withdraw curriculum?",
+      "confirm": "Withdraw",
+      "cancel": "Cancel"
+    },
+    "errors": {
+      "missingId": "Missing id"
+    },
+    "toasts": {
+      "fetchFailed": "Failed to fetch record",
+      "noFileSource": "No file source found",
+      "downloadFailed": "Download protocol error",
+      "withdrawn": "Curriculum withdrawn",
+      "withdrawFailed": "Could not withdraw"
+    }
+  }
+  ,
+  "form": {
+    "loading": "Initializing editor...",
+    "title": {
+      "create": "Initialize",
+      "edit": "Modify",
+      "asset": "Asset"
+    },
+    "draftHintPrefix": "Data will be stored as",
+    "draftHintDraft": "DRAFT",
+    "draftHintSuffix": "You must submit it for approval in your personal workspace.",
+    "fields": {
+      "title": "Title *",
+      "authors": "Authors",
+      "category": "Category *",
+      "description": "Description"
+    },
+    "placeholders": {
+      "title": "Enter a technical title...",
+      "authors": "Author names...",
+      "category": "-- Select category --",
+      "description": "Describe the core content of this curriculum...",
+      "sourceUrl": "https://cloud-storage.com/asset.pdf"
+    },
+    "source": {
+      "title": "Asset source",
+      "uploadLabel": "Upload local file",
+      "urlLabel": "External URL",
+      "inheritingFile": "USING EXISTING FILE (CLICK TO REPLACE)",
+      "dropOrClick": "Drag & drop or click to upload",
+      "openExisting": "Open current file",
+      "priorityHint": "Note: If both sources exist, the uploaded file will take priority."
+    },
+    "actions": {
+      "discardExit": "Discard & exit",
+      "commit": "Commit changes",
+      "initDraft": "Initialize draft"
+    },
+    "errors": {
+      "titleRequired": "Title is required",
+      "categoryRequired": "Please select a category",
+      "sourceRequired": "A source file or URL is required"
+    },
+    "toasts": {
+      "readFailed": "Couldn’t read curriculum data",
+      "fetchFailed": "Failed to fetch data",
+      "updated": "Record updated successfully",
+      "createdDraft": "Draft created successfully",
+      "saveFailed": "Failed to save data"
+    }
+  }
+  ,
+  "approvals": {
+    "titlePrefix": "Decision",
+    "titleHighlight": "Center",
+    "subtitle": "Institutional Approval Protocol",
+    "pendingTask": "Pending Task",
+    "loading": "Loading Secure Queue...",
+    "empty": {
+      "title": "All Cleared",
+      "hint": "There are no curricula pending approval."
+    },
+    "card": {
+      "ariaOpen": "Open curriculum details: {{title}}",
+      "awaitingDecision": "Awaiting Decision",
+      "noAbstract": "No technical abstract provided for this curriculum.",
+      "submittedBy": "Submitted by",
+      "notePlaceholder": "Enter instruction or rejection reason..."
+    },
+    "actions": {
+      "approve": "Approve",
+      "reject": "Reject"
+    },
+    "toasts": {
+      "fetchFailed": "Failed to fetch the pending approvals queue",
+      "approved": "System: Curriculum approved and published",
+      "rejected": "System: Rejected and feedback sent",
+      "approveFailed": "Failed to approve",
+      "rejectFailed": "Failed to reject",
+      "rejectReasonRequired": "Please provide a rejection reason to send back to the author"
+    }
+  }
+  ,
+  "status": {
+    "draft": "Draft",
+    "pending": "Pending Review",
+    "approved": "Approved",
+    "rejected": "Rejected",
+    "revision": "Revision",
+    "archived": "Archived"
+  },
+  "mine": {
+    "toasts": {
+      "fetchFailed": "Failed to fetch your workspace data",
+      "publishedReplaceApproved": "Published — the new version replaces the previously approved one",
+      "submittedForReview": "Submitted for approval",
+      "submitFailed": "Failed to submit request",
+      "newDraftToReplacePublished": "Created a new draft — edit then Submit to replace the published version",
+      "versionInitializedDraft": "Initialized an inherited version (Draft)",
+      "createVersionFailed": "Failed to create a new version"
+    },
+    "kicker": "Personal Workspace",
+    "titlePrefix": "My",
+    "titleHighlight": "Curriculum",
+    "actions": {
+      "backToLibrary": "Back to curriculum library",
+      "libraryView": "Library View",
+      "newAsset": "New Asset",
+      "openDetails": "Open details",
+      "edit": "Edit",
+      "submit": "Submit",
+      "resubmit": "Resubmit",
+      "updateVersion": "Update Version"
+    },
+    "tabs": {
+      "all": "All",
+      "draft": "Draft",
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    },
+    "loading": "Syncing Workspace...",
+    "empty": "Workspace is empty",
+    "reviewerNote": "Reviewer Note",
+    "version": "v{{version}}"
+  }
+}

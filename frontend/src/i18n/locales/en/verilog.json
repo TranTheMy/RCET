@@ -1,0 +1,278 @@
+{
+  "title": "Verilog",
+  "problems": "Problems",
+  "submit": "Submit",
+  "history": "Submission history",
+  "result": "Result",
+  "levels": {
+    "easy": "Basic",
+    "medium": "Intermediate",
+    "hard": "Hard"
+  },
+  "submissions": {
+    "title": "Submission history",
+    "subtitleForProblem": "Submissions for this problem",
+    "subtitleAllMine": "All your submissions",
+    "totalCount": "({{total}} submissions)",
+    "empty": "No submissions yet",
+    "detailTitle": "Submission details",
+    "testsPassed": "Tests passed",
+    "judgeMethod": "Method",
+    "points": "{{points}} pts",
+    "log": "Log",
+    "sourceCode": "Source code",
+    "table": {
+      "problem": "Problem",
+      "testsPassed": "Tests passed"
+    },
+    "pagination": {
+      "prev": "PREV",
+      "next": "NEXT"
+    },
+    "status": {
+      "judging": "Judging",
+      "error": "Error",
+      "accepted": "Accepted"
+    },
+    "statusCode": {
+      "PENDING": "Pending",
+      "JUDGING": "Judging",
+      "DONE": "Done",
+      "ERROR": "Error"
+    },
+    "failure": {
+      "CE": "Compile error",
+      "RLE": "Runtime error",
+      "TLE": "Time limit",
+      "WA": "Wrong answer",
+      "NONE": "Correct",
+      "NA": "Unknown"
+    },
+    "toasts": {
+      "fetchFailed": "Failed to load submissions"
+    }
+  },
+  "allSubmissions": {
+    "title": "All submissions",
+    "subtitle": "All user submissions",
+    "searchPlaceholder": "Search by user name...",
+    "allUsers": "All users",
+    "unknownUser": "Unknown",
+    "table": {
+      "submitter": "Submitter"
+    }
+  },
+  "dashboard": {
+    "welcome": "Welcome to the online Verilog judging service",
+    "errors": {
+      "fetchProblemsFailed": "Failed to load problems"
+    },
+    "stats": {
+      "submitted": "Submitted: ",
+      "accepted": "Accepted: ",
+      "totalScore": "Total score (best/problem): "
+    },
+    "progress": {
+      "title": "Verilog learning progress",
+      "acceptedCount": "Accepted {{accepted}} / {{total}} problems",
+      "submittedHint": "You have submitted {{submitted}} solutions. Keep a steady daily pace."
+    },
+    "actions": {
+      "nextProblem": "Next problem"
+    },
+    "suggestions": {
+      "title": "Suggested for you",
+      "empty": "No suggestions yet. Start with the first basic problem."
+    },
+    "problemStatus": {
+      "none": "—",
+      "accepted": "Accepted",
+      "attempted": "Attempted",
+      "unattempted": "Not started",
+      "not_attempted": "Not started"
+    },
+    "deadlineNotice": {
+      "title": "Deadline notice",
+      "hasDeadline": "Nearest deadline: {{name}} ({{date}}).",
+      "none": "No problems have a deadline yet. You can focus on improving scores."
+    },
+    "searchPlaceholder": "Search by problem name...",
+    "filters": {
+      "all": "All"
+    },
+    "loading": "Loading...",
+    "table": {
+      "logicId": "Task ID",
+      "title": "Title",
+      "level": "Difficulty",
+      "testCount": "Tests",
+      "tags": "Tags",
+      "createdAt": "Created",
+      "maxScore": "Max score"
+    },
+    "empty": "No matching problems.",
+    "pagination": {
+      "page": "Page {{page}} / {{totalPages}}"
+    },
+    "library": {
+      "title": "Resource library",
+      "subtitle": "Learning materials and research resources",
+      "items": {
+        "research": {
+          "title": "RESEARCH",
+          "subtitle": "Featured research",
+          "description": "A curated set of high-quality papers and research topics."
+        },
+        "curriculum": {
+          "title": "CURRICULUM",
+          "subtitle": "Verilog learning path",
+          "description": "A hands-on learning sequence from basic to advanced."
+        },
+        "documents": {
+          "title": "DOCUMENTS",
+          "subtitle": "Reference documents",
+          "description": "Technical docs, guides, and implementation standards."
+        }
+      }
+    }
+  }
+  ,
+  "problemDetail": {
+    "deadline": "Deadline: {{date}}",
+    "input": "Input",
+    "output": "Output",
+    "testsTitle": "Tests (names only — no data revealed)",
+    "points": "{{points}} pts",
+    "loginHint": "to submit and see judging results.",
+    "codePlaceholder": "module top (...); ... endmodule",
+    "judgeLog": "Judge log",
+    "resultTable": {
+      "test": "Test",
+      "failure": "Failure"
+    },
+    "errors": {
+      "missingProblemId": "Missing problem id.",
+      "notFound": "Problem not found.",
+      "fetchFailed": "Failed to load problem"
+    },
+    "toasts": {
+      "loginRequired": "Please log in to submit",
+      "codeRequired": "Please enter Verilog source code",
+      "received": "Submission received, judging...",
+      "judged": "Judged: {{score}} / {{max}}",
+      "judgeError": "Judging error",
+      "submitFailed": "Submit failed"
+    },
+    "fail": {
+      "CE": "Compile error",
+      "RLE": "Runtime error",
+      "TLE": "Time limit",
+      "WA": "Wrong answer",
+      "NONE": "Accepted",
+      "NA": "—"
+    }
+  }
+  ,
+  "management": {
+    "kicker": "HDL & verification",
+    "title": "Verilog problem management",
+    "subtitle": "Create, edit, delete problems and test cases",
+    "unknown": "Unknown",
+    "searchPlaceholder": "Search problems...",
+    "empty": "No problems yet",
+    "visibility": {
+      "public": "Public",
+      "hidden": "Hidden"
+    },
+    "table": {
+      "title": "Title",
+      "level": "Difficulty",
+      "score": "Score",
+      "submitted": "Submitted",
+      "owner": "Owner",
+      "visibility": "Visibility",
+      "actions": "Actions"
+    },
+    "actions": {
+      "createProblem": "Create problem",
+      "save": "Save",
+      "delete": "Delete",
+      "add": "Add"
+    },
+    "tabs": {
+      "info": "Info",
+      "tests": "Tests ({{count}})"
+    },
+    "form": {
+      "createTitle": "Create new problem",
+      "editTitle": "Edit problem",
+      "uploading": "Uploading...",
+      "uploadTestbench": "Upload testbench file (.v)",
+      "orPaste": "or paste below",
+      "syncSubtests": "Sync test cases (VKSLAB_SUBTESTS_JSON)",
+      "syncSubtestsHint": "Add a /* VKSLAB_SUBTESTS_JSON [ {\"id\":\"t1\",\"name\":\"...\",\"grade\":5} ] */ block to the testbench; print one line per subtest: $display(\"VKSLAB_SUBTEST id=t1 status=PASS\");. This saves the testbench then upserts DB rows per id.",
+      "testbenchPlaceholder": "Paste testbench content here...",
+      "tagPlaceholder": "Add tag...",
+      "testbenchTypes": {
+        "auto": "Auto-generated",
+        "custom": "Custom"
+      },
+      "fields": {
+        "name": "Problem name *",
+        "description": "Description",
+        "inputDesc": "Input description",
+        "outputDesc": "Output description",
+        "level": "Difficulty",
+        "testbenchType": "Testbench type",
+        "deadline": "Deadline",
+        "tags": "Tags",
+        "templateCode": "Template code",
+        "testbenchCode": "Testbench code",
+        "published": "Publish publicly"
+      }
+    },
+    "tests": {
+      "syncBannerTitle": "Custom TB + VKSLAB scoring",
+      "syncBannerBody": "If you pasted a testbench with a /* VKSLAB_SUBTESTS_JSON ... */ block under Information, click below to generate test cases automatically. The same button exists on the Information tab next to the testbench field.",
+      "title": "Tests",
+      "add": "Add test case",
+      "create": "Create",
+      "edit": "Edit",
+      "testcase": "test case",
+      "empty": "No test cases yet",
+      "testN": "Test {{n}}",
+      "inputPrefix": "Input: {{input}}",
+      "expectedPrefix": "Expected: {{expected}}",
+      "fields": {
+        "name": "Name",
+        "points": "Points",
+        "order": "Order",
+        "input": "Input (a=1,b=0)",
+        "expected": "Expected output (y=1)",
+        "type": "Type",
+        "timeLimit": "Time limit (s)",
+        "memLimit": "Memory limit (MB)"
+      }
+    },
+    "toasts": {
+      "syncSubtestsOk": "Test cases synced from testbench",
+      "syncSubtestsFailed": "Sync failed — check VKSLAB_SUBTESTS_JSON block",
+      "syncSubtestsWrongType": "Only available when testbench type is Custom",
+      "fetchProblemsFailed": "Failed to load problems",
+      "deletedProblem": "Problem deleted",
+      "deleteFailed": "Delete failed",
+      "nameRequired": "Problem name is required",
+      "updatedProblem": "Problem updated",
+      "createdProblem": "Problem created",
+      "saveFailed": "Save failed",
+      "readFile": "Read file {{name}}",
+      "uploadedTestbench": "Uploaded testbench: {{name}}",
+      "uploadFailed": "Testbench upload failed",
+      "updatedTestcase": "Test case updated",
+      "createdTestcase": "Test case created",
+      "deletedTestcase": "Test case deleted",
+      "testcaseSaveFailed": "Failed to save test case"
+    }
+  }
+}
+

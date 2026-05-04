@@ -1,0 +1,613 @@
+{
+  "title": "Dự án",
+  "createLabel": "Tạo dự án",
+  "detailLabel": "Chi tiết dự án",
+  "detail": {
+    "breadcrumb": "Quản lý dự án",
+    "loading": "Đang tải dữ liệu dự án...",
+    "unknown": "Chưa xác định",
+    "noDescription": "Chưa có mô tả cho dự án này.",
+    "tabs": {
+      "overview": "Tổng quan",
+      "tasks": "Công việc",
+      "reports": "Báo cáo",
+      "members": "Thành viên",
+      "masterplan": "Kế hoạch mốc",
+      "git": "Kho mã Git",
+      "rewards": "Tính thưởng"
+    },
+    "meta": {
+      "leader": "Chủ nhiệm",
+      "lifecycle": "Vòng đời dự án",
+      "budget": "Ngân sách"
+    },
+    "currency": "VND",
+    "awaitingLeader": {
+      "title": "Chờ chỉ định chủ trì",
+      "description": "Dự án vẫn ở giai đoạn lập kế hoạch nhưng chưa có chủ nhiệm. Các thành viên có thể tiếp tục xác nhận cam kết. Ban lãnh đạo cần chỉ định chủ trì mới để triển khai tiếp.",
+      "cta": "Chỉ định chủ trì"
+    },
+    "pausedBanner": {
+      "title": "Dự án tạm dừng",
+      "description": "Dự án đang tạm dừng hoạt động. Có thể cần chỉ định lại chủ trì hoặc kích hoạt lại khi sẵn sàng.",
+      "invitePendingHint": "Bạn vẫn có thể xác nhận hoặc từ chối lời mời cam kết (Bên B) bằng các nút bên dưới."
+    },
+    "join": {
+      "cta": "Tham gia dự án",
+      "ctaInvite": "Chấp nhận cam kết tham gia",
+      "ctaAcceptLeader": "Chấp nhận chủ trì",
+      "ctaAcceptParticipation": "Chấp nhận tham gia",
+      "leaderInviteHint": "Cùng bước cam kết với thành viên được mời. Sau khi đồng ý, bạn là thành viên; chọn nhận hoặc từ chối vai trò chủ trì bên dưới.",
+      "rejectParticipation": "Từ chối tham gia",
+      "rejectLeader": "Từ chối chủ trì",
+      "loading": "Đang tham gia..."
+    },
+    "edit": {
+      "fields": {
+        "name": "Tên dự án",
+        "status": "Trạng thái hoạt động",
+        "description": "Mô tả"
+      },
+      "save": "Lưu thay đổi"
+    },
+    "success": {
+      "saved": "Dữ liệu đã được đồng bộ",
+      "joined": "Đăng ký tham gia dự án thành công"
+    },
+    "leaderRole": {
+      "ctaAccept": "Chấp nhận làm chủ trì",
+      "ctaDecline": "Từ chối làm chủ trì",
+      "choiceHint": "Bạn đã tham gia với vai trò thành viên. Xác nhận nhận vai trò chủ trì, hoặc từ chối (vẫn là thành viên; hệ thống chờ Ban lãnh đạo chỉ định chủ trì mới).",
+      "toastAccepted": "Đã ghi nhận vai trò chủ trì.",
+      "toastDeclined": "Đã từ chối vai trò chủ trì."
+    },
+    "reject": {
+      "toastParticipation": "Đã từ chối tham gia dự án.",
+      "toastLeaderExit": "Đã rút khỏi vai trò chủ trì.",
+      "modal": {
+        "reasonRequired": "Vui lòng nhập lý do.",
+        "participation": {
+          "title": "Từ chối tham gia dự án",
+          "description": "Bạn sẽ không tham gia dự án này. Vui lòng nhập lý do (bắt buộc).",
+          "placeholder": "Nhập lý do của bạn...",
+          "confirm": "Xác nhận từ chối"
+        },
+        "declineLeader": {
+          "title": "Từ chối làm chủ trì",
+          "description": "Bạn vẫn là thành viên dự án. Dự án vẫn ở giai đoạn lập kế hoạch và chờ chỉ định chủ trì mới. Lý do là tùy chọn.",
+          "placeholder": "Nhập lý do (có thể bỏ trống)",
+          "confirm": "Gửi"
+        },
+        "leaderExit": {
+          "title": "Rút khỏi vai trò chủ trì",
+          "description": "Bạn sẽ rời khỏi nhóm thành viên; dự án về lập kế hoạch và chờ chỉ định chủ trì mới. Vui lòng nhập lý do (bắt buộc).",
+          "placeholder": "Nhập lý do của bạn...",
+          "confirm": "Xác nhận rút lui"
+        }
+      }
+    },
+    "errors": {
+      "fetchFailed": "Giao thức truy xuất thất bại",
+      "updateFailed": "Cập nhật thất bại",
+      "cannotJoin": "Không thể tham gia dự án",
+      "leaderRoleFailed": "Không thực hiện được thao tác vai trò chủ trì.",
+      "rejectFailed": "Không thực hiện được thao tác từ chối."
+    },
+    "git": {
+      "title": "Kho lưu trữ Git",
+      "subtitle": "Giao thức Git v4.0",
+      "loading": "Đang kiểm tra kho mã từ xa...",
+      "reconfigure": "Cấu hình lại",
+      "cancelEdit": "Hủy chỉnh sửa",
+      "fields": {
+        "repoUrl": "Địa chỉ kho mã",
+        "provider": "Nhà cung cấp",
+        "defaultBranch": "Nhánh mặc định"
+      },
+      "providers": {
+        "github": "GitHub",
+        "gitlab": "GitLab"
+      },
+      "defaults": {
+        "defaultBranch": "main"
+      },
+      "placeholders": {
+        "repoUrl": "https://github.com/rd-hub/core-ai",
+        "defaultBranch": "main"
+      },
+      "saveConnection": "Lưu kết nối",
+      "currentUrl": "URL kho mã hiện tại",
+      "meta": {
+        "provider": "Nhà cung cấp",
+        "branch": "Nhánh chính",
+        "visibility": "Mức truy cập"
+      },
+      "lastCommit": "Commit gần nhất",
+      "by": "bởi {{author}}",
+      "noRepo": "Chưa có liên kết kho mã",
+      "initialSetup": "Thiết lập ban đầu",
+      "success": {
+        "synced": "Giao thức Git đã đồng bộ"
+      },
+      "errors": {
+        "syncFailed": "Đồng bộ thất bại"
+      }
+    },
+    "rewards": {
+      "title": "Bảng tính thưởng dự án",
+      "subtitle": "Theo ngân sách, cam kết mô hình, báo cáo tuần và tiến độ công việc.",
+      "loading": "Đang tải bảng thưởng...",
+      "emptyTitle": "Chưa có bảng tính thưởng",
+      "emptyHint": "Viện trưởng có thể chạy tính toán khi dự án đã hoàn thành (done).",
+      "runCalculation": "Chạy tính toán thưởng",
+      "waitDirector": "Vui lòng chờ Viện trưởng khởi tạo bảng tính thưởng.",
+      "budget": "Ngân sách",
+      "payout": "Tổng chi (ước tính)",
+      "rows": "dòng",
+      "export": "Xuất Excel",
+      "import": "Import Excel",
+      "recalculate": "Tính lại",
+      "finalize": "Chốt sổ",
+      "saveOverride": "Lưu điều chỉnh",
+      "status": {
+        "draft": "Nháp",
+        "finalized": "Đã chốt"
+      },
+      "finalizedNotice": "Bảng đã chốt: không thể tính lại, sửa tay hoặc gửi khiếu nại.",
+      "confirmFinalize": "Chốt sổ bảng thưởng? Sau khi chốt không thể chỉnh sửa.",
+      "finalizeModal": {
+        "title": "Chốt sổ bảng thưởng",
+        "description": "Sau khi chốt, bảng không thể tính lại, sửa điều chỉnh tay hoặc gửi khiếu nại mới. Bạn có chắc chắn?",
+        "confirm": "Chốt sổ",
+        "cancel": "Hủy"
+      },
+      "cols": {
+        "member": "Thành viên",
+        "role": "Vai trò",
+        "grade": "Hạng BC",
+        "lateTasks": "CV trễ",
+        "auto": "Tự động",
+        "override": "Điều chỉnh tay",
+        "final": "Thực nhận",
+        "appeal": "Khiếu nại",
+        "actions": "Xử lý KN"
+      },
+      "noRows": "Không có dòng dữ liệu (hoặc bạn chỉ xem được phần của mình).",
+      "meta": {
+        "preTax": "Trước thuế",
+        "tax": "Thuế 10%",
+        "penalty": "Phạt",
+        "kicked": "Đủ mức phạt nặng — thưởng có thể về 0.",
+        "lateReports": "Báo cáo trễ",
+        "lateTasks": "Công việc trễ"
+      },
+      "openAppeal": "Gửi khiếu nại",
+      "appealPlaceholder": "Mô tả lý do khiếu nại...",
+      "sendAppeal": "Gửi",
+      "cancelAppeal": "Hủy",
+      "resolveOk": "Chấp nhận",
+      "resolveReject": "Từ chối",
+      "success": {
+        "recalculated": "Đã tính lại bảng thưởng",
+        "finalized": "Đã chốt sổ",
+        "override": "Đã cập nhật điều chỉnh",
+        "export": "Đã tải file Excel",
+        "import": "Đã import {{count}} dòng",
+        "appeal": "Đã gửi khiếu nại",
+        "resolve": "Đã xử lý khiếu nại"
+      },
+      "errors": {
+        "load": "Không tải được bảng thưởng",
+        "recalculate": "Tính lại thất bại",
+        "finalize": "Chốt sổ thất bại",
+        "override": "Cập nhật thất bại",
+        "invalidAmount": "Số tiền không hợp lệ",
+        "export": "Xuất file thất bại",
+        "import": "Import thất bại",
+        "appeal": "Gửi khiếu nại thất bại",
+        "appealReason": "Vui lòng nhập lý do",
+        "resolve": "Xử lý khiếu nại thất bại"
+      }
+    }
+  },
+  "create": {
+    "backToProjects": "Quay lại dự án",
+    "resourceCenter": "Trung tâm tài nguyên",
+    "title1": "Khởi tạo",
+    "title2": "Dự án",
+    "systemSession": "Phiên hệ thống",
+    "stableConfig": "Cấu hình ổn định",
+    "identityConfigTitle": "Cấu hình định danh",
+    "identityConfigSubtitle": "Core Metadata",
+    "integrationTitle": "Tích hợp tài nguyên",
+    "integrationSubtitle": "Liên kết kho mã Git",
+    "fields": {
+      "code": "Mã dự án *",
+      "tag": "Lĩnh vực *",
+      "name": "Tên đề tài nghiên cứu *",
+      "description": "Mô tả tóm tắt",
+      "leader": "Chọn Leader *"
+    },
+    "placeholders": {
+      "codeExample": "VKsLab-GEN-2026",
+      "chooseTag": "-- Chọn phân loại --",
+      "name": "Nhập tên đầy đủ của đề tài...",
+      "description": "Mô tả ngắn gọn mục tiêu và phạm vi...",
+      "gitRepoUrl": "https://github.com/lab-org/project-name",
+      "memberSearch": "Tag thành viên tham gia...",
+      "chooseLeader": "-- Chọn leader trong danh sách đã tag --"
+    },
+    "participationMode": {
+      "label": "Cơ chế tham gia *",
+      "optionTag": "Cơ chế 1: Tag",
+      "optionJoin": "Cơ chế 2: Tự tham gia",
+      "tagInviteHint": "Thành viên được tag chỉ nhận lời mời: họ tự chọn chấp nhận hoặc từ chối tham gia trên trang «Cam kết của tôi» hoặc chi tiết dự án — không bắt buộc."
+    },
+    "requiredJoin": {
+      "label": "Số lượng cần join (1-5)",
+      "membersOption": "{{count}} thành viên",
+      "hint": "Dự án sẽ tạo ở trạng thái planning. Thành viên có thể join cho đến khi đủ số lượng mục tiêu."
+    },
+    "taggedCount": "Đã tag ({{count}}/5)",
+    "timeline": {
+      "label": "Lịch trình *",
+      "start": "Bắt đầu",
+      "end": "Kết thúc"
+    },
+    "policyNotice": "Khởi tạo dự án đồng nghĩa với việc xác nhận tuân thủ chính sách bảo mật và tiêu chuẩn R&D của hệ thống.",
+    "submit": "Khởi tạo dự án",
+    "success": "Khởi tạo dự án thành công",
+    "errors": {
+      "maxMembers": "Mỗi dự án tối đa 5 thành viên",
+      "tagAtLeastOne": "Hãy tag ít nhất 1 thành viên",
+      "chooseLeader": "Vui lòng chọn leader từ danh sách đã tag",
+      "leaderMustBeTagged": "Leader phải nằm trong danh sách thành viên đã tag",
+      "cannotIdentifyCreator": "Không xác định được người tạo dự án",
+      "createFailed": "Lỗi khởi tạo hệ thống",
+      "fixHighlighted": "Vui lòng sửa các ô được đánh dấu đỏ.",
+      "fieldCodeRequired": "Vui lòng nhập mã dự án.",
+      "codeTaken": "Mã dự án đã được sử dụng.",
+      "fieldTagRequired": "Vui lòng chọn lĩnh vực.",
+      "fieldNameRequired": "Vui lòng nhập tên đề tài.",
+      "nameMinLength": "Tên đề tài phải có ít nhất 5 ký tự.",
+      "startDateRequired": "Vui lòng chọn ngày bắt đầu.",
+      "endDateRequired": "Vui lòng chọn ngày kết thúc.",
+      "endAfterStart": "Ngày kết thúc phải sau ngày bắt đầu.",
+      "gitUrlInvalid": "URL kho Git không hợp lệ.",
+      "partyARequired": "Vui lòng chọn đại diện pháp lý (Bên A)."
+    }
+  }
+  ,
+  "manager": {
+    "kicker": "Trung tâm quản lý dự án",
+    "totalProjects": "Dự án hiện có",
+    "syncStatus": { "label": "Trạng thái đồng bộ", "ok": "Ổn định" },
+    "system": "Hệ thống",
+    "createNew": "Tạo dự án mới",
+    "searchPlaceholder": "Tìm theo mã hoặc tên dự án...",
+    "allDomains": "Tất cả lĩnh vực",
+    "progress": "Tiến độ",
+    "leader": "Chủ nhiệm",
+    "unassigned": "Chưa phân công",
+    "joined": "Đã tham gia",
+    "pendingInvite": "Chờ xác nhận",
+    "members": "Thành viên",
+    "emptyTitle": "Không có dự án phù hợp",
+    "emptyHint": "Không tìm thấy dự án theo bộ lọc hiện tại",
+    "status": {
+      "planning": "Lập kế hoạch",
+      "active": "Đang hoạt động",
+      "paused": "Tạm dừng",
+      "done": "Hoàn thành",
+      "archived": "Lưu trữ"
+    },
+    "errors": {
+      "fetchFailed": "Giao thức tải dữ liệu thất bại"
+    }
+  }
+  ,
+  "tasks": {
+    "title": "Quản lý công việc",
+    "subtitle": "Phân rã mục tiêu nghiên cứu",
+    "loading": "Đang đồng bộ công việc...",
+    "searchPlaceholder": "TÌM KIẾM CÔNG VIỆC...",
+    "allMembers": "Tất cả thành viên",
+    "createTask": "Tạo công việc",
+    "empty": {
+      "filtered": "Không có kết quả",
+      "blank": "Trống"
+    },
+    "status": {
+      "todo": "Chờ làm",
+      "in_progress": "Đang làm",
+      "review": "Đang duyệt",
+      "done": "Hoàn thành"
+    },
+    "priority": {
+      "low": "Thấp",
+      "medium": "Trung bình",
+      "high": "Cao",
+      "urgent": "Khẩn cấp"
+    },
+    "toasts": {
+      "statusChanged": "Đã chuyển trạng thái sang {{status}}",
+      "statusSyncFailed": "Đồng bộ trạng thái thất bại"
+    },
+    "modal": {
+      "createTitle": "Tạo công việc",
+      "editTitle": "Sửa công việc",
+      "subtitle": "Thiết lập công việc dự án",
+      "fields": {
+        "title": "Tiêu đề",
+        "description": "Mô tả chi tiết",
+        "priority": "Độ ưu tiên",
+        "dueDate": "Hạn hoàn thành",
+        "assignee": "Người phụ trách"
+      },
+      "placeholders": {
+        "title": "Nhập tiêu đề công việc (bắt buộc)",
+        "description": "Mô tả ngắn gọn, có thể để trống"
+      },
+      "unassigned": "Chưa phân công",
+      "submitCreate": "Tạo mới",
+      "submitUpdate": "Cập nhật",
+      "errors": {
+        "titleRequired": "Tiêu đề công việc là bắt buộc",
+        "titleMaxLength": "Tiêu đề không quá 255 ký tự",
+        "dueDateInvalid": "Ngày hạn không hợp lệ"
+      },
+      "toasts": {
+        "saved": "Đã lưu công việc",
+        "saveFailed": "Lưu dữ liệu thất bại"
+      }
+    }
+  },
+  "members": {
+    "title": "Nhân sự dự án",
+    "loading": "Đang tải dữ liệu nhân sự...",
+    "currentCount": "Thành viên hiện có",
+    "addMember": "Thêm thành viên",
+    "empty": "Chưa có thành viên trong dự án",
+    "removeTitle": "Xóa thành viên",
+    "confirmRemove": "Xác nhận loại bỏ {{name}} khỏi hệ thống dự án?",
+    "setLeader": "Chỉ định chủ trì",
+    "assignLeaderModal": {
+      "title": "Chỉ định chủ trì dự án",
+      "description": "Xác nhận gán {{name}} làm chủ nhiệm (Leader) của dự án này? Vai trò chủ trì hiện tại (nếu có) sẽ được chuyển về thành viên.",
+      "confirm": "Xác nhận chỉ định",
+      "toastSuccess": "Đã chỉ định chủ trì thành công."
+    },
+    "table": {
+      "member": "Thành viên",
+      "role": "Vai trò",
+      "tasks": "Số việc",
+      "reportRate": "Tỉ lệ báo cáo",
+      "joinedAt": "Ngày tham gia",
+      "taskLabel": "Task"
+    },
+    "toasts": {
+      "updated": "Đã cập nhật danh sách nhân sự",
+      "actionFailed": "Thao tác thất bại"
+    },
+    "modal": {
+      "title": "Thêm nhân sự",
+      "subtitle": "Gán thành viên vào dự án",
+      "searchPlaceholder": "Tìm theo tên hoặc email...",
+      "noResultsLine1": "Không tìm thấy người dùng",
+      "noResultsLine2": "phù hợp",
+      "typeToSearch": "Nhập từ khóa để bắt đầu tìm kiếm",
+      "toasts": {
+        "added": "Đã thêm thành viên thành công",
+        "alreadyInvited": "Đã có lời mời đang chờ. Đã gửi lại thông báo nhắc.",
+        "addFailed": "Thêm thành viên thất bại"
+      }
+    }
+  }
+  ,
+  "overview": {
+    "loading": "Đang đồng bộ dữ liệu...",
+    "noData": "Không có dữ liệu hiển thị",
+    "stats": {
+      "totalTasks": "Tổng công việc",
+      "totalTasksSub": "Toàn bộ hệ thống",
+      "performance": "Hiệu suất",
+      "performanceSub": "Mức hoàn thành",
+      "inProgress": "Đang xử lý",
+      "inProgressSub": "Đang hoạt động",
+      "members": "Thành viên",
+      "membersSub": "Đang tham gia"
+    },
+    "deploymentStatus": "Trạng thái triển khai",
+    "operational": "Đang vận hành",
+    "complianceStream": "Luồng tuân thủ",
+    "legend": {
+      "onTime": "Đúng hạn",
+      "late": "Nộp trễ",
+      "missing": "Thiếu báo cáo"
+    },
+    "milestonesTitle": "Mốc chiến lược",
+    "noMilestones": "Chưa có mốc chiến lược",
+    "activeMembersTitle": "Nhân sự đang hoạt động",
+    "live": "LIVE"
+  }
+  ,
+  "reports": {
+    "loading": "Đang đồng bộ báo cáo...",
+    "title": "Luồng báo cáo",
+    "subtitle": "Báo cáo tuần & Kiểm soát tuân thủ",
+    "view": { "list": "Danh sách", "matrix": "Ma trận" },
+    "submit": "Nộp báo cáo",
+    "table": {
+      "weekYear": "Tuần/Năm",
+      "user": "Người thực hiện",
+      "status": "Trạng thái",
+      "task": "Task",
+      "schedule": "Lịch trình"
+    },
+    "status": {
+      "submitted": "Đã nộp",
+      "late": "Trễ hạn",
+      "missing": "Thiếu"
+    },
+    "notSubmitted": "Chưa nộp",
+    "dueDate": "Hạn nộp: {{date}}",
+    "actionLog": "Nhật ký hành động",
+    "filePreview": "Xem trực tiếp tệp báo cáo",
+    "noFile": "Báo cáo này chưa đính kèm tệp để xem trực tiếp.",
+    "taskLabel": "task",
+    "selectedTasks": "Task đã chọn khi nộp báo cáo",
+    "noTaskSelected": "Chưa chọn task nào.",
+    "noContent": "Không có nội dung",
+    "empty": "Chưa có báo cáo nào",
+    "complianceMatrix": "Ma trận tuân thủ",
+    "matrix": { "member": "Thành viên" },
+    "legend": {
+      "onTime": "Đúng hạn",
+      "late": "Trễ hạn",
+      "missing": "Thiếu báo cáo"
+    },
+    "toasts": {
+      "fetchFailed": "Giao thức tải dữ liệu thất bại",
+      "cannotLoadComments": "Không thể truy cập luồng bình luận"
+    },
+    "modal": {
+      "title": "Báo cáo tuần",
+      "subtitle": "Nhật ký công việc dự án",
+      "fields": {
+        "week": "Tuần",
+        "year": "Year",
+        "content": "Nội dung báo cáo *",
+        "source": "Nguồn tệp nộp",
+        "file": "Chọn tệp nghiên cứu",
+        "link": "Liên kết tệp",
+        "note": "Ghi chú (tuỳ chọn)",
+        "tasks": "Chọn task đã hoàn thành *"
+      },
+      "placeholders": {
+        "content": "Ghi lại các hành động và kết quả trong tuần...",
+        "link": "https://...",
+        "note": "Mô tả ngắn nội dung đã nộp (tuỳ chọn)..."
+      },
+      "source": {
+        "upload": "Tải tệp",
+        "link": "Liên kết"
+      },
+      "noDoneTasks": "Bạn chưa có task done nào để chọn.",
+      "submit": "Gửi báo cáo",
+      "errors": {
+        "contentRequired": "Nội dung không thể để trống",
+        "fileRequired": "Vui lòng chọn tệp trước khi gửi.",
+        "linkRequired": "Vui lòng nhập liên kết tệp hợp lệ.",
+        "taskRequired": "Vui lòng chọn ít nhất 1 task đã hoàn thành."
+      },
+      "toasts": {
+        "saved": "Báo cáo đã được đồng bộ",
+        "saveFailed": "Giao thức thất bại"
+      }
+    },
+    "comments": {
+      "title": "Trao đổi",
+      "empty": "Chưa có bình luận",
+      "placeholder": "Nhập bình luận...",
+      "toasts": {
+        "saved": "Bình luận đã được ghi lại",
+        "sendFailed": "Gửi bình luận thất bại"
+      }
+    }
+  },
+  "masterplan": {
+    "loading": "Đang tải timeline mốc...",
+    "title": "Lộ trình mốc dự án",
+    "deploymentProgress": "Tiến độ triển khai",
+    "statusLabel": "Trạng thái",
+    "status": { "done": "Hoàn thành", "inProgress": "Đang thực hiện" },
+    "createNew": "Tạo mốc mới",
+    "overdue": "Quá hạn",
+    "reopen": "Mở lại",
+    "finish": "Hoàn tất",
+    "empty": "Chưa có mốc nào được tạo",
+    "toasts": {
+      "reopened": "Đã mở lại mốc",
+      "completed": "Đã hoàn thành mốc",
+      "updateFailed": "Cập nhật thất bại",
+      "taskMarkedDone": "Đã đánh dấu task hoàn thành",
+      "taskUpdateFailed": "Cập nhật task thất bại"
+    },
+    "progressDone": "{{percent}}% hoàn thành",
+    "linkedTasksCount": "{{count}} công việc liên kết",
+    "checklist": {
+      "title": "Checklist kỹ thuật",
+      "add": "Thêm checklist",
+      "completedBadge": "✓ Hoàn thành",
+      "moreItems": "+{{count}} mục nữa",
+      "empty": "Chưa có checklist cho mốc này",
+      "createFirst": "Tạo checklist đầu tiên"
+    },
+    "modal": {
+      "title": "Tạo mốc kế hoạch",
+      "subtitle": "Giai đoạn lập kế hoạch",
+      "autoCode": "Mã mốc (tự tạo)",
+      "linkTasks": "Liên kết task công việc",
+      "fields": { 
+        "title": "Tên mốc *",
+        "dueDate": "Hạn mốc *",
+        "description": "Mô tả mốc" 
+      },
+      "placeholders": {
+        "title": "Ví dụ: Hoàn tất kiến trúc tổng thể",
+        "description": "Mô tả mục tiêu chính của mốc này..."
+      },
+      "submit": "Tạo mốc",
+      "errors": {
+        "missingRequired": "Vui lòng nhập đầy đủ thông tin bắt buộc",
+        "titleRequired": "Tên mốc là bắt buộc",
+        "dueDateRequired": "Hạn mốc là bắt buộc"
+      },
+      "toasts": {
+        "created": "Đã tạo mốc thành công",
+        "createFailed": "Tạo mốc thất bại"
+      }
+    }
+  },
+  "checklist": {
+    "progress": "Tiến độ",
+    "complete": "hoàn tất",
+    "completedOn": "Hoàn thành vào",
+    "create": {
+      "title": "Tạo checklist",
+      "subtitle": "Thêm checklist kỹ thuật mới cho mốc này",
+      "titleLabel": "Tên checklist",
+      "titlePlaceholder": "VD: Kiểm thử độ chính xác cảm biến",
+      "descriptionLabel": "Mô tả",
+      "descriptionPlaceholder": "Mô tả tùy chọn về phạm vi checklist...",
+      "note": "Lưu ý",
+      "noteText": "Bạn có thể thêm các mục checklist sau khi tạo. Hãy tạo tiêu đề trước, rồi thêm các mục kiểm thử chi tiết trong màn hình chi tiết.",
+      "success": "Tạo checklist thành công",
+      "error": "Tạo checklist thất bại"
+    },
+    "item": {
+      "pass": "Đạt",
+      "fail": "Không đạt",
+      "na": "Không áp dụng",
+      "expected": "Giá trị kỳ vọng",
+      "actual": "Giá trị thực tế",
+      "notesLabel": "Ghi chú",
+      "actualPlaceholder": "Giá trị thực tế",
+      "notesPlaceholder": "Ghi chú",
+      "newTitlePlaceholder": "Tiêu đề mục checklist mới...",
+      "newExpectedPlaceholder": "Giá trị kỳ vọng (tùy chọn)",
+      "newDescriptionPlaceholder": "Mô tả (tùy chọn)",
+      "add": "Thêm mục",
+      "statusUpdated": "Đã cập nhật trạng thái",
+      "statusError": "Cập nhật trạng thái thất bại",
+      "updated": "Đã cập nhật mục",
+      "updateError": "Cập nhật mục thất bại",
+      "added": "Đã thêm mục",
+      "addError": "Thêm mục thất bại",
+      "confirmDelete": "Bạn có chắc muốn xóa mục này?",
+      "deleted": "Đã xóa mục",
+      "deleteError": "Xóa mục thất bại"
+    }
+  }
+}
+

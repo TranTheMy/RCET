@@ -1,0 +1,613 @@
+{
+  "title": "Projects",
+  "createLabel": "Create project",
+  "detailLabel": "Project detail",
+  "detail": {
+    "breadcrumb": "Project management",
+    "loading": "Loading project data...",
+    "unknown": "Unknown",
+    "noDescription": "No description for this project yet.",
+    "tabs": {
+      "overview": "Overview",
+      "tasks": "Tasks",
+      "reports": "Reports",
+      "members": "Members",
+      "masterplan": "Milestones plan",
+      "git": "Git repository",
+      "rewards": "Rewards"
+    },
+    "meta": {
+      "leader": "Leader",
+      "lifecycle": "Project lifecycle",
+      "budget": "Budget"
+    },
+    "currency": "VND",
+    "awaitingLeader": {
+      "title": "Awaiting lead assignment",
+      "description": "The project is still in planning and has no lead yet. Members can continue to confirm commitments. Leadership must assign a new lead to proceed.",
+      "cta": "Assign lead"
+    },
+    "pausedBanner": {
+      "title": "Project paused",
+      "description": "This project is paused. It may need a new lead or reactivation when ready.",
+      "invitePendingHint": "You can still accept or decline your Party B commitment using the buttons below."
+    },
+    "join": {
+      "cta": "Join project",
+      "ctaInvite": "Accept commitment to participate",
+      "ctaAcceptLeader": "Accept project lead",
+      "ctaAcceptParticipation": "Accept participation",
+      "leaderInviteHint": "Same commitment step as other invitees. After you confirm, you join as a member; then accept or decline the lead role below.",
+      "rejectParticipation": "Decline participation",
+      "rejectLeader": "Decline lead role",
+      "loading": "Joining..."
+    },
+    "edit": {
+      "fields": {
+        "name": "Project name",
+        "status": "Status",
+        "description": "Description"
+      },
+      "save": "Save changes"
+    },
+    "success": {
+      "saved": "Data synced",
+      "joined": "Joined project successfully"
+    },
+    "leaderRole": {
+      "ctaAccept": "Accept lead role",
+      "ctaDecline": "Decline lead role",
+      "choiceHint": "You joined as a member. Accept the lead role, or decline to stay a member only while leadership assigns a new lead.",
+      "toastAccepted": "Lead role recorded.",
+      "toastDeclined": "Lead role declined."
+    },
+    "reject": {
+      "toastParticipation": "Participation declined.",
+      "toastLeaderExit": "You have stepped down as lead.",
+      "modal": {
+        "reasonRequired": "Please enter a reason.",
+        "participation": {
+          "title": "Decline to join this project",
+          "description": "You will not join this project. A reason is required.",
+          "placeholder": "Enter your reason...",
+          "confirm": "Confirm decline"
+        },
+        "declineLeader": {
+          "title": "Decline lead role",
+          "description": "You remain a project member. The project stays in planning until a new lead is assigned. Reason is optional.",
+          "placeholder": "Reason (optional)",
+          "confirm": "Submit"
+        },
+        "leaderExit": {
+          "title": "Step down as lead",
+          "description": "You will leave the team; the project returns to planning and awaits a new lead. A reason is required.",
+          "placeholder": "Enter your reason...",
+          "confirm": "Confirm"
+        }
+      }
+    },
+    "errors": {
+      "fetchFailed": "Failed to fetch project",
+      "updateFailed": "Update failed",
+      "cannotJoin": "Cannot join project",
+      "leaderRoleFailed": "Could not update lead role.",
+      "rejectFailed": "Could not complete the decline action."
+    },
+    "git": {
+      "title": "Git repository",
+      "subtitle": "Git protocol v4.0",
+      "loading": "Checking remote repository...",
+      "reconfigure": "Reconfigure",
+      "cancelEdit": "Cancel edit",
+      "fields": {
+        "repoUrl": "Repository URL",
+        "provider": "Provider",
+        "defaultBranch": "Default branch"
+      },
+      "providers": {
+        "github": "GitHub",
+        "gitlab": "GitLab"
+      },
+      "defaults": {
+        "defaultBranch": "main"
+      },
+      "placeholders": {
+        "repoUrl": "https://github.com/rd-hub/core-ai",
+        "defaultBranch": "main"
+      },
+      "saveConnection": "Save connection",
+      "currentUrl": "Current repository URL",
+      "meta": {
+        "provider": "Provider",
+        "branch": "Main branch",
+        "visibility": "Visibility"
+      },
+      "lastCommit": "Latest commit",
+      "by": "by {{author}}",
+      "noRepo": "No repository linked yet",
+      "initialSetup": "Initial setup",
+      "success": {
+        "synced": "Git settings synced"
+      },
+      "errors": {
+        "syncFailed": "Sync failed"
+      }
+    },
+    "rewards": {
+      "title": "Project reward sheet",
+      "subtitle": "Based on budget, commitment model, weekly reports, and task timeliness.",
+      "loading": "Loading reward sheet...",
+      "emptyTitle": "No reward sheet yet",
+      "emptyHint": "The director can run calculation when the project is marked done.",
+      "runCalculation": "Run reward calculation",
+      "waitDirector": "Please wait for the director to initialize the reward sheet.",
+      "budget": "Budget",
+      "payout": "Total payout (est.)",
+      "rows": "rows",
+      "export": "Export Excel",
+      "import": "Import Excel",
+      "recalculate": "Recalculate",
+      "finalize": "Finalize",
+      "saveOverride": "Save override",
+      "status": {
+        "draft": "Draft",
+        "finalized": "Finalized"
+      },
+      "finalizedNotice": "This sheet is finalized: no recalculation, manual edits, or appeals.",
+      "confirmFinalize": "Finalize the reward sheet? This cannot be undone.",
+      "finalizeModal": {
+        "title": "Finalize reward sheet",
+        "description": "After finalizing, the sheet cannot be recalculated, manually adjusted, or receive new appeals. Are you sure?",
+        "confirm": "Finalize",
+        "cancel": "Cancel"
+      },
+      "cols": {
+        "member": "Member",
+        "role": "Role",
+        "grade": "Report",
+        "lateTasks": "Late tasks",
+        "auto": "Auto",
+        "override": "Override",
+        "final": "Payout",
+        "appeal": "Appeal",
+        "actions": "Resolve"
+      },
+      "noRows": "No rows (or you only see your own entry).",
+      "meta": {
+        "preTax": "Pre-tax",
+        "tax": "Tax 10%",
+        "penalty": "Penalty",
+        "kicked": "Severe penalties applied — payout may be zero.",
+        "lateReports": "Late reports",
+        "lateTasks": "Late tasks"
+      },
+      "openAppeal": "Submit appeal",
+      "appealPlaceholder": "Describe your appeal...",
+      "sendAppeal": "Send",
+      "cancelAppeal": "Cancel",
+      "resolveOk": "Accept",
+      "resolveReject": "Reject",
+      "success": {
+        "recalculated": "Reward sheet recalculated",
+        "finalized": "Sheet finalized",
+        "override": "Override saved",
+        "export": "Excel downloaded",
+        "import": "Imported {{count}} row(s)",
+        "appeal": "Appeal submitted",
+        "resolve": "Appeal resolved"
+      },
+      "errors": {
+        "load": "Failed to load reward sheet",
+        "recalculate": "Recalculation failed",
+        "finalize": "Finalize failed",
+        "override": "Update failed",
+        "invalidAmount": "Invalid amount",
+        "export": "Export failed",
+        "import": "Import failed",
+        "appeal": "Appeal failed",
+        "appealReason": "Please enter a reason",
+        "resolve": "Resolve failed"
+      }
+    }
+  },
+  "create": {
+    "backToProjects": "Back to projects",
+    "resourceCenter": "Resource center",
+    "title1": "Create",
+    "title2": "Project",
+    "systemSession": "System session",
+    "stableConfig": "Stable configuration",
+    "identityConfigTitle": "Identity configuration",
+    "identityConfigSubtitle": "Core Metadata",
+    "integrationTitle": "Resource integration",
+    "integrationSubtitle": "Link Git repository",
+    "fields": {
+      "code": "Project code *",
+      "tag": "Domain *",
+      "name": "Research topic name *",
+      "description": "Summary description",
+      "leader": "Choose leader *"
+    },
+    "placeholders": {
+      "codeExample": "VKsLab-GEN-2026",
+      "chooseTag": "-- Choose a category --",
+      "name": "Enter the full topic name...",
+      "description": "Briefly describe goals and scope...",
+      "gitRepoUrl": "https://github.com/lab-org/project-name",
+      "memberSearch": "Tag members to join...",
+      "chooseLeader": "-- Choose leader from tagged members --"
+    },
+    "participationMode": {
+      "label": "Participation mode *",
+      "optionTag": "Mode 1: Tag",
+      "optionJoin": "Mode 2: Self-join",
+      "tagInviteHint": "Tagged members receive an invitation only: they can accept or decline on “My commitments” or the project page — participation is not mandatory."
+    },
+    "requiredJoin": {
+      "label": "Required joins (1-5)",
+      "membersOption": "{{count}} members",
+      "hint": "The project will be created in planning status. Members can join until the target count is reached."
+    },
+    "taggedCount": "Tagged ({{count}}/5)",
+    "timeline": {
+      "label": "Timeline *",
+      "start": "Start",
+      "end": "End"
+    },
+    "policyNotice": "Creating a project means you confirm compliance with the system's security policy and R&D standards.",
+    "submit": "Create project",
+    "success": "Project created successfully",
+    "errors": {
+      "maxMembers": "Each project can have at most 5 members",
+      "tagAtLeastOne": "Tag at least 1 member",
+      "chooseLeader": "Please choose a leader from the tagged list",
+      "leaderMustBeTagged": "Leader must be in the tagged members list",
+      "cannotIdentifyCreator": "Cannot identify the project creator",
+      "createFailed": "System creation error",
+      "fixHighlighted": "Please fix the fields marked in red.",
+      "fieldCodeRequired": "Please enter a project code.",
+      "codeTaken": "This project code is already in use.",
+      "fieldTagRequired": "Please select a domain/tag.",
+      "fieldNameRequired": "Please enter the research topic title.",
+      "nameMinLength": "The title must be at least 5 characters.",
+      "startDateRequired": "Please select a start date.",
+      "endDateRequired": "Please select an end date.",
+      "endAfterStart": "End date must be after the start date.",
+      "gitUrlInvalid": "The Git repository URL is invalid.",
+      "partyARequired": "Please select a legal representative (Party A)."
+    }
+  }
+  ,
+  "manager": {
+    "kicker": "Project management center",
+    "totalProjects": "Total projects",
+    "syncStatus": { "label": "Sync status", "ok": "Stable" },
+    "system": "System",
+    "createNew": "Create new project",
+    "searchPlaceholder": "Search by code or project name...",
+    "allDomains": "All domains",
+    "progress": "Progress",
+    "leader": "Leader",
+    "unassigned": "Unassigned",
+    "joined": "Joined",
+    "pendingInvite": "Pending invite",
+    "members": "Members",
+    "emptyTitle": "No matching projects",
+    "emptyHint": "No projects found for the current filters",
+    "status": {
+      "planning": "Planning",
+      "active": "Active",
+      "paused": "Paused",
+      "done": "Done",
+      "archived": "Archived"
+    },
+    "errors": {
+      "fetchFailed": "Failed to load data"
+    }
+  }
+  ,
+  "tasks": {
+    "title": "Task management",
+    "subtitle": "Break down research goals",
+    "loading": "Syncing tasks...",
+    "searchPlaceholder": "SEARCH TASKS...",
+    "allMembers": "All members",
+    "createTask": "Create task",
+    "empty": {
+      "filtered": "No results",
+      "blank": "Empty"
+    },
+    "status": {
+      "todo": "To do",
+      "in_progress": "In progress",
+      "review": "In review",
+      "done": "Done"
+    },
+    "priority": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "urgent": "Urgent"
+    },
+    "toasts": {
+      "statusChanged": "Status changed to {{status}}",
+      "statusSyncFailed": "Failed to sync status"
+    },
+    "modal": {
+      "createTitle": "Create task",
+      "editTitle": "Edit task",
+      "subtitle": "Configure project task",
+      "fields": {
+        "title": "Title",
+        "description": "Description",
+        "priority": "Priority",
+        "dueDate": "Due date",
+        "assignee": "Assignee"
+      },
+      "placeholders": {
+        "title": "Enter task title (required)",
+        "description": "Short description — optional"
+      },
+      "unassigned": "Unassigned",
+      "submitCreate": "Create",
+      "submitUpdate": "Update",
+      "errors": {
+        "titleRequired": "Task title is required",
+        "titleMaxLength": "Title must be at most 255 characters",
+        "dueDateInvalid": "Due date is not valid"
+      },
+      "toasts": {
+        "saved": "Task saved",
+        "saveFailed": "Failed to save"
+      }
+    }
+  },
+  "members": {
+    "title": "Project members",
+    "loading": "Loading member data...",
+    "currentCount": "Current members",
+    "addMember": "Add member",
+    "empty": "No members in this project yet",
+    "removeTitle": "Remove member",
+    "confirmRemove": "Remove {{name}} from the project?",
+    "setLeader": "Assign lead",
+    "assignLeaderModal": {
+      "title": "Assign project lead",
+      "description": "Assign {{name}} as the project lead? Any current lead will become a regular member.",
+      "confirm": "Confirm assignment",
+      "toastSuccess": "Lead assigned successfully."
+    },
+    "table": {
+      "member": "Member",
+      "role": "Role",
+      "tasks": "Tasks",
+      "reportRate": "Report rate",
+      "joinedAt": "Joined at",
+      "taskLabel": "Task"
+    },
+    "toasts": {
+      "updated": "Member list updated",
+      "actionFailed": "Action failed"
+    },
+    "modal": {
+      "title": "Add member",
+      "subtitle": "Assign a member to this project",
+      "searchPlaceholder": "Search by name or email...",
+      "noResultsLine1": "No matching users",
+      "noResultsLine2": "found",
+      "typeToSearch": "Type to start searching",
+      "toasts": {
+        "added": "Member added",
+        "alreadyInvited": "Invite already pending. Notification resent.",
+        "addFailed": "Failed to add member"
+      }
+    }
+  }
+  ,
+  "overview": {
+    "loading": "Syncing data...",
+    "noData": "No data to display",
+    "stats": {
+      "totalTasks": "Total tasks",
+      "totalTasksSub": "System-wide",
+      "performance": "Performance",
+      "performanceSub": "Completion rate",
+      "inProgress": "In progress",
+      "inProgressSub": "Active",
+      "members": "Members",
+      "membersSub": "Participating"
+    },
+    "deploymentStatus": "Deployment status",
+    "operational": "Operational",
+    "complianceStream": "Compliance stream",
+    "legend": {
+      "onTime": "On time",
+      "late": "Late",
+      "missing": "Missing report"
+    },
+    "milestonesTitle": "Strategic milestones",
+    "noMilestones": "No strategic milestones yet",
+    "activeMembersTitle": "Active members",
+    "live": "LIVE"
+  }
+  ,
+  "reports": {
+    "loading": "Syncing reports...",
+    "title": "Report stream",
+    "subtitle": "Weekly reports & compliance control",
+    "view": { "list": "List", "matrix": "Matrix" },
+    "submit": "Submit report",
+    "table": {
+      "weekYear": "Week/Year",
+      "user": "Author",
+      "status": "Status",
+      "task": "Task",
+      "schedule": "Schedule"
+    },
+    "status": {
+      "submitted": "Submitted",
+      "late": "Late",
+      "missing": "Missing"
+    },
+    "notSubmitted": "Not submitted",
+    "dueDate": "Due: {{date}}",
+    "actionLog": "Action log",
+    "filePreview": "Inline report file preview",
+    "noFile": "This report has no attached file for inline preview.",
+    "taskLabel": "task",
+    "selectedTasks": "Selected done tasks",
+    "noTaskSelected": "No tasks selected.",
+    "noContent": "No content",
+    "empty": "No reports yet",
+    "complianceMatrix": "Compliance matrix",
+    "matrix": { "member": "Member" },
+    "legend": {
+      "onTime": "On time",
+      "late": "Late",
+      "missing": "Missing report"
+    },
+    "toasts": {
+      "fetchFailed": "Failed to load data",
+      "cannotLoadComments": "Cannot load comment stream"
+    },
+    "modal": {
+      "title": "Weekly report",
+      "subtitle": "Project work log",
+      "fields": {
+        "week": "Week",
+        "year": "Year",
+        "content": "Report content *",
+        "source": "Submission source",
+        "file": "Choose report file",
+        "link": "File link",
+        "note": "Notes (optional)",
+        "tasks": "Select completed tasks *"
+      },
+      "placeholders": {
+        "content": "Write what you did and achieved this week...",
+        "link": "https://...",
+        "note": "Short note about the uploaded submission (optional)..."
+      },
+      "source": {
+        "upload": "Upload",
+        "link": "Link"
+      },
+      "noDoneTasks": "You do not have completed tasks to select.",
+      "submit": "Send report",
+      "errors": {
+        "contentRequired": "Content cannot be empty",
+        "fileRequired": "Please choose a file before submitting.",
+        "linkRequired": "Please provide a valid file link.",
+        "taskRequired": "Please select at least one completed task."
+      },
+      "toasts": {
+        "saved": "Report synced",
+        "saveFailed": "Request failed"
+      }
+    },
+    "comments": {
+      "title": "Discussion",
+      "empty": "No comments yet",
+      "placeholder": "Write a comment...",
+      "toasts": {
+        "saved": "Comment saved",
+        "sendFailed": "Failed to send comment"
+      }
+    }
+  },
+  "masterplan": {
+    "loading": "Loading milestone timeline...",
+    "title": "Project milestones roadmap",
+    "deploymentProgress": "Deployment progress",
+    "statusLabel": "Status",
+    "status": { "done": "Done", "inProgress": "In progress" },
+    "createNew": "Create new milestone",
+    "overdue": "Overdue",
+    "reopen": "Reopen",
+    "finish": "Finish",
+    "empty": "No milestones created yet",
+    "toasts": {
+      "reopened": "Milestone reopened",
+      "completed": "Milestone completed",
+      "updateFailed": "Update failed",
+      "taskMarkedDone": "Task marked as done",
+      "taskUpdateFailed": "Failed to update task"
+    },
+    "progressDone": "{{percent}}% complete",
+    "linkedTasksCount": "{{count}} linked task(s)",
+    "checklist": {
+      "title": "Technical checklists",
+      "add": "Add checklist",
+      "completedBadge": "✓ Completed",
+      "moreItems": "+{{count}} more item(s)",
+      "empty": "No checklists yet for this milestone",
+      "createFirst": "Create first checklist"
+    },
+    "modal": {
+      "title": "Create milestone",
+      "subtitle": "Planning phase",
+      "autoCode": "Milestone code (auto)",
+      "linkTasks": "Link tasks",
+      "fields": { 
+        "title": "Milestone title *",
+        "dueDate": "Due date *",
+        "description": "Description" 
+      },
+      "placeholders": {
+        "title": "Example: Complete overall architecture",
+        "description": "Describe the main goal of this milestone..."
+      },
+      "submit": "Create milestone",
+      "errors": {
+        "missingRequired": "Please fill in required fields",
+        "titleRequired": "Milestone title is required",
+        "dueDateRequired": "Due date is required"
+      },
+      "toasts": {
+        "created": "Milestone created",
+        "createFailed": "Failed to create milestone"
+      }
+    }
+  },
+  "checklist": {
+    "progress": "Progress",
+    "complete": "complete",
+    "completedOn": "Completed on",
+    "create": {
+      "title": "Create checklist",
+      "subtitle": "Add a new technical checklist for this milestone",
+      "titleLabel": "Checklist title",
+      "titlePlaceholder": "e.g., Sensor Accuracy Testing",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "Optional description of what this checklist covers...",
+      "note": "Note",
+      "noteText": "You can add checklist items after creating the checklist. Start with the title, then add specific test items in the detail view.",
+      "success": "Checklist created successfully",
+      "error": "Failed to create checklist"
+    },
+    "item": {
+      "pass": "Pass",
+      "fail": "Fail",
+      "na": "N/A",
+      "expected": "Expected",
+      "actual": "Actual",
+      "notesLabel": "Notes",
+      "actualPlaceholder": "Actual value",
+      "notesPlaceholder": "Notes",
+      "newTitlePlaceholder": "New checklist item title...",
+      "newExpectedPlaceholder": "Expected value (optional)",
+      "newDescriptionPlaceholder": "Description (optional)",
+      "add": "Add item",
+      "statusUpdated": "Status updated",
+      "statusError": "Failed to update status",
+      "updated": "Item updated",
+      "updateError": "Failed to update item",
+      "added": "Item added",
+      "addError": "Failed to add item",
+      "confirmDelete": "Are you sure you want to delete this item?",
+      "deleted": "Item deleted",
+      "deleteError": "Failed to delete item"
+    }
+  }
+}
+

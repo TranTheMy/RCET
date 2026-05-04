@@ -1,0 +1,539 @@
+{
+  "title": "User",
+  "dashboard": {
+    "toasts": {
+      "fetchFailed": "Failed to load dashboard data",
+      "taskCompleted": "Task moved to completed",
+      "updateTaskFailed": "Could not update task"
+    },
+    "dash": "—",
+    "loading": "Syncing dashboard…",
+    "noData": "No data",
+    "kicker": "Control station",
+    "titlePrefix": "Work",
+    "titleHighlight": "Space.",
+    "greeting": "Hello, {{name}}",
+    "activeProjects": "{{count}} active projects",
+    "metrics": {
+      "taskCompletion": "Task completion",
+      "onTimeReports": "On-time reports",
+      "weekStreak": "Week streak",
+      "teamRanking": "Team ranking"
+    },
+    "section": {
+      "tasks": "Progress & Tasks",
+      "activityReports": "Activity & Reports"
+    },
+    "sort": {
+      "deadline": "Deadline",
+      "priority": "Priority"
+    },
+    "tasks": {
+      "empty": "No assigned tasks, or no active projects yet.",
+      "markDoneAria": "Mark task as done"
+    },
+    "priority": {
+      "urgent": "Urgent",
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "recent": "Recent",
+    "noActivity": "No activity yet.",
+    "achievements": "Achievements",
+    "nextDue": "Next report due"
+  }
+  ,
+  "forums": {
+    "toasts": {
+      "fetchFailed": "Failed to load forum posts",
+      "fetchDetailFailed": "Failed to load post details",
+      "minLength": "Title and content must be at least 3 characters",
+      "posted": "Post published",
+      "postFailed": "Failed to publish post",
+      "likeUpdateFailed": "Could not update like",
+      "commentRequired": "Enter a comment",
+      "commentSent": "Comment sent",
+      "commentFailed": "Failed to send comment",
+      "postDeleted": "Post deleted",
+      "postDeleteFailed": "Could not delete post",
+      "updated": "Updated",
+      "updateFailed": "Update failed",
+      "commentDeleted": "Comment deleted",
+      "commentDeleteFailed": "Could not delete comment",
+      "linkCopied": "Link copied",
+      "moderationRejected": "Content did not pass automated moderation. Please revise per community rules.",
+      "moderationUnavailable": "Automated moderation is temporarily unavailable. Try again later or contact an admin."
+    },
+    "confirm": {
+      "deletePost": "Delete this post?",
+      "deleteComment": "Delete this comment?"
+    },
+    "auth": {
+      "title": "VKsLab Forum",
+      "hint": "The forum API requires login. Please sign in to view and post."
+    },
+    "form": {
+      "titlePlaceholder": "Title (3–150 chars)",
+      "contentPlaceholder": "Content (3–5000 chars)",
+      "commentPlaceholder": "Write a comment...",
+      "moderationHint": "Posts and comments are auto-moderated (18+ content, violence/hate, sensitive politics, scams/spam, hacking/cracking, doxxing, etc. may be rejected)."
+    },
+    "actions": {
+      "post": "Post",
+      "menu": "Menu",
+      "edit": "Edit",
+      "delete": "Delete",
+      "responses": "Responses",
+      "copyLink": "Copy link",
+      "deleteComment": "Delete comment",
+      "send": "Send",
+      "save": "Save"
+    },
+    "comments": {
+      "loadFailed": "Couldn’t load comments."
+    },
+    "empty": "No posts yet. Be the first!",
+    "sidebar": {
+      "loggedInAs": "Signed in: {{name}}"
+    },
+    "editModal": {
+      "title": "Edit post"
+    },
+    "fallback": {
+      "member": "Member",
+      "user": "User"
+    }
+  }
+  ,
+  "categories": {
+    "toasts": {
+      "fetchFailed": "Could not load categories",
+      "nameRequired": "Name is required",
+      "created": "Category created",
+      "updated": "Category updated",
+      "createUpdateFailed": "Failed to create/update category",
+      "deleted": "Category deleted",
+      "deleteFailed": "Could not delete category"
+    },
+    "confirm": {
+      "delete": "Delete this category? Curricula/Documents may be affected due to data constraints."
+    },
+    "kicker": "Taxonomy & metadata",
+    "title": "Categories",
+    "subtitle": "Manage categories used for Curriculum/Documents.",
+    "noPermission": "Only `vien_truong` can create/manage categories",
+    "dash": "—",
+    "actions": {
+      "deanInfo": "Dean info",
+      "reset": "Reset",
+      "create": "Create",
+      "update": "Update",
+      "gotIt": "Got it"
+    },
+    "form": {
+      "createTitle": "Create category",
+      "editTitle": "Edit category",
+      "nameLabel": "Name *",
+      "namePlaceholder": "e.g., Robotics",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "Short description..."
+    },
+    "list": {
+      "title": "List",
+      "count": "{{count}} categories",
+      "empty": "No categories yet"
+    },
+    "table": {
+      "name": "Name",
+      "description": "Description",
+      "actions": "Actions"
+    },
+    "deanModal": {
+      "title": "Dean",
+      "name": "Name",
+      "email": "Email",
+      "role": "Role"
+    }
+  }
+  ,
+  "portal": {
+    "kicker": "VKsLab Social Node Network",
+    "titlePrefix": "VKsLab",
+    "titleHighlight": "FANPAGES",
+    "card": {
+      "subtitle": "Connect with VKsLab Social Network",
+      "visit": "Visit Fanpage"
+    },
+    "items": {
+      "aiRobotics": { "name": "AI & Robotics Fanpage" },
+      "verilogHub": { "name": "Verilog Hardware Hub" },
+      "embeddedNews": { "name": "Embedded Core News" },
+      "startupCommunity": { "name": "Startup Community" }
+    }
+  },
+  "lab": {
+    "toasts": {
+      "fetchFailed": "Could not load lab information"
+    },
+    "loading": "Mapping deep space nodes...",
+    "hero": {
+      "kicker": "VKsLab Orbital Network",
+      "titlePrefix": "Deep",
+      "titleHighlight": "Space",
+      "logoAlt": "VKsLab",
+      "scrollHint": "Scroll to enter"
+    },
+    "roles": {
+      "vien_truong": "Strategic Director",
+      "truong_lab": "Tactical Manager",
+      "leader": "Exec Leader",
+      "member": "Data Node"
+    },
+    "fallback": {
+      "department": "R&D Operations"
+    }
+  },
+  "cv": {
+    "status": {
+      "pending_lab_review": "Pending lab review",
+      "lab_rejected": "Rejected by lab head",
+      "pending_director_review": "Pending director review",
+      "director_rejected": "Rejected by director",
+      "approved": "Approved"
+    },
+    "submit": {
+      "toasts": {
+        "profileFetchFailed": "Couldn’t load account info. You can still fill it manually.",
+        "fileTypeInvalid": "Only PDF or DOC/DOCX is accepted.",
+        "fileTooLarge": "File must be under 25MB.",
+        "fullNameRequired": "Please enter your full name.",
+        "emailRequired": "Please enter your email.",
+        "positionRequired": "Please enter position / expertise.",
+        "phoneInvalidLength": "Phone must be 8–15 digits (numbers only).",
+        "phoneTaken": "This phone number is already in use. Please use another.",
+        "cvRequired": "Please attach your CV file.",
+        "submitted": "Application submitted — saved and waiting for review.",
+        "submitFailed": "Submission failed. Please try again.",
+        "cooldown": "You can submit again only 24 hours after your last application."
+      },
+      "success": {
+        "title": "Received",
+        "subtitle": "CV & contact information",
+        "statusLabel": "Status",
+        "recordLine": "Record #{{id}} · Saved to DB",
+        "saved": "Saved to the system",
+        "hint": "The lab head and director will review your application. We’ll contact you via email / phone when there’s an update.",
+        "submitAnother": "Submit another application"
+      },
+      "kicker": "Scientist application",
+      "title": "Submit CV",
+      "purposeLabel": "Purpose",
+      "purposeValue": "Contract / R&D collaboration",
+      "cvFileLabel": "CV file (required) *",
+      "dropzone": {
+        "title": "Drag & drop or click to choose",
+        "hint": "PDF / DOCX (max 25MB)"
+      },
+      "actions": {
+        "removeFile": "Remove file",
+        "submitting": "Submitting...",
+        "submit": "Submit application"
+      },
+      "contact": {
+        "title": "Contact & contract info",
+        "syncing": "Syncing from account…",
+        "synced": "Loaded from VKsLab profile — you can edit before submitting",
+        "cooldownHint": "You can submit at most once every 24 hours per account."
+      },
+      "options": {
+        "member": "Member"
+      },
+      "fields": {
+        "fullName": "Full name *",
+        "email": "Email *",
+        "phone": "Phone",
+        "position": "Position / expertise *",
+        "positionMemberOnly": "Applications are registered as member only.",
+        "message": "Cover letter / notes"
+      },
+      "placeholders": {
+        "fullName": "John Doe",
+        "email": "email@domain.com",
+        "phone": "Digits only (8–15)",
+        "position": "member",
+        "message": "Collaboration intent, timeline, work mode..."
+      }
+    },
+    "approvals": {
+      "toasts": {
+        "fetchFailed": "Could not load applications list",
+        "labApproved": "Forwarded to director",
+        "directorApproved": "Application approved",
+        "rejected": "Application rejected",
+        "rejectReasonRequired": "Enter a rejection reason",
+        "actionFailed": "Action failed"
+      },
+      "titles": {
+        "labHead": "Review applications — Lab head",
+        "director": "Review applications & contracts — Director",
+        "default": "Scientist applications"
+      },
+      "subtitle": "CV / collaboration contract",
+      "empty": "No applications in the queue.",
+      "notePlaceholder": "Rejection reason (optional)",
+      "labels": {
+        "lab": "Lab",
+        "director": "Director"
+      },
+      "actions": {
+        "homeAria": "Back to home",
+        "viewDetail": "View details →",
+        "approve": "Approve",
+        "approveDirector": "Approve",
+        "reject": "Reject",
+        "createContract": "Create / record contract",
+        "viewContract": "View contract file",
+        "contractFile": "Contract file"
+      }
+    },
+    "detail": {
+      "toasts": {
+        "fetchFailed": "Could not load application details"
+      },
+      "errors": {
+        "fileFetchFailed": "Could not fetch file"
+      },
+      "actions": {
+        "backToApprovalsAria": "Back to CV approvals",
+        "backHomeAria": "Back to home",
+        "downloadCv": "Download CV"
+      },
+      "title": "Application details",
+      "subtitle": "CV / collaboration contract",
+      "empty": "Application not found.",
+      "preview": {
+        "attachment": "Attachment",
+        "noFile": "No file",
+        "noFileHint": "The applicant didn’t attach a CV file.",
+        "sniffing": "Detecting file type…",
+        "pdfTitle": "CV preview (PDF)",
+        "title": "CV preview",
+        "wordHintPrefix": "Word (.docx) is rendered in-browser (no Microsoft Online). If CORS or format issues occur, use"
+      },
+      "candidate": "Candidate",
+      "email": "Email",
+      "phone": "Phone",
+      "field": "Field / position",
+      "links": "Links",
+      "coverLetter": "Cover letter",
+      "labels": {
+        "lab": "Lab head",
+        "director": "Director"
+      },
+      "contract": {
+        "title": "Contract",
+        "file": "Contract file"
+      }
+    },
+    "contract": {
+      "toasts": {
+        "fetchFailed": "Could not load application",
+        "notApproved": "Application is not approved yet",
+        "alreadyHasContract": "A contract already exists for this application",
+        "summaryRequired": "Enter collaboration summary (Clause 2)",
+        "requiredFields": "Fill all required fields for Party A and B",
+        "created": "Contract generated from template and saved",
+        "createFailed": "Failed to save contract"
+      },
+      "actions": {
+        "backAria": "Back to CV approvals",
+        "creating": "Generating...",
+        "saveCreate": "Save & generate contract"
+      },
+      "title": "Generate contract from template",
+      "subtitle": "Fill information → save to default Word file",
+      "empty": "Application not found.",
+      "notice": "The system fills a contract template on the server. The generated .docx is attached to the candidate’s application.",
+      "defaultSummary": "Collaborate for role: {{position}}. Detailed terms will be agreed separately by both parties.",
+      "partyA": {
+        "title": "Party A — Supervisor / Researcher",
+        "name": "Full name *",
+        "namePlaceholder": "Supervisor name",
+        "titleLabel": "Title",
+        "titlePlaceholder": "e.g., Senior lecturer",
+        "workUnit": "Work unit *",
+        "workUnitPlaceholder": "Department / lab / institute",
+        "email": "Email *",
+        "phone": "Phone",
+        "address": "Address (optional — used as signing location if not provided separately)"
+      },
+      "partyB": {
+        "title": "Party B — Student",
+        "hint": "Pre-filled from application — you can edit.",
+        "name": "Full name *",
+        "studentId": "Student ID",
+        "studentIdPlaceholder": "Student ID",
+        "faculty": "Class / Faculty / School",
+        "email": "Email *",
+        "phone": "Phone",
+        "address": "Address"
+      },
+      "meta": {
+        "title": "Dates & system notes",
+        "date": "Commitment date (opening line)",
+        "location": "Signing location (“at …”)",
+        "locationPlaceholder": "Leave blank to use Party A address (if provided)",
+        "summary": "Summary / note attached to application *",
+        "summaryPlaceholder": "Stored in the record (not printed in the fixed template)..."
+      }
+    },
+    "contractView": {
+      "toasts": {
+        "fetchFailed": "Could not load application",
+        "noContractFile": "No contract file yet",
+        "confirmed": "Contract confirmed. The candidate account has been updated to member.",
+        "confirmFailed": "Could not confirm contract"
+      },
+      "errors": {
+        "fileFetchFailed": "Could not fetch file"
+      },
+      "actions": {
+        "backAria": "Back to CV approvals",
+        "downloadAria": "Download contract",
+        "download": "Download contract",
+        "confirm": "Confirm contract",
+        "confirmed": "Contract confirmed"
+      },
+      "title": "View contract",
+      "summary": "Summary",
+      "previewHintPrefix": "PDF can be viewed directly; Word (.docx) is rendered in-browser. If it fails, use",
+      "previewTitle": "Contract"
+    }
+  },
+  "profile": {
+    "toasts": {
+      "fetchFailed": "Could not load profile",
+      "statsFailed": "Could not load R&D stats",
+      "avatarTypeInvalid": "Only JPG, PNG, WEBP, GIF images are allowed",
+      "avatarTooLarge": "Max avatar size is 5MB",
+      "avatarUpdated": "Avatar updated",
+      "avatarUploadFailed": "Avatar upload failed",
+      "nameTooShort": "Name must be at least 2 characters",
+      "updated": "Profile updated",
+      "updateFailed": "Update failed"
+    },
+    "dash": "—",
+    "yes": "Yes",
+    "no": "No",
+    "noUser": "No user data.",
+    "kicker": "R&D HR MANAGEMENT SYSTEM",
+    "titlePrefix": "MEMBER",
+    "titleHighlight": "PROFILE",
+    "actions": {
+      "edit": "EDIT PROFILE",
+      "saving": "SAVING...",
+      "save": "SAVE CHANGES",
+      "updateAvatar": "Update avatar"
+    },
+    "avatarHint": "JPG, PNG, WEBP, GIF — max 5MB",
+    "systemLog": {
+      "accessValid": "Access: valid",
+      "accountStatus": "Account status",
+      "role": "Role",
+      "clearance": "Clearance",
+      "emailVerified": "Email verified",
+      "joined": "Joined"
+    },
+    "roles": {
+      "admin": "System admin",
+      "vien_truong": "Director",
+      "truong_lab": "Lab head",
+      "leader": "Project lead",
+      "member": "Member",
+      "user": "Guest"
+    },
+    "status": {
+      "pending": "Pending",
+      "active": "Active",
+      "rejected": "Rejected",
+      "locked": "Locked"
+    },
+    "stats": {
+      "completedProjects": "Completed projects",
+      "activeProjects": "Active projects",
+      "approvedPapers": "Approved papers"
+    },
+    "editableInfo": "Editable information",
+    "fields": {
+      "fullName": "FULL NAME",
+      "emailReadOnly": "EMAIL (READ ONLY)",
+      "studentCode": "STUDENT CODE / NODE ID",
+      "department": "DEPARTMENT / UNIT",
+      "phone": "PHONE"
+    },
+    "placeholders": {
+      "phone": "+84 10 digits (numbers only)"
+    },
+    "errors": {
+      "phoneLength": "Phone number must be +84 10 digits, or leave blank."
+    },
+    "meta": {
+      "primaryKey": "Account primary key",
+      "hint": "System role ({{role}}) is assigned by admins; login email cannot be changed here. Profile updates call PATCH /auth/me (full_name, student_code, department, phone_number)."
+    },
+    "security": "Security"
+  },
+  "directorWorkspace": {
+    "kicker": "Institute director",
+    "title": "Workspace",
+    "subtitle": "Quick access to publication tasks, Verilog, and profile.",
+    "backToWorkspace": "Back to director workspace",
+    "sections": {
+      "account": "Profile & system",
+      "publication": "Publications & library",
+      "verilog": "Verilog training",
+      "hr": "Scientist HR"
+    },
+    "links": {
+      "profile": "Profile",
+      "profileDesc": "Update profile and password",
+      "categories": "Manage categories",
+      "categoriesDesc": "Categories for curriculum & documents",
+      "researchHub": "Research papers",
+      "researchHubDesc": "Public / internal research hub",
+      "researchSubmit": "Submit research",
+      "researchSubmitDesc": "Upload a new entry",
+      "researchMine": "My submissions",
+      "researchMineDesc": "Track status",
+      "researchApprovals": "Approve research",
+      "researchApprovalsDesc": "Pending queue",
+      "researchWithdrawn": "Withdrawn research",
+      "researchWithdrawnDesc": "Research items removed from the public catalog",
+      "curriculumHub": "Curriculum",
+      "curriculumHubDesc": "Curriculum library",
+      "curriculumCreate": "Create curriculum",
+      "curriculumCreateDesc": "Add a new item",
+      "curriculumMine": "My curriculum",
+      "curriculumMineDesc": "Drafts & submissions",
+      "curriculumApprovals": "Approve curriculum",
+      "curriculumApprovalsDesc": "Pending queue",
+      "documentsHub": "Technical documents",
+      "documentsHubDesc": "Document library",
+      "documentsCreate": "Create document",
+      "documentsCreateDesc": "Add a new item",
+      "documentsMine": "My documents",
+      "documentsMineDesc": "Drafts & submissions",
+      "documentsApprovals": "Approve documents",
+      "documentsApprovalsDesc": "Pending queue",
+      "verilogManage": "Manage Verilog problems",
+      "verilogManageDesc": "Problems & testbenches",
+      "verilogSubmissions": "View Verilog submissions",
+      "verilogSubmissionsDesc": "All submissions",
+      "verilogPractice": "Verilog practice",
+      "verilogPracticeDesc": "Learner hub",
+      "cvApprovals": "Scientist applications",
+      "cvApprovalsDesc": "CV & contracts"
+    }
+  }
+}

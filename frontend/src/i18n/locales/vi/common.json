@@ -1,0 +1,317 @@
+{
+  "nav": {
+    "home": "Trang chủ",
+    "publications": "Ấn phẩm",
+    "connection": "Kết nối",
+    "projects": "Dự án",
+    "training": "Training",
+    "dashboard": "Bảng điều khiển",
+    "verilog": "Verilog"
+  },
+  "actions": {
+    "login": "Đăng nhập",
+    "logout": "Đăng xuất",
+    "backToList": "Danh sách",
+    "searchPlaceholder": "Tìm kiếm...",
+    "searchAria": "Tìm kiếm",
+    "cancel": "Hủy bỏ",
+    "close": "Đóng"
+  },
+  "errors": {
+    "generic": "Có lỗi xảy ra"
+  },
+  "apiErrors": {
+    "emailAlreadyRegistered": "Email này đã được đăng ký",
+    "studentCodeInUse": "Mã sinh viên đã được sử dụng",
+    "invalidVerificationToken": "Token xác thực không hợp lệ hoặc đã hết hạn",
+    "invalidResetToken": "Token đặt lại mật khẩu không hợp lệ hoặc đã hết hạn",
+    "userNotFound": "Không tìm thấy người dùng",
+    "forgotPasswordHint": "Nếu email đã đăng ký, bạn sẽ nhận được liên kết đặt lại mật khẩu.",
+    "resetSuccess": "Đặt lại mật khẩu thành công. Vui lòng đăng nhập bằng mật khẩu mới.",
+    "currentPasswordIncorrect": "Mật khẩu hiện tại không đúng",
+    "passwordChanged": "Đã đổi mật khẩu thành công",
+    "userNoLongerExists": "Tài khoản không còn tồn tại",
+    "invalidRefreshToken": "Phiên đăng nhập hết hạn hoặc không hợp lệ",
+    "googleAuthUserNotFound": "Không tìm thấy tài khoản sau khi xác thực Google",
+    "emailVerifiedPending": "Email đã xác thực. Tài khoản đang chờ admin phê duyệt.",
+    "joiFullNameMin": "Họ tên phải có ít nhất 2 ký tự",
+    "joiEmailInvalid": "Vui lòng nhập địa chỉ email hợp lệ",
+    "joiPasswordComplexity": "Mật khẩu phải có chữ hoa, chữ thường, số và ký tự đặc biệt",
+    "joiPasswordMin": "Mật khẩu phải có ít nhất 8 ký tự",
+    "rateLimit": "Quá nhiều yêu cầu, vui lòng thử lại sau",
+    "rateLimitShort": "Quá nhiều yêu cầu, vui lòng thử lại trong giây lát",
+    "projectNotFound": "Không tìm thấy dự án",
+    "noProjectAccess": "Bạn không có quyền truy cập dự án này",
+    "noProjectAccessAfterReject": "Bạn đã từ chối hoặc không còn liên quan tới dự án này. Không thể xem chi tiết.",
+    "noPermissionUpdateProject": "Bạn không có quyền cập nhật dự án này",
+    "onlyTruongLabArchive": "Chỉ trưởng lab mới có thể lưu trữ dự án",
+    "membersCannotCreateTasks": "Thành viên không được tạo công việc",
+    "assigneeNotMember": "Người được giao không thuộc dự án này",
+    "taskNotFound": "Không tìm thấy công việc",
+    "onlyOwnTasks": "Bạn chỉ được cập nhật công việc của chính mình",
+    "membersOnlyTaskStatus": "Thành viên chỉ được đổi trạng thái công việc",
+    "userNotProjectMember": "Người dùng không phải thành viên dự án",
+    "noPermissionAddMembers": "Bạn không có quyền thêm thành viên",
+    "onlyTruongLabVienTruongInviteMembers": "Chỉ trưởng lab hoặc viện trưởng mới được mời thêm thành viên.",
+    "addMembersOnlyWhenPaused": "Chỉ có thể mời thêm thành viên khi dự án đang tạm dừng (paused).",
+    "userNotFoundOrInactive": "Không tìm thấy người dùng hoặc tài khoản không hoạt động",
+    "memberNotFound": "Không tìm thấy thành viên",
+    "cannotRemoveLeader": "Không thể xóa trưởng nhóm dự án",
+    "noPermissionCreateMilestones": "Bạn không có quyền tạo mốc",
+    "milestoneTaskLink": "Chỉ có thể gắn công việc chưa hoàn thành của dự án này vào mốc",
+    "noPermissionUpdateMilestones": "Bạn không có quyền cập nhật mốc",
+    "milestoneNotFound": "Không tìm thấy mốc",
+    "reportWeekDuplicate": "Đã nộp báo cáo cho tuần này",
+    "forbidden": "Không có quyền thực hiện thao tác này",
+    "gitRepoUpdated": "Đã cập nhật kho mã nguồn",
+    "webhookProcessed": "Đã xử lý webhook",
+    "memberRemoved": "Đã xóa thành viên",
+    "commitmentIdsRequired": "Thiếu mã cam kết",
+    "commitmentNotFound": "Không tìm thấy cam kết hoặc không được phép",
+    "commitmentOnlyPending": "Chỉ cập nhật được cam kết đang chờ",
+    "validationError": "Dữ liệu không hợp lệ"
+  },
+  "language": {
+    "label": "Ngôn ngữ",
+    "vi": "VI",
+    "en": "EN"
+  },
+  "status": {
+    "loading": "Đang gửi..."
+  },
+  "table": {
+    "time": "Thời gian",
+    "status": "Trạng thái",
+    "score": "Điểm"
+  },
+  "preview": {
+    "livePreview": "Xem trực tiếp",
+    "newTab": "Tab mới",
+    "loading": "Đang tải bản xem trước…",
+    "unsupportedTitle": "Không xem được định dạng này trong trang (ví dụ Word .doc cũ, Excel, PowerPoint), hoặc file bị lỗi.",
+    "unsupportedHint": "Với .docx / .pdf bạn có thể xem trong khung; .doc hãy mở bằng Word qua tab mới hoặc chuyển sang .docx/PDF.",
+    "blobErrorTitle": "Không tải được file để xem trong trang. Hãy mở « Tab mới » hoặc tải xuống ở cột bên phải.",
+    "noSource": "Không có nguồn PDF để xem trước.",
+    "actions": {
+      "openNewTab": "Mở file (tab mới)",
+      "download": "Tải xuống",
+      "open": "Mở file",
+      "tryOpen": "Thử mở file"
+    }
+  }
+  ,
+  "notification": {
+    "ariaLabel": "Thông báo",
+    "title": "Thông báo",
+    "markAllRead": "Đã đọc hết",
+    "empty": "Không có thông báo"
+  },
+  "footer": {
+    "labTagline": "Phòng lab Robotics & AI Chip",
+    "description": "Hệ sinh thái nghiên cứu lõi (Core R&D) về Thiết kế vi mạch AI (NPU/ASIC) và Hệ thống Robot tự hành trực thuộc FPT University.",
+    "systemIndex": {
+      "title": "Danh mục hệ thống",
+      "items": {
+        "platformIntro": "Giới thiệu nền tảng",
+        "researchDatabase": "Cơ sở dữ liệu nghiên cứu",
+        "activeProjects": "Dự án đang triển khai",
+        "partnerNetwork": "Mạng lưới hợp tác"
+      }
+    },
+    "researchClusters": {
+      "title": "Cụm nghiên cứu trọng điểm",
+      "items": {
+        "npu": "Thiết kế bộ tăng tốc AI (NPU)",
+        "slam": "Hệ thống SLAM tự hành",
+        "edgeFpga": "Điện toán biên & FPGA",
+        "hri": "Tương tác người - robot"
+      }
+    },
+    "contact": {
+      "title": "Kênh liên hệ",
+      "directEmail": "Email trực tiếp",
+      "emailValue": "collab@vkslab.lab",
+      "location": "Địa điểm làm việc",
+      "addressLine1": "Khu nghiên cứu Robotics & Embedded Systems,",
+      "addressLine2": "FPT University Campus, Đà Nẵng."
+    },
+    "systemRunning": "Hệ thống đang hoạt động",
+    "version": "Phiên bản {{version}} © VKsLab Intelligence Hub",
+    "policies": {
+      "data": "Chính sách dữ liệu",
+      "privacy": "Chính sách bảo mật"
+    }
+  }
+  ,
+  "contact": {
+    "kicker": "Hệ thống: Sẵn sàng hợp tác",
+    "titlePrefix": "Kết nối",
+    "titleHighlight": "hợp tác kỹ thuật.",
+    "subtitle": "Kết nối trực tiếp với đội ngũ nghiên cứu Chip & Robotics",
+    "stackOptions": [
+      "Thiết kế vi mạch số & hệ thống trên chip",
+      "Robot tự hành & tự động hóa công nghiệp",
+      "Hệ thống điều khiển và cảm nhận cho xe thông minh",
+      "Other..."
+    ],
+    "form": {
+      "title": "Gửi đề xuất nghiên cứu",
+      "kicker": "Quy trình nghiên cứu & phát triển",
+      "fields": {
+        "org": "Tên đơn vị / phòng lab",
+        "email": "Email liên hệ",
+        "stack": "Hướng công nghệ quan tâm",
+        "summary": "Tóm tắt đề xuất"
+      },
+      "placeholders": {
+        "org": "Ví dụ: Phòng thí nghiệm Robotics VKsLab",
+        "email": "collab@domain.edu",
+        "summary": "Mô tả mục tiêu nghiên cứu và các tài nguyên cần thiết..."
+      },
+      "encryption": "Đã bật mã hóa đầu-cuối",
+      "submit": "Gửi đề xuất"
+    },
+    "location": {
+      "kicker": "Địa điểm làm việc",
+      "title": "Phòng thí nghiệm trung tâm",
+      "addressLabel": "Địa chỉ:",
+      "addressValue": "Khu nghiên cứu Robotics & Embedded Systems, FPT University Campus, Đà Nẵng, Việt Nam.",
+      "emailLabel": "Email:",
+      "emailValue": "collab@vkslab.lab",
+      "tags": [
+        "Phòng sạch Class 100",
+        "Máy chủ NVIDIA DGX",
+        "Khu kiểm thử FPGA"
+      ]
+    },
+    "quick": {
+      "hotline": "Hotline phòng lab",
+      "hotlineValue": "+84 (0) 236 730 1818",
+      "community": "Cộng đồng nghiên cứu",
+      "communityDesc": "Kết nối với nhóm nghiên cứu của VKsLab trên LinkedIn."
+    }
+  }
+  ,
+  "partners": {
+    "title": "Liên minh chiến lược",
+    "subtitle": "Mạng lưới Foundry & học thuật",
+    "foundryPartner": "Đối tác Foundry",
+    "items": {
+      "bosch": "AI ô tô",
+      "uniquify": "Thiết kế ASIC/SoC",
+      "faraday": "IP bán dẫn",
+      "fptSoftware": "Chuyển đổi số"
+    },
+    "footer": {
+      "foundryCertified": "Truy cập Foundry được chứng nhận",
+      "nda": "Hợp tác bảo mật theo NDA",
+      "sync": "Đồng bộ dữ liệu đang hoạt động"
+    }
+  }
+  ,
+  "notFound": {
+    "titlePrefix": "Tọa độ",
+    "titleHighlight": "Không tồn tại.",
+    "statusLabel": "Status",
+    "statusValue": "Request_Out_Of_Bounds",
+    "description": "Hệ thống không tìm thấy phân đoạn dữ liệu tại đường dẫn này. Có thể tài liệu đã được di chuyển hoặc ID truy cập bị sai lệch.",
+    "actions": {
+      "back": "Quay lại",
+      "home": "Trạm điều khiển"
+    }
+  }
+  ,
+  "aiAssistant": {
+    "header": {
+      "title": "Trợ lý AI",
+      "subtitle": "VKsLab Smart Assistant"
+    },
+    "tabs": {
+      "chat": "Chat",
+      "notifications": "Thông báo"
+    },
+    "actions": {
+      "enableAria": "Bật trợ lý AI",
+      "enable": "Bật trợ lý",
+      "disableTitle": "Tắt trợ lý AI",
+      "disable": "Tắt"
+    },
+    "dashNa": "N/A",
+    "chat": {
+      "welcomeTitle": "Chào bạn, mình là Trợ lý AI VKsLab",
+      "welcomeHint": "Mình luôn ở đây để hỗ trợ bạn về task, dự án, deadline và báo cáo tuần theo cách dễ hiểu nhất.",
+      "quick": [
+        "Bạn giúp mình ưu tiên công việc hôm nay nhé",
+        "Tình trạng dự án hiện tại của mình thế nào?",
+        "Có rủi ro nào mình cần chú ý không?"
+      ],
+      "inputPlaceholder": "Nhập câu hỏi...",
+      "errors": {
+        "genericCannotProcess": "Xin lỗi, tôi không thể xử lý yêu cầu này lúc này.",
+        "serviceUnavailable": "Dịch vụ AI tạm thời không khả dụng. API key có thể đã hết hạn.",
+        "connection": "Lỗi kết nối. Vui lòng thử lại sau."
+      }
+    },
+    "notifications": {
+      "loadFailed": "Không thể tải thông báo",
+      "summary": {
+        "title": "Tổng quan",
+        "pendingTasks": "Task chưa xong",
+        "overdueTasks": "Task quá hạn",
+        "todayTasks": "Task hôm nay",
+        "activeProjects": "Dự án active",
+        "overdueProjects": "Dự án trễ",
+        "reportRate": "Tỷ lệ report"
+      },
+      "empty": "Không có thông báo nào. Mọi thứ đang ổn!",
+      "refresh": "Làm mới thông báo"
+    }
+  },
+  "guestInfoChat": {
+    "header": {
+      "title": "Hỏi về VKsLab",
+      "subtitle": "Thông tin công khai theo tài liệu hệ thống"
+    },
+    "welcomeTitle": "Xin chào!",
+    "welcomeHint": "Hỏi mình về VKsLab: lĩnh vực, đào tạo, dự án tiêu biểu và chức năng nền tảng.",
+    "quick": [
+      "VKsLab là gì và làm về lĩnh vực nào?",
+      "Các chức năng cốt lõi của hệ thống là gì?",
+      "Trụ sở và quy mô nhân sự của VKsLab?"
+    ],
+    "inputPlaceholder": "Nhập câu hỏi về VKsLab...",
+    "ariaToggle": "Mở chat thông tin VKsLab",
+    "ariaClose": "Đóng chat"
+  },
+  "header": {
+    "aiAssistantAria": "Trợ lý AI",
+    "mobileMenuOpen": "Mở menu điều hướng",
+    "mobileMenuClose": "Đóng menu điều hướng",
+    "loadingDots": "...",
+    "publications": {
+      "researchPapers": "Bài báo nghiên cứu",
+      "booksAndPublications": "Sách & Ấn phẩm",
+      "books": {
+        "curriculum": "Giáo trình",
+        "documents": "Tài liệu"
+      }
+    },
+    "connection": {
+      "info": "Thông tin",
+      "portal": "Cổng thông tin",
+      "forums": "Diễn đàn"
+    },
+    "training": {
+      "verilog": "Verilog"
+    },
+    "userMenu": {
+      "directorWorkspace": "Không gian làm việc",
+      "profile": "Thông tin cá nhân",
+      "dashboard": "Bảng điều khiển",
+      "manageCategories": "Quản lý danh mục",
+      "manageVerilog": "Quản lý Verilog",
+      "viewVerilogSubmissions": "Xem bài nộp Verilog"
+    }
+  }
+}
+

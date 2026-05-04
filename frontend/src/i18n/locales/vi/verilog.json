@@ -1,0 +1,278 @@
+{
+  "title": "Verilog",
+  "problems": "Bài tập",
+  "submit": "Nộp bài",
+  "history": "Lịch sử nộp",
+  "result": "Kết quả",
+  "levels": {
+    "easy": "Cơ bản",
+    "medium": "Trung bình",
+    "hard": "Khó"
+  },
+  "submissions": {
+    "title": "Lịch sử bài nộp",
+    "subtitleForProblem": "Các bài nộp cho bài tập này",
+    "subtitleAllMine": "Tất cả bài nộp của bạn",
+    "totalCount": "({{total}} bài nộp)",
+    "empty": "Chưa có bài nộp nào",
+    "detailTitle": "Chi tiết bài nộp",
+    "testsPassed": "Test đạt",
+    "judgeMethod": "Phương pháp",
+    "points": "{{points}} điểm",
+    "log": "Nhật ký",
+    "sourceCode": "Mã nguồn",
+    "table": {
+      "problem": "Bài tập",
+      "testsPassed": "Test đạt"
+    },
+    "pagination": {
+      "prev": "TRƯỚC",
+      "next": "SAU"
+    },
+    "status": {
+      "judging": "Đang chấm",
+      "error": "Lỗi",
+      "accepted": "Đạt"
+    },
+    "statusCode": {
+      "PENDING": "Đang chờ",
+      "JUDGING": "Đang chấm",
+      "DONE": "Hoàn tất",
+      "ERROR": "Lỗi"
+    },
+    "failure": {
+      "CE": "Lỗi biên dịch",
+      "RLE": "Lỗi runtime",
+      "TLE": "Quá thời gian",
+      "WA": "Sai kết quả",
+      "NONE": "Đúng",
+      "NA": "Chưa xác định"
+    },
+    "toasts": {
+      "fetchFailed": "Không thể tải danh sách bài nộp"
+    }
+  },
+  "allSubmissions": {
+    "title": "Danh sách bài nộp",
+    "subtitle": "Tất cả bài nộp của người dùng",
+    "searchPlaceholder": "Tìm theo tên người dùng...",
+    "allUsers": "Tất cả người dùng",
+    "unknownUser": "Không rõ",
+    "table": {
+      "submitter": "Người nộp"
+    }
+  },
+  "dashboard": {
+    "welcome": "Chào mừng bạn đến với dịch vụ đánh giá trực tuyến của Verilog",
+    "errors": {
+      "fetchProblemsFailed": "Không tải được danh sách bài tập"
+    },
+    "stats": {
+      "submitted": "Đã nộp bài: ",
+      "accepted": "Bài đạt: ",
+      "totalScore": "Tổng điểm (best/đề): "
+    },
+    "progress": {
+      "title": "Tiến độ học Verilog",
+      "acceptedCount": "Đã đạt {{accepted}} / {{total}} bài",
+      "submittedHint": "Bạn đã nộp {{submitted}} bài. Cố gắng duy trì nhịp độ đều mỗi ngày."
+    },
+    "actions": {
+      "nextProblem": "Làm bài tiếp theo"
+    },
+    "suggestions": {
+      "title": "Bài gợi ý cho bạn",
+      "empty": "Chưa có dữ liệu gợi ý. Hãy bắt đầu bằng bài cơ bản đầu tiên."
+    },
+    "problemStatus": {
+      "none": "—",
+      "accepted": "Đạt",
+      "attempted": "Đã thử",
+      "unattempted": "Chưa làm",
+      "not_attempted": "Chưa làm"
+    },
+    "deadlineNotice": {
+      "title": "Thông báo deadline",
+      "hasDeadline": "Bài gần nhất đến hạn: {{name}} ({{date}}).",
+      "none": "Hiện chưa có bài nào đặt hạn nộp. Bạn có thể tập trung nâng điểm các bài đang làm."
+    },
+    "searchPlaceholder": "Tìm theo tên bài...",
+    "filters": {
+      "all": "Tất cả"
+    },
+    "loading": "Đang tải...",
+    "table": {
+      "logicId": "Mã nhiệm vụ",
+      "title": "Tiêu đề",
+      "level": "Độ khó",
+      "testCount": "Số test",
+      "tags": "Tag",
+      "createdAt": "Ngày tạo",
+      "maxScore": "Điểm tối đa"
+    },
+    "empty": "Không có bài tập phù hợp.",
+    "pagination": {
+      "page": "Trang {{page}} / {{totalPages}}"
+    },
+    "library": {
+      "title": "Thư viện tài liệu",
+      "subtitle": "Học liệu và tài nguyên nghiên cứu",
+      "items": {
+        "research": {
+          "title": "NGHIÊN CỨU",
+          "subtitle": "Bài nổi bật nghiên cứu",
+          "description": "Tuyển tập các bài báo và chủ đề nghiên cứu chất lượng cao."
+        },
+        "curriculum": {
+          "title": "GIÁO TRÌNH",
+          "subtitle": "Lộ trình học Verilog",
+          "description": "Chuỗi học phần từ cơ bản đến nâng cao, bám sát thực hành."
+        },
+        "documents": {
+          "title": "TÀI LIỆU",
+          "subtitle": "Tài liệu tham khảo",
+          "description": "Tổng hợp tài liệu kỹ thuật, hướng dẫn và chuẩn triển khai."
+        }
+      }
+    }
+  }
+  ,
+  "problemDetail": {
+    "deadline": "Hạn: {{date}}",
+    "input": "Input",
+    "output": "Output",
+    "testsTitle": "Test (chỉ hiển thị tên — không lộ dữ liệu)",
+    "points": "{{points}} điểm",
+    "loginHint": "để gửi bài và xem kết quả chấm.",
+    "codePlaceholder": "module top (...); ... endmodule",
+    "judgeLog": "Log chấm",
+    "resultTable": {
+      "test": "Test",
+      "failure": "Lỗi"
+    },
+    "errors": {
+      "missingProblemId": "Thiếu mã bài tập.",
+      "notFound": "Không tìm thấy bài tập.",
+      "fetchFailed": "Không tải được bài tập"
+    },
+    "toasts": {
+      "loginRequired": "Vui lòng đăng nhập để nộp bài",
+      "codeRequired": "Nhập mã nguồn Verilog",
+      "received": "Đã nhận bài, đang chấm...",
+      "judged": "Chấm xong: {{score}} / {{max}} điểm",
+      "judgeError": "Chấm bài gặp lỗi",
+      "submitFailed": "Nộp bài thất bại"
+    },
+    "fail": {
+      "CE": "Biên dịch lỗi",
+      "RLE": "Lỗi chấm",
+      "TLE": "Quá thời gian",
+      "WA": "Sai đáp án",
+      "NONE": "Đạt",
+      "NA": "—"
+    }
+  }
+  ,
+  "management": {
+    "kicker": "HDL & kiểm thử",
+    "title": "Quản lý bài tập Verilog",
+    "subtitle": "Tạo, sửa, xóa bài tập và test case",
+    "unknown": "Không rõ",
+    "searchPlaceholder": "Tìm kiếm bài tập...",
+    "empty": "Chưa có bài tập nào",
+    "visibility": {
+      "public": "Công khai",
+      "hidden": "Ẩn"
+    },
+    "table": {
+      "title": "Tiêu đề",
+      "level": "Độ khó",
+      "score": "Điểm",
+      "submitted": "Đã nộp",
+      "owner": "Người tạo",
+      "visibility": "Hiển thị",
+      "actions": "Thao tác"
+    },
+    "actions": {
+      "createProblem": "Tạo bài tập",
+      "save": "Lưu",
+      "delete": "Xóa",
+      "add": "Thêm"
+    },
+    "tabs": {
+      "info": "Thông tin",
+      "tests": "Bộ test ({{count}})"
+    },
+    "form": {
+      "createTitle": "Tạo bài tập mới",
+      "editTitle": "Chỉnh sửa bài tập",
+      "uploading": "Đang tải lên...",
+      "uploadTestbench": "Tải lên file testbench (.v)",
+      "orPaste": "hoặc nhập trực tiếp bên dưới",
+      "syncSubtests": "Đồng bộ testcase (VKSLAB_SUBTESTS_JSON)",
+      "syncSubtestsHint": "Thêm block /* VKSLAB_SUBTESTS_JSON [ {\"id\":\"t1\",\"name\":\"...\",\"grade\":5} ] */ trong testbench; mỗi subtest in một dòng: $display(\"VKSLAB_SUBTEST id=t1 status=PASS\");. Nút này lưu testbench lên server rồi tạo/cập nhật test case theo từng id.",
+      "testbenchPlaceholder": "Dán nội dung file testbench tại đây...",
+      "tagPlaceholder": "Thêm tag...",
+      "testbenchTypes": {
+        "auto": "Tự động",
+        "custom": "Tự viết"
+      },
+      "fields": {
+        "name": "Tên bài tập *",
+        "description": "Mô tả",
+        "inputDesc": "Mô tả đầu vào",
+        "outputDesc": "Mô tả đầu ra",
+        "level": "Độ khó",
+        "testbenchType": "Loại testbench",
+        "deadline": "Hạn nộp",
+        "tags": "Nhãn",
+        "templateCode": "Mã mẫu",
+        "testbenchCode": "Testbench Code",
+        "published": "Hiển thị công khai"
+      }
+    },
+    "tests": {
+      "syncBannerTitle": "TB tự viết + chia điểm (VKSLAB)",
+      "syncBannerBody": "Nếu trong tab Thông tin bạn đã dán testbench có block /* VKSLAB_SUBTESTS_JSON ... */ thì bấm nút bên dưới để tạo test case tự động (không cần Thêm test case từng dòng). Nút này cũng có ở tab Thông tin cạnh ô Testbench.",
+      "title": "Bộ test",
+      "add": "Thêm test case",
+      "create": "Tạo mới",
+      "edit": "Chỉnh sửa",
+      "testcase": "test case",
+      "empty": "Chưa có test case nào",
+      "testN": "Test {{n}}",
+      "inputPrefix": "Input: {{input}}",
+      "expectedPrefix": "Mong đợi: {{expected}}",
+      "fields": {
+        "name": "Tên",
+        "points": "Điểm",
+        "order": "Thứ tự",
+        "input": "Input (a=1,b=0)",
+        "expected": "Đầu ra mong đợi (y=1)",
+        "type": "Loại",
+        "timeLimit": "Giới hạn thời gian (s)",
+        "memLimit": "Giới hạn bộ nhớ (MB)"
+      }
+    },
+    "toasts": {
+      "syncSubtestsOk": "Đã đồng bộ testcase từ testbench",
+      "syncSubtestsFailed": "Không đồng bộ được — kiểm tra block VKSLAB_SUBTESTS_JSON",
+      "syncSubtestsWrongType": "Chỉ dùng khi loại testbench là Tự viết (custom)",
+      "fetchProblemsFailed": "Không thể tải danh sách bài tập",
+      "deletedProblem": "Đã xóa bài tập",
+      "deleteFailed": "Xóa thất bại",
+      "nameRequired": "Tên bài tập là bắt buộc",
+      "updatedProblem": "Đã cập nhật bài tập",
+      "createdProblem": "Đã tạo bài tập",
+      "saveFailed": "Lỗi khi lưu",
+      "readFile": "Đã đọc file {{name}}",
+      "uploadedTestbench": "Đã tải lên testbench: {{name}}",
+      "uploadFailed": "Tải lên testbench thất bại",
+      "updatedTestcase": "Đã cập nhật test case",
+      "createdTestcase": "Đã tạo test case",
+      "deletedTestcase": "Đã xóa test case",
+      "testcaseSaveFailed": "Lỗi khi lưu test case"
+    }
+  }
+}
+

@@ -1,0 +1,151 @@
+{
+  "title": "Home",
+  "hero": {
+    "kicker": "VKsLab LAB • Hub of Innovation",
+    "badge": "Top 10 R&D Hub 2026",
+    "title": {
+      "line1": "Beyond",
+      "line2": "Research.",
+      "line3": "Impact."
+    },
+    "description": "We turn academic knowledge into core technology solutions, shaping the future of semiconductors and global automation.",
+    "actions": {
+      "transfer": "Technology transfer",
+      "library": "Global knowledge library"
+    }
+  },
+  "ticker": {
+    "fallback": [
+      "VKsLab Hub — R&D platform & technical publications",
+      "FPT University Strategic R&D Hub",
+      "International publications synced from system data",
+      "Partnership: Global Semiconductor Alliance"
+    ]
+  },
+  "stats": {
+    "q1q2": { "label": "Q1/Q2 international publications", "highlight": "Academic Excellence" },
+    "assets": { "label": "Curricula & technical documents", "highlight": "System Repository" },
+    "activeProjects": { "label": "Active projects", "highlight": "Active Projects" },
+    "roster": { "label": "Lab roster (active members)", "highlight": "Elite Network" }
+  },
+  "capabilities": {
+    "kicker": "Core Research Lab",
+    "title": { "line1": "Mastering", "line2": "Core Technology." },
+    "description": "VKsLab is built to turn complex research into commercial products, enabling local enterprises to own hardware and AI capabilities.",
+    "features": {
+      "ieee": { "title": "IEEE standards", "desc": "Compliant with the highest international technical standards." },
+      "deepRd": { "title": "Deep R&D", "desc": "Thousands of real lab testing hours for every module." }
+    },
+    "items": {
+      "customIcDesign": {
+        "title": "Custom IC Design",
+        "badge": "Semiconductor",
+        "desc": "Designing dedicated ASIC/FPGA chips on advanced nodes (65nm/28nm)."
+      },
+      "advancedRobotics": {
+        "title": "Advanced Robotics",
+        "badge": "Automation",
+        "desc": "High-precision robot control solutions integrated with edge AI."
+      },
+      "smartMobility": {
+        "title": "Smart Mobility",
+        "badge": "Automotive",
+        "desc": "Smart control integration and advanced driver-assistance features (ADAS)."
+      }
+    }
+  },
+  "academic": {
+    "tagLabel": "Scientific Excellence",
+    "title": "Publication achievements.",
+    "cta": "Publication library"
+  },
+  "pathfinder": {
+    "systemRules": {
+      "title": "System regulations",
+      "desc": "VKsLab platform usage rules, role-based access, and general lab operating principles.",
+      "cta": "View regulations"
+    },
+    "scientist": {
+      "title": "For scientists",
+      "guest": {
+        "desc": "VKsLab welcomes experts to join our international research network.",
+        "cta": "Submit CV",
+        "note": "Login required — you will be redirected to the login page."
+      },
+      "reviewer": {
+        "desc": "Review candidate profiles as lab head/director and record contracts when needed.",
+        "cta": "Review CVs"
+      },
+      "member": {
+        "desc": "Your account is already registered with the role {{roleLabel}} in VKsLab. You don’t need to apply via this channel.",
+        "roleLeader": "leader / team coordinator",
+        "roleMember": "member",
+        "badge": "Member access granted"
+      },
+      "admin": {
+        "desc": "Admin account — manage users and system settings from the dashboard.",
+        "cta": "Open admin dashboard"
+      }
+    }
+  },
+  "partners": { "title": "Global strategic partners" },
+  "systemRulesPage": {
+    "title": "VKsLab system regulations",
+    "intro": "This page summarizes general rules for using the VKsLab portal and internal services. Module-specific rules may be updated separately.",
+    "sections": {
+      "access": {
+        "heading": "Accounts and roles",
+        "body": "Users sign in with issued accounts; each role (director, lab head, leader, member, etc.) has its own scope for projects, publications, and training. Do not share passwords; report suspected unauthorized access immediately."
+      },
+      "publication": {
+        "heading": "Publication repository and data",
+        "body": "Research outputs, curricula, and technical documents follow the lab approval workflow. Respect copyright and citations; do not publish confidential information or material that breaches partner agreements."
+      },
+      "conduct": {
+        "heading": "Conduct and security",
+        "body": "Use forums and channels for academic/technical purposes only. Do not distribute malware, spam, or abusive content. Follow organizational and partner security policies."
+      },
+      "intellectualProperty": {
+        "heading": "Intellectual property",
+        "body": "Materials, curricula, lectures, and research outputs of VKsLab are protected by intellectual property rights. Copying, sharing, distributing, or commercial use without written permission from VKsLab is prohibited."
+      },
+      "security": {
+        "heading": "Confidentiality and information security",
+        "body": "Access to and use of VKsLab materials, curricula, and research must strictly follow information security rules. Disclosure, sharing, or unauthorized use is prohibited."
+      },
+      "privacy": {
+        "heading": "Privacy",
+        "body": "VKsLab is committed to protecting user privacy. Personal data and data related to learning and research will be collected, stored, and processed in line with applicable personal data protection laws."
+      },
+      "acceptableUse": {
+        "heading": "Acceptable use",
+        "body": "You may use VKsLab only for learning, research, and authorized work. Use for unlawful activity, distributing harmful content, spam, or anything that harms the system or other users is prohibited."
+      },
+      "accountResponsibility": {
+        "heading": "Account responsibility",
+        "body": "You are responsible for securing your account. Do not share your account or use someone else’s account without permission. Activity under your account is attributed to the account holder."
+      },
+      "contentIntegrity": {
+        "heading": "Content integrity",
+        "body": "You must not alter, distort, or misrepresent curricula, materials, or research content. Any action that undermines accuracy of information is prohibited."
+      },
+      "systemSecurity": {
+        "heading": "System security",
+        "body": "Unauthorized access, vulnerability exploitation, reverse engineering, or disruption of VKsLab systems is prohibited. Attacks may be handled under applicable law."
+      },
+      "dataUsage": {
+        "heading": "Data use",
+        "body": "Data collected through the system may be used only for internal purposes or as permitted. Exporting, analyzing, or using data externally requires VKsLab approval."
+      },
+      "violationHandling": {
+        "heading": "Enforcement",
+        "body": "VKsLab may suspend or terminate access if rules are violated. Depending on severity, disciplinary action or legal consequences may apply."
+      },
+      "updatePolicy": {
+        "heading": "Policy updates",
+        "body": "VKsLab may change or update these rules and policies at any time to reflect operations and legal requirements. Users are responsible for staying informed and complying with the latest version."
+      }
+    },
+    "backHome": "Back to home"
+  }
+}

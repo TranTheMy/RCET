@@ -1,0 +1,154 @@
+{
+  "title": "Admin",
+  "dashboard": "Dashboard",
+  "nav": {
+    "dashboard": "Dashboard",
+    "usersAndRoles": "Users & roles",
+    "auditLog": "Audit log"
+  },
+  "sidebar": {
+    "adminPanel": "Admin panel",
+    "section": "Admin area",
+    "system": {
+      "active": "System is running",
+      "nodeLabel": "Node",
+      "statusLabel": "Status",
+      "statusOptimized": "Optimized"
+    }
+  }
+  ,
+  "header": {
+    "systemOnline": "Robotics systems online",
+    "access": "Access"
+  },
+  "roles": {
+    "user": "Guest",
+    "member": "Member",
+    "leader": "Team leader",
+    "truong_lab": "Lab head",
+    "vien_truong": "Director",
+    "admin": "System admin"
+  },
+  "dashboard": {
+    "title": "Approval console",
+    "subtitle": "Manage access requests and assign roles to nodes (users).",
+    "status": {
+      "pending": "PENDING",
+      "approved": "APPROVED",
+      "rejected": "REJECTED",
+      "all": "ALL"
+    },
+    "filters": {
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "all": "All"
+    },
+    "loading": "Scanning system...",
+    "empty": {
+      "title": "No access signals",
+      "hint": "Change the filter band or try again later."
+    },
+    "toasts": {
+      "fetchFailed": "Failed to load data",
+      "approved": "Access granted",
+      "rejected": "Access rejected",
+      "approveFailed": "Failed to grant access",
+      "rejectFailed": "Failed to reject access"
+    },
+    "card": {
+      "studentCode": "Student code",
+      "department": "Department",
+      "emailVerified": "Email verification",
+      "createdAt": "Created date",
+      "na": "N/A",
+      "verified": "VERIFIED",
+      "unverified": "UNVERIFIED",
+      "assignRole": "Assign role *",
+      "roleFixedHint": "Admins can only grant the basic «user» role. Promotions (member, leader, …) are handled by lab head / director workflows.",
+      "noteLabel": "Review note",
+      "notePlaceholder": "SYS_NOTE:...",
+      "systemLogPrefix": ">> SYSTEM_LOG // REVIEW NOTE",
+      "actions": {
+        "approve": "Approve",
+        "reject": "Reject"
+      }
+    }
+  }
+  ,
+  "users": {
+    "title": "User registry",
+    "subtitle": "Monitor system and route user node permissions.",
+    "totalActiveLabel": "TOTAL ACTIVE NODES:",
+    "searchPlaceholder": "SEARCH BY NAME, EMAIL OR STUDENT CODE...",
+    "loading": "Querying database...",
+    "na": "N/A",
+    "empty": {
+      "title": "No nodes found",
+      "hint": "The filters don’t match any records."
+    },
+    "filters": {
+      "allRoles": "ALL ROLES",
+      "allStatuses": "ALL STATUSES"
+    },
+    "status": {
+      "pending": "Pending",
+      "active": "Active",
+      "rejected": "Rejected",
+      "locked": "Locked"
+    },
+    "table": {
+      "node": "Node",
+      "contact": "Contact",
+      "department": "Department",
+      "role": "Role",
+      "createdAt": "Created",
+      "actions": "Actions",
+      "idPrefix": "ID"
+    },
+    "actions": {
+      "protected": "Protected",
+      "ban": "Ban",
+      "unban": "Unban"
+    },
+    "pagination": {
+      "blockOf": "BLOCK {{page}} OF {{totalPages}}"
+    },
+    "toasts": {
+      "fetchFailed": "Failed to load data",
+      "banned": "Account banned",
+      "unbanned": "Account unbanned",
+      "updateStatusFailed": "Couldn’t update account status"
+    }
+  }
+  ,
+  "audit": {
+    "title": "Security & logs",
+    "subtitle": "System audit trail — captures login, approvals, documents, projects (from backend).",
+    "total": "Total",
+    "dash": "—",
+    "filterPlaceholder": "Filter by action (substring)…",
+    "filterAction": "Filter",
+    "loading": "Loading logs…",
+    "empty": {
+      "title": "No records",
+      "hint": "Try removing filters or changing the keyword."
+    },
+    "toasts": {
+      "fetchFailed": "Failed to load audit logs"
+    },
+    "table": {
+      "time": "Time",
+      "action": "Action",
+      "performer": "Performer",
+      "target": "Target",
+      "metadata": "Metadata"
+    },
+    "pagination": {
+      "prev": "Prev",
+      "next": "Next",
+      "pageOf": "Page {{page}} / {{totalPages}}"
+    }
+  }
+}
+

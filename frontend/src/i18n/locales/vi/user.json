@@ -1,0 +1,540 @@
+{
+  "title": "Người dùng",
+  "dashboard": {
+    "toasts": {
+      "fetchFailed": "Không tải được dữ liệu dashboard",
+      "taskCompleted": "Task đã chuyển sang hoàn thành",
+      "updateTaskFailed": "Không thể cập nhật task"
+    },
+    "dash": "—",
+    "loading": "Đang đồng bộ dashboard…",
+    "noData": "Không có dữ liệu",
+    "kicker": "Trạm điều khiển",
+    "titlePrefix": "Không gian",
+    "titleHighlight": "Làm việc.",
+    "greeting": "Xin chào, {{name}}",
+    "activeProjects": "{{count}} dự án hoạt động",
+    "metrics": {
+      "taskCompletion": "Hoàn thành task",
+      "onTimeReports": "Báo cáo đúng hạn",
+      "weekStreak": "Chuỗi tuần",
+      "teamRanking": "Xếp hạng nhóm"
+    },
+    "section": {
+      "tasks": "Tiến trình & Nhiệm vụ",
+      "activityReports": "Hoạt động & báo cáo"
+    },
+    "sort": {
+      "deadline": "Deadline",
+      "priority": "Độ ưu tiên"
+    },
+    "tasks": {
+      "empty": "Chưa có nhiệm vụ được giao hoặc chưa có dự án active.",
+      "markDoneAria": "Đánh dấu task hoàn thành"
+    },
+    "priority": {
+      "urgent": "Khẩn",
+      "high": "Cao",
+      "medium": "Bình thường",
+      "low": "Thấp"
+    },
+    "recent": "Gần đây",
+    "noActivity": "Chưa có hoạt động.",
+    "achievements": "Thành tích",
+    "nextDue": "Hạn báo cáo gần nhất"
+  }
+  ,
+  "forums": {
+    "toasts": {
+      "fetchFailed": "Không tải được bài đăng diễn đàn",
+      "fetchDetailFailed": "Không tải được chi tiết bài viết",
+      "minLength": "Tiêu đề và nội dung cần ít nhất 3 ký tự",
+      "posted": "Đã đăng bài",
+      "postFailed": "Đăng bài thất bại",
+      "likeUpdateFailed": "Không cập nhật được thích",
+      "commentRequired": "Nhập nội dung bình luận",
+      "commentSent": "Đã gửi bình luận",
+      "commentFailed": "Gửi bình luận thất bại",
+      "postDeleted": "Đã xóa bài",
+      "postDeleteFailed": "Không xóa được bài",
+      "updated": "Đã cập nhật",
+      "updateFailed": "Cập nhật thất bại",
+      "commentDeleted": "Đã xóa bình luận",
+      "commentDeleteFailed": "Không xóa được bình luận",
+      "linkCopied": "Đã copy liên kết",
+      "moderationRejected": "Nội dung không đạt kiểm duyệt tự động. Vui lòng chỉnh sửa theo quy định cộng đồng.",
+      "moderationUnavailable": "Kiểm duyệt tự động tạm không khả dụng. Thử lại sau hoặc liên hệ quản trị."
+    },
+    "confirm": {
+      "deletePost": "Xóa bài viết này?",
+      "deleteComment": "Xóa bình luận?"
+    },
+    "auth": {
+      "title": "Diễn đàn VKsLab",
+      "hint": "API diễn đàn yêu cầu đăng nhập. Vui lòng đăng nhập để xem và đăng bài."
+    },
+    "form": {
+      "titlePlaceholder": "Tiêu đề (3–150 ký tự)",
+      "contentPlaceholder": "Nội dung (3–5000 ký tự)",
+      "commentPlaceholder": "Viết bình luận...",
+      "moderationHint": "Bài đăng và bình luận được kiểm duyệt tự động (18+, bạo lực/thù hằn, chính trị nhạy cảm, lừa đảo/spam, hack/crack, doxxing… sẽ bị từ chối)."
+    },
+    "actions": {
+      "post": "Đăng bài",
+      "menu": "Menu",
+      "edit": "Sửa",
+      "delete": "Xóa",
+      "responses": "Phản hồi",
+      "copyLink": "Copy link",
+      "deleteComment": "Xóa bình luận",
+      "send": "Gửi",
+      "save": "Lưu"
+    },
+    "comments": {
+      "loadFailed": "Không tải được bình luận."
+    },
+    "empty": "Chưa có bài đăng nào. Hãy là người đầu tiên!",
+    "sidebar": {
+      "loggedInAs": "Đăng nhập: {{name}}"
+    },
+    "editModal": {
+      "title": "Sửa bài viết"
+    },
+    "fallback": {
+      "member": "Thành viên",
+      "user": "User"
+    }
+  }
+  ,
+  "categories": {
+    "toasts": {
+      "fetchFailed": "Không thể tải danh mục",
+      "nameRequired": "Tên là bắt buộc",
+      "created": "Tạo danh mục thành công",
+      "updated": "Cập nhật danh mục thành công",
+      "createUpdateFailed": "Lỗi tạo/cập nhật danh mục",
+      "deleted": "Đã xóa danh mục",
+      "deleteFailed": "Không thể xóa danh mục"
+    },
+    "confirm": {
+      "delete": "Xóa danh mục này? Giáo trình/Tài liệu sẽ bị ảnh hưởng theo ràng buộc dữ liệu."
+    },
+    "kicker": "Phân loại & metadata",
+    "title": "Danh mục",
+    "subtitle": "Quản lý danh mục dùng cho Giáo trình/Tài liệu.",
+    "noPermission": "Chỉ `vien_truong` được tạo mới / quản lý category",
+    "dash": "—",
+    "actions": {
+      "deanInfo": "Thông tin viện trưởng",
+      "reset": "Đặt lại",
+      "create": "Tạo mới",
+      "update": "Cập nhật",
+      "gotIt": "Đã hiểu"
+    },
+    "form": {
+      "createTitle": "Tạo danh mục",
+      "editTitle": "Sửa danh mục",
+      "nameLabel": "Tên *",
+      "namePlaceholder": "VD: Robotics",
+      "descriptionLabel": "Mô tả",
+      "descriptionPlaceholder": "Mô tả ngắn..."
+    },
+    "list": {
+      "title": "Danh sách",
+      "count": "{{count}} danh mục",
+      "empty": "Chưa có category"
+    },
+    "table": {
+      "name": "Tên",
+      "description": "Mô tả",
+      "actions": "Thao tác"
+    },
+    "deanModal": {
+      "title": "Viện trưởng",
+      "name": "Tên",
+      "email": "Email",
+      "role": "Vai trò"
+    }
+  }
+  ,
+  "portal": {
+    "kicker": "Mạng lưới Social Node VKsLab",
+    "titlePrefix": "VKsLab",
+    "titleHighlight": "FANPAGES",
+    "card": {
+      "subtitle": "Kết nối với mạng xã hội VKsLab",
+      "visit": "Truy cập Fanpage"
+    },
+    "items": {
+      "aiRobotics": { "name": "Fanpage AI & Robotics" },
+      "verilogHub": { "name": "Verilog Hardware Hub" },
+      "embeddedNews": { "name": "Embedded Core News" },
+      "startupCommunity": { "name": "Startup Community" }
+    }
+  },
+  "lab": {
+    "toasts": {
+      "fetchFailed": "Không thể tải thông tin phòng lab"
+    },
+    "loading": "Đang ánh xạ các nút không gian sâu...",
+    "hero": {
+      "kicker": "VKsLab Orbital Network",
+      "titlePrefix": "Không gian",
+      "titleHighlight": "Sâu",
+      "logoAlt": "VKsLab",
+      "scrollHint": "Cuộn để vào"
+    },
+    "roles": {
+      "vien_truong": "Giám đốc chiến lược",
+      "truong_lab": "Quản lý chiến thuật",
+      "leader": "Trưởng nhóm",
+      "member": "Thành viên"
+    },
+    "fallback": {
+      "department": "Vận hành R&D"
+    }
+  },
+  "cv": {
+    "status": {
+      "pending_lab_review": "Chờ trưởng lab duyệt",
+      "lab_rejected": "Trưởng lab từ chối",
+      "pending_director_review": "Chờ viện trưởng duyệt",
+      "director_rejected": "Viện trưởng từ chối",
+      "approved": "Đã phê duyệt"
+    },
+    "submit": {
+      "toasts": {
+        "profileFetchFailed": "Không tải được thông tin tài khoản. Bạn vẫn có thể nhập tay.",
+        "fileTypeInvalid": "Chỉ chấp nhận PDF hoặc DOC/DOCX.",
+        "fileTooLarge": "File không được vượt quá 25MB.",
+        "fullNameRequired": "Vui lòng nhập họ và tên.",
+        "emailRequired": "Vui lòng nhập email.",
+        "positionRequired": "Vui lòng nhập vị trí / chuyên môn.",
+        "phoneInvalidLength": "Số điện thoại cần 8–15 chữ số (chỉ nhập số).",
+        "phoneTaken": "Số điện thoại đã được sử dụng. Vui lòng dùng số khác.",
+        "cvRequired": "Vui lòng đính kèm file CV.",
+        "submitted": "Đã gửi hồ sơ — lưu vào hệ thống, đang chờ duyệt.",
+        "submitFailed": "Gửi hồ sơ thất bại. Vui lòng thử lại.",
+        "cooldown": "Bạn chỉ có thể gửi hồ sơ tiếp sau 24 giờ kể từ lần gửi gần nhất."
+      },
+      "success": {
+        "title": "Đã tiếp nhận",
+        "subtitle": "Hồ sơ CV & thông tin liên hệ",
+        "statusLabel": "Trạng thái",
+        "recordLine": "Mã hồ sơ #{{id}} · Đã lưu CSDL",
+        "saved": "Đã lưu vào hệ thống",
+        "hint": "Trưởng lab và viện trưởng sẽ xem xét hồ sơ. Bạn sẽ được liên hệ qua email / số điện thoại đã cung cấp khi có cập nhật.",
+        "submitAnother": "Gửi hồ sơ khác"
+      },
+      "kicker": "Nộp hồ sơ nhà khoa học",
+      "title": "Gửi CV",
+      "purposeLabel": "Mục đích",
+      "purposeValue": "Hợp đồng / cộng tác R&D",
+      "cvFileLabel": "File CV (bắt buộc) *",
+      "dropzone": {
+        "title": "Kéo thả hoặc bấm để chọn",
+        "hint": "PDF / DOCX (tối đa 25MB)"
+      },
+      "actions": {
+        "removeFile": "Xóa file",
+        "submitting": "Đang gửi...",
+        "submit": "Gửi hồ sơ"
+      },
+      "contact": {
+        "title": "Thông tin liên hệ & hợp đồng",
+        "syncing": "Đang đồng bộ từ tài khoản…",
+        "synced": "Đã lấy từ hồ sơ VKsLab — có thể chỉnh sửa trước khi gửi",
+        "cooldownHint": "Mỗi tài khoản chỉ gửi hồ sơ tối đa một lần trong 24 giờ."
+      },
+      "options": {
+        "member": "Thành viên (member)"
+      },
+      "fields": {
+        "fullName": "Họ và tên *",
+        "email": "Email *",
+        "phone": "Điện thoại",
+        "position": "Vị trí / chuyên môn *",
+        "positionMemberOnly": "Chỉ đăng ký với vai trò thành viên (member).",
+        "message": "Thư giới thiệu / ghi chú"
+      },
+      "placeholders": {
+        "fullName": "Nguyễn Văn A",
+        "email": "email@domain.com",
+        "phone": "Chỉ nhập số (8–15 ký tự)",
+        "position": "member",
+        "message": "Mong muốn hợp tác, thời gian, hình thức làm việc..."
+      }
+    },
+    "approvals": {
+      "toasts": {
+        "fetchFailed": "Không tải được danh sách hồ sơ",
+        "labApproved": "Đã chuyển hồ sơ lên viện trưởng",
+        "directorApproved": "Đã phê duyệt hồ sơ",
+        "rejected": "Đã từ chối hồ sơ",
+        "rejectReasonRequired": "Nhập lý do từ chối",
+        "actionFailed": "Thao tác thất bại"
+      },
+      "titles": {
+        "labHead": "Duyệt hồ sơ — Trưởng lab",
+        "director": "Duyệt hồ sơ & hợp đồng — Viện trưởng",
+        "default": "Hồ sơ nhà khoa học"
+      },
+      "subtitle": "CV / hợp đồng cộng tác",
+      "empty": "Không có hồ sơ trong hàng đợi.",
+      "notePlaceholder": "Lý do từ chối (nếu có)",
+      "labels": {
+        "lab": "Lab",
+        "director": "Viện trưởng"
+      },
+      "actions": {
+        "homeAria": "Về trang chủ",
+        "viewDetail": "Xem chi tiết →",
+        "approve": "Duyệt",
+        "approveDirector": "Phê duyệt",
+        "reject": "Từ chối",
+        "createContract": "Tạo / ghi nhận hợp đồng",
+        "viewContract": "Xem file hợp đồng",
+        "contractFile": "File hợp đồng"
+      }
+    },
+    "detail": {
+      "toasts": {
+        "fetchFailed": "Không tải được chi tiết hồ sơ"
+      },
+      "errors": {
+        "fileFetchFailed": "Không tải được file"
+      },
+      "actions": {
+        "backToApprovalsAria": "Về danh sách duyệt CV",
+        "backHomeAria": "Về trang chủ",
+        "downloadCv": "Tải CV"
+      },
+      "title": "Chi tiết hồ sơ",
+      "subtitle": "CV / hợp đồng cộng tác",
+      "empty": "Không tìm thấy hồ sơ.",
+      "preview": {
+        "attachment": "Hồ sơ đính kèm",
+        "noFile": "Chưa có file",
+        "noFileHint": "Ứng viên chưa đính kèm file CV.",
+        "sniffing": "Đang nhận dạng loại file…",
+        "pdfTitle": "Xem trước CV (PDF)",
+        "title": "Xem trước CV",
+        "wordHintPrefix": "Word (.docx) được render trong trình duyệt — không qua Microsoft Online. Nếu lỗi CORS hoặc định dạng không hỗ trợ, dùng"
+      },
+      "candidate": "Ứng viên",
+      "email": "Email",
+      "phone": "Điện thoại",
+      "field": "Vị trí / lĩnh vực",
+      "links": "Liên kết",
+      "coverLetter": "Thư giới thiệu",
+      "labels": {
+        "lab": "Trưởng lab",
+        "director": "Viện trưởng"
+      },
+      "contract": {
+        "title": "Hợp đồng",
+        "file": "File hợp đồng"
+      }
+    },
+    "contract": {
+      "toasts": {
+        "fetchFailed": "Không tải được hồ sơ",
+        "notApproved": "Hồ sơ chưa được phê duyệt",
+        "alreadyHasContract": "Hồ sơ đã có hợp đồng",
+        "summaryRequired": "Nhập tóm tắt nội dung cộng tác (Điều 2)",
+        "requiredFields": "Nhập đủ thông tin bắt buộc bên A và B",
+        "created": "Đã tạo file hợp đồng từ mẫu và lưu hệ thống",
+        "createFailed": "Lưu hợp đồng thất bại"
+      },
+      "actions": {
+        "backAria": "Về danh sách duyệt CV",
+        "creating": "Đang tạo file...",
+        "saveCreate": "Lưu & tạo hợp đồng"
+      },
+      "title": "Tạo hợp đồng từ mẫu",
+      "subtitle": "Điền thông tin → lưu vào file Word mặc định",
+      "empty": "Không tìm thấy hồ sơ.",
+      "notice": "Hệ thống điền dữ liệu vào mẫu cam kết NCKH trên server. File đã điền được lưu .docx kèm hồ sơ ứng viên.",
+      "defaultSummary": "Cộng tác theo vị trí: {{position}}. Các điều khoản chi tiết được thỏa thuận bổ sung giữa các bên.",
+      "partyA": {
+        "title": "Bên A — Giảng viên / NCV",
+        "name": "Họ và tên *",
+        "namePlaceholder": "Họ tên người hướng dẫn",
+        "titleLabel": "Chức danh",
+        "titlePlaceholder": "Ví dụ: Giảng viên chính",
+        "workUnit": "Đơn vị công tác *",
+        "workUnitPlaceholder": "Khoa / bộ môn / viện",
+        "email": "Email *",
+        "phone": "Điện thoại",
+        "address": "Địa chỉ (tuỳ chọn — dùng làm địa điểm ký nếu không nhập riêng)"
+      },
+      "partyB": {
+        "title": "Bên B — Sinh viên",
+        "hint": "Đã điền sẵn từ hồ sơ — có thể chỉnh sửa.",
+        "name": "Họ và tên *",
+        "studentId": "Mã số sinh viên",
+        "studentIdPlaceholder": "MSSV",
+        "faculty": "Lớp / Khoa / Trường",
+        "email": "Email *",
+        "phone": "Điện thoại",
+        "address": "Địa chỉ"
+      },
+      "meta": {
+        "title": "Ngày tháng & ghi chú hệ thống",
+        "date": "Ngày lập cam kết (điền vào dòng mở đầu)",
+        "location": "Địa điểm lập cam kết (“tại …”)",
+        "locationPlaceholder": "Để trống sẽ lấy địa chỉ bên A (nếu có)",
+        "summary": "Tóm tắt / ghi chú lưu kèm hồ sơ *",
+        "summaryPlaceholder": "Tóm tắt lưu trong hồ sơ (không in trong mẫu cam kết cố định)..."
+      }
+    },
+    "contractView": {
+      "toasts": {
+        "fetchFailed": "Không tải được hồ sơ",
+        "noContractFile": "Chưa có file hợp đồng",
+        "confirmed": "Đã xác nhận hợp đồng. Tài khoản ứng viên đã được cập nhật thành member.",
+        "confirmFailed": "Không thể xác nhận hợp đồng"
+      },
+      "errors": {
+        "fileFetchFailed": "Không tải được file"
+      },
+      "actions": {
+        "backAria": "Về danh sách duyệt CV",
+        "downloadAria": "Tải hợp đồng",
+        "download": "Tải hợp đồng",
+        "confirm": "Xác nhận hợp đồng",
+        "confirmed": "Đã xác nhận hợp đồng"
+      },
+      "title": "Xem hợp đồng",
+      "summary": "Tóm tắt",
+      "previewHintPrefix": "PDF xem trực tiếp; Word (.docx) render trong trình duyệt. Nếu lỗi, dùng",
+      "previewTitle": "Hợp đồng"
+    }
+  },
+  "profile": {
+    "toasts": {
+      "fetchFailed": "Không thể tải hồ sơ",
+      "statsFailed": "Không thể tải chỉ số R&D",
+      "avatarTypeInvalid": "Chỉ chấp nhận ảnh: JPG, PNG, WEBP, GIF",
+      "avatarTooLarge": "Ảnh tối đa 5MB",
+      "researchTooLarge": "Tài liệu tối đa 25MB",
+      "avatarUpdated": "Đã cập nhật ảnh đại diện",
+      "avatarUploadFailed": "Tải ảnh thất bại",
+      "nameTooShort": "Họ tên cần ít nhất 2 ký tự",
+      "updated": "Đã cập nhật hồ sơ",
+      "updateFailed": "Cập nhật thất bại"
+    },
+    "dash": "—",
+    "yes": "Có",
+    "no": "Chưa",
+    "noUser": "Không có dữ liệu người dùng.",
+    "kicker": "HỆ THỐNG QUẢN TRỊ NHÂN SỰ R&D",
+    "titlePrefix": "HỒ SƠ",
+    "titleHighlight": "THÀNH VIÊN",
+    "actions": {
+      "edit": "CHỈNH SỬA HỒ SƠ",
+      "saving": "ĐANG LƯU...",
+      "save": "LƯU THAY ĐỔI",
+      "updateAvatar": "Cập nhật ảnh đại diện"
+    },
+    "avatarHint": "JPG, PNG, WEBP, GIF — tối đa 5MB",
+    "systemLog": {
+      "accessValid": "Truy cập: Hợp lệ",
+      "accountStatus": "Trạng thái tài khoản",
+      "role": "Vai trò",
+      "clearance": "Phân quyền",
+      "emailVerified": "Email xác thực",
+      "joined": "Tham gia"
+    },
+    "roles": {
+      "admin": "Quản trị hệ thống",
+      "vien_truong": "Viện trưởng",
+      "truong_lab": "Trưởng Lab",
+      "leader": "Leader dự án",
+      "member": "Thành viên",
+      "user": "Khách"
+    },
+    "status": {
+      "pending": "Chờ phê duyệt",
+      "active": "Hoạt động",
+      "rejected": "Từ chối",
+      "locked": "Đã khóa"
+    },
+    "stats": {
+      "completedProjects": "Dự án Hoàn thành",
+      "activeProjects": "Dự án Đang chạy",
+      "approvedPapers": "Bài báo Phê duyệt"
+    },
+    "editableInfo": "Thông tin có thể chỉnh sửa",
+    "fields": {
+      "fullName": "HỌ VÀ TÊN",
+      "emailReadOnly": "EMAIL (CHỈ ĐỌC)",
+      "studentCode": "MÃ SV / MÃ ĐỊNH DANH",
+      "department": "ĐƠN VỊ / BỘ PHẬN",
+      "phone": "SỐ ĐIỆN THOẠI"
+    },
+    "placeholders": {
+      "phone": "8–15 chữ số (chỉ số, không chữ)"
+    },
+    "errors": {
+      "phoneLength": "Số điện thoại phải có từ 8 đến 15 chữ số (hoặc để trống)."
+    },
+    "meta": {
+      "primaryKey": "Khóa chính tài khoản",
+      "hint": "Vai trò hệ thống ({{role}}) do quản trị gán; email đăng nhập không đổi từ trang này. Cập nhật hồ sơ gửi lên API PATCH /auth/me (full_name, student_code, department, phone_number)."
+    },
+    "security": "Bảo mật"
+  },
+  "directorWorkspace": {
+    "kicker": "Viện trưởng",
+    "title": "Không gian làm việc",
+    "subtitle": "Truy cập nhanh các tác vụ quản trị xuất bản, Verilog và hồ sơ.",
+    "backToWorkspace": "Quay lại không gian làm việc",
+    "sections": {
+      "account": "Hồ sơ & hệ thống",
+      "publication": "Xuất bản & kho tài liệu",
+      "verilog": "Đào tạo Verilog",
+      "hr": "Nhân sự khoa học"
+    },
+    "links": {
+      "profile": "Thông tin cá nhân",
+      "profileDesc": "Cập nhật hồ sơ, mật khẩu",
+      "categories": "Quản lý danh mục",
+      "categoriesDesc": "Danh mục cho giáo trình & tài liệu",
+      "researchHub": "Bài báo nghiên cứu",
+      "researchHubDesc": "Kho nghiên cứu công khai / nội bộ",
+      "researchSubmit": "Gửi bài nghiên cứu",
+      "researchSubmitDesc": "Nạp bài mới",
+      "researchMine": "Bài đã gửi của tôi",
+      "researchMineDesc": "Theo dõi trạng thái",
+      "researchApprovals": "Duyệt research",
+      "researchApprovalsDesc": "Hàng chờ phê duyệt",
+      "researchWithdrawn": "Bài đã thu hồi",
+      "researchWithdrawnDesc": "Danh sách bài nghiên cứu đã rút khỏi kho công khai",
+      "curriculumHub": "Giáo trình",
+      "curriculumHubDesc": "Danh mục giáo trình",
+      "curriculumCreate": "Tạo giáo trình",
+      "curriculumCreateDesc": "Thêm bản mới",
+      "curriculumMine": "Giáo trình của tôi",
+      "curriculumMineDesc": "Bản nháp & bản đã gửi",
+      "curriculumApprovals": "Duyệt giáo trình",
+      "curriculumApprovalsDesc": "Hàng chờ phê duyệt",
+      "documentsHub": "Tài liệu kỹ thuật",
+      "documentsHubDesc": "Kho tài liệu",
+      "documentsCreate": "Tạo tài liệu",
+      "documentsCreateDesc": "Thêm bản mới",
+      "documentsMine": "Tài liệu của tôi",
+      "documentsMineDesc": "Bản nháp & bản đã gửi",
+      "documentsApprovals": "Duyệt tài liệu",
+      "documentsApprovalsDesc": "Hàng chờ phê duyệt",
+      "verilogManage": "Quản lý bài tập Verilog",
+      "verilogManageDesc": "CRUD đề, testbench",
+      "verilogSubmissions": "Xem bài nộp Verilog",
+      "verilogSubmissionsDesc": "Toàn bộ submission",
+      "verilogPractice": "Làm bài Verilog",
+      "verilogPracticeDesc": "Hub học viên",
+      "cvApprovals": "Duyệt hồ sơ nhà khoa học",
+      "cvApprovalsDesc": "CV & hợp đồng"
+    }
+  }
+}

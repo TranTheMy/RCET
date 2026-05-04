@@ -1,0 +1,236 @@
+{
+  "title": "Tài liệu",
+  "myDocuments": "Tài liệu của tôi",
+  "create": "Tạo tài liệu",
+  "update": "Cập nhật",
+  "back": "Quay lại",
+  "list": {
+    "kicker": "Kho tri thức",
+    "title1": "Tài liệu",
+    "title2": "Hệ thống",
+    "pendingReview": "Chờ duyệt",
+    "myWorkspace": "Không gian của tôi",
+    "newAsset": "Tạo tài liệu",
+    "searchPlaceholder": "Tìm tên tài liệu, từ khóa...",
+    "filters": "Bộ lọc",
+    "allCategories": "Tất cả danh mục",
+    "clearFilters": "Xóa lọc",
+    "loading": "Đang truy xuất thư viện...",
+    "emptyTitle": "Kho tài liệu trống",
+    "defaultDescription": "Tài liệu hướng dẫn và quy trình nội bộ.",
+    "uncategorized": "Chung",
+    "system": "Hệ thống",
+    "updatedAt": "Cập nhật: {{date}}",
+    "viewDetail": "Xem chi tiết",
+    "page": "Trang {{page}} / {{totalPages}}",
+    "verified": "Đã xác minh",
+    "errors": {
+      "fetchFailed": "Không thể tải danh sách tài liệu"
+    }
+  }
+  ,
+  "status": {
+    "draft": "Bản nháp",
+    "pending": "Chờ duyệt",
+    "published": "Đã duyệt",
+    "rejected": "Từ chối",
+    "revision": "Cần sửa",
+    "archived": "Lưu trữ"
+  },
+  "sourceType": {
+    "upload": "Tải lên",
+    "link": "Liên kết"
+  },
+  "form": {
+    "document": "tài liệu",
+    "loading": "Đang khởi tạo biểu mẫu...",
+    "draftHint": "Lưu dữ liệu sẽ tạo bản nháp (DRAFT) trong phân vùng bộ nhớ của bạn.",
+    "sections": {
+      "core": "Thông tin cốt lõi",
+      "extra": "Nguồn và thông tin bổ sung"
+    },
+    "fields": {
+      "title": "Tiêu đề bản ghi *",
+      "category": "Phân loại / Category *",
+      "docType": "Loại định dạng",
+      "description": "Mô tả tóm tắt",
+      "manufacturer": "Hãng sản xuất",
+      "externalUrl": "URL tài liệu bên ngoài",
+      "upload": "Tải tệp tài liệu"
+    },
+    "docTypes": {
+      "datasheet": "Datasheet",
+      "manual": "Manual",
+      "schematic": "Schematic"
+    },
+    "placeholders": {
+      "title": "Nhập tên tài liệu kỹ thuật...",
+      "category": "-- Lựa chọn danh mục --",
+      "docType": "-- Tùy chọn --",
+      "description": "Thông tin bổ sung cho quá trình kiểm định...",
+      "manufacturer": "VD: Texas Instruments, Intel...",
+      "externalUrl": "https://..."
+    },
+    "dropHere": "Kéo thả hoặc nhấp để tải lên tệp tin",
+    "supportedTypes": "Hỗ trợ: PDF, DOCX, XLSX, CSV, TXT (tối đa 50MB)",
+    "keepExistingFileHint": "* Để trống nếu bạn muốn giữ lại tệp hiện tại trên hệ thống.",
+    "cancelTask": "Hủy bỏ tác vụ",
+    "submitCreate": "Lưu vào bộ nhớ nháp",
+    "submitUpdate": "Cập nhật bản nháp",
+    "fileReady": "{{sizeMb}} MB - Sẵn sàng nộp",
+    "errors": {
+      "editNotAllowed": "Hệ thống: Chỉ có thể chỉnh sửa bản nháp hoặc bản bị từ chối",
+      "fetchFailed": "Lỗi: Không thể truy xuất dữ liệu bản ghi",
+      "titleRequired": "Yêu cầu nhập tiêu đề tài liệu",
+      "categoryRequired": "Yêu cầu chọn danh mục hệ thống",
+      "sourceRequired": "Yêu cầu tệp đính kèm hoặc URL nguồn"
+    },
+    "toasts": {
+      "updatedDraft": "Đã lưu bản nháp — có thể gửi duyệt lại khi sẵn sàng",
+      "createdDraft": "Khởi tạo bản nháp thành công. Vui lòng gửi duyệt sau khi hoàn tất.",
+      "saveFailed": "Giao thức lưu dữ liệu thất bại"
+    },
+    "tabs": {
+      "document": "Tài liệu",
+      "newCategory": "Tạo danh mục"
+    },
+    "categorySection": {
+      "title": "Danh mục mới"
+    },
+    "categoryFields": {
+      "name": "Tên danh mục *",
+      "description": "Mô tả (tùy chọn)"
+    },
+    "categoryPlaceholders": {
+      "name": "Nhập tên danh mục...",
+      "description": "Mô tả ngắn (tùy chọn)..."
+    },
+    "categorySubmit": "Tạo danh mục",
+    "categoryBackToDocument": "Quay lại biểu mẫu tài liệu",
+    "categoryToasts": {
+      "nameRequired": "Vui lòng nhập tên danh mục",
+      "created": "Đã tạo danh mục. Danh mục mới đã được chọn trong biểu mẫu.",
+      "createFailed": "Không thể tạo danh mục"
+    },
+    "categoryErrors": {
+      "forbidden": "Bạn không có quyền tạo danh mục (chỉ Viện trưởng)."
+    }
+  }
+  ,
+  "mine": {
+    "kicker": "Không gian làm việc",
+    "titlePrefix": "Kho",
+    "titleHighlight": "tài liệu của tôi",
+    "loading": "Đang truy xuất dữ liệu...",
+    "empty": "Không có bản ghi phù hợp trong kho của bạn.",
+    "tabs": {
+      "all": "Tất cả",
+      "draft": "Bản nháp",
+      "pending": "Chờ duyệt",
+      "published": "Đã duyệt",
+      "rejected": "Bị từ chối"
+    },
+    "status": {
+      "draft": "BẢN NHÁP",
+      "pending": "CHỜ DUYỆT",
+      "published": "ĐÃ DUYỆT",
+      "rejected": "BỊ TỪ CHỐI",
+      "revision": "CẦN SỬA",
+      "archived": "LƯU TRỮ"
+    },
+    "version": "PHIÊN BẢN: v{{version}}.0",
+    "sync": "Sync: {{time}}",
+    "reviewNote": "Phản hồi hệ thống: {{note}}",
+    "actions": {
+      "view": "Xem",
+      "edit": "Chỉnh sửa",
+      "submit": "Gửi duyệt",
+      "fixAndResubmit": "Sửa & gửi lại",
+      "newVersion": "Gửi lại"
+    },
+    "toasts": {
+      "fetchFailed": "Giao thức truy xuất dữ liệu cá nhân thất bại",
+      "autoApproved": "Hệ thống: Tự động phê duyệt (Quyền Viện trưởng)",
+      "submitted": "Hệ thống: Đã gửi yêu cầu phê duyệt thành công",
+      "submitFailed": "Gửi yêu cầu thất bại",
+      "newVersionCreated": "Khởi tạo phiên bản mới thành công",
+      "newVersionFailed": "Không thể khởi tạo phiên bản"
+    }
+  },
+  "detail": {
+    "loading": "Đang đồng bộ dữ liệu...",
+    "kicker": "Hồ sơ tài liệu",
+    "publicRepoCta": "→ Kho công khai",
+    "previewTitle": "Xem trước: {{title}}",
+    "previewHint": "Xem trước qua API; link ngoài dùng « Tab mới ». Khung lỗi → tải xuống hoặc mở tab mới.",
+    "uncategorized": "Chung",
+    "techSummary": "Tóm tắt kỹ thuật",
+    "noDescription": "Chưa có mô tả cho tài liệu này.",
+    "manufacturerLabel": "Nguồn gốc / nhà sản xuất",
+    "internalSystem": "Hệ thống nội bộ",
+    "systemData": "Dữ liệu hệ thống",
+    "dataSource": "Nguồn dữ liệu",
+    "lifecycle": "Vòng đời tài liệu",
+    "lastUpdated": "Cập nhật gần nhất",
+    "systemRecord": "Bản ghi hệ thống",
+    "initialCreated": "Khởi tạo bản ghi ban đầu",
+    "storage": "Storage",
+    "preview": "Preview",
+    "inline": "Inline",
+    "fileExt": {
+      "url": "URL",
+      "pdf": "PDF"
+    },
+    "actions": {
+      "download": "Tải xuống",
+      "externalLink": "Liên kết ngoài",
+      "withdraw": "Thu hồi (xóa mềm)"
+    },
+    "withdrawConfirm": "Thu hồi tài liệu này? Bản đã duyệt sẽ biến mất khỏi kho công khai.",
+    "withdrawReasonLabel": "Lý do thu hồi (khuyến nghị với bản đã duyệt)",
+    "withdrawReasonPlaceholder": "Lý do thu hồi (khuyến nghị với bản đã duyệt)…",
+    "confirmModal": {
+      "title": "Thu hồi tài liệu?",
+      "confirm": "Thu hồi",
+      "cancel": "Hủy"
+    },
+    "errors": {
+      "missingId": "Thiếu id"
+    },
+    "toasts": {
+      "fetchFailed": "TRUY XUẤT HỒ SƠ THẤT BẠI",
+      "noFileSource": "Không tìm thấy nguồn tệp",
+      "downloadFailed": "LỖI GIAO THỨC TẢI XUỐNG",
+      "withdrawn": "Đã thu hồi tài liệu",
+      "withdrawFailed": "Không thể thu hồi"
+    }
+  },
+  "approvals": {
+    "titlePrefix": "Ma trận",
+    "titleHighlight": "phê duyệt",
+    "subtitle": "Quyền viện trưởng",
+    "queueLabel": "Hàng đợi chờ duyệt",
+    "loading": "Đang quét hàng đợi...",
+    "emptyTitle": "Hệ thống ổn định",
+    "emptySubtitle": "Không có tài liệu nào đang chờ phê duyệt từ cấp Giám đốc.",
+    "pendingChip": "Chờ duyệt",
+    "idLabel": "ID: {{id}}",
+    "noDescription": "Không có mô tả chi tiết được cung cấp cho tệp dữ liệu này.",
+    "senderLabel": "Người gửi",
+    "versionLabel": "Phiên bản",
+    "notePlaceholder": "Nhập ghi chú hoặc lý do từ chối...",
+    "actions": {
+      "approve": "Phê duyệt",
+      "reject": "Từ chối"
+    },
+    "toasts": {
+      "fetchFailed": "Giao thức truy xuất danh sách chờ duyệt thất bại",
+      "approved": "Xác thực cấp phép thành công",
+      "approveFailed": "Lỗi hệ thống: Không thể cấp phép",
+      "rejectNoteRequired": "Yêu cầu nhập lý do từ chối (Audit Trail Log)",
+      "rejected": "Đã từ chối và ghi log tài liệu",
+      "rejectFailed": "Thao tác từ chối thất bại"
+    }
+  }
+}
+

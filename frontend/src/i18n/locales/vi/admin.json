@@ -1,0 +1,153 @@
+{
+  "title": "Quản trị",
+  "dashboard": "Bảng điều khiển",
+  "nav": {
+    "dashboard": "Bảng điều khiển",
+    "usersAndRoles": "Người dùng & vai trò",
+    "auditLog": "Nhật ký kiểm tra"
+  },
+  "sidebar": {
+    "adminPanel": "Bảng quản trị",
+    "section": "Phân vùng quản trị",
+    "system": {
+      "active": "Hệ thống đang hoạt động",
+      "nodeLabel": "Nút",
+      "statusLabel": "Trạng thái",
+      "statusOptimized": "Tối ưu"
+    }
+  }
+  ,
+  "header": {
+    "systemOnline": "Hệ thống Robotics đang trực tuyến",
+    "access": "Truy cập"
+  },
+  "roles": {
+    "user": "Khách",
+    "member": "Thành viên",
+    "leader": "Trưởng nhóm",
+    "truong_lab": "Trưởng Lab",
+    "vien_truong": "Viện trưởng"
+  },
+  "dashboard": {
+    "title": "Bảng duyệt quyền",
+    "subtitle": "Quản lý giao thức truy cập & gán phân hệ cho Node (User).",
+    "status": {
+      "pending": "CHỜ DUYỆT",
+      "approved": "ĐÃ DUYỆT",
+      "rejected": "ĐÃ TỪ CHỐI",
+      "all": "TẤT CẢ"
+    },
+    "filters": {
+      "pending": "Chờ duyệt",
+      "approved": "Đã duyệt",
+      "rejected": "Đã từ chối",
+      "all": "Tất cả"
+    },
+    "loading": "Đang quét hệ thống...",
+    "empty": {
+      "title": "Không có tín hiệu truy cập",
+      "hint": "Đổi băng tần lọc hoặc thử lại sau."
+    },
+    "toasts": {
+      "fetchFailed": "Giao thức tải dữ liệu thất bại",
+      "approved": "Đã cấp quyền truy cập",
+      "rejected": "Đã từ chối truy cập",
+      "approveFailed": "Thực thi cấp quyền thất bại",
+      "rejectFailed": "Thực thi từ chối thất bại"
+    },
+    "card": {
+      "studentCode": "Mã sinh viên",
+      "department": "Phân khoa",
+      "emailVerified": "Xác thực email",
+      "createdAt": "Ngày khởi tạo",
+      "na": "N/A",
+      "verified": "ĐÃ XÁC THỰC",
+      "unverified": "CHƯA XÁC THỰC",
+      "assignRole": "Phân bổ quyền hạn *",
+      "roleFixedHint": "Quản trị chỉ có thể cấp vai trò «Thành viên (user)». Nâng quyền (member, leader, …) thực hiện qua trưởng lab / viện trưởng.",
+      "noteLabel": "Tham số ghi chú",
+      "notePlaceholder": "SYS_NOTE:...",
+      "systemLogPrefix": ">> SYSTEM_LOG // GHI CHÚ DUYỆT",
+      "actions": {
+        "approve": "Chấp thuận",
+        "reject": "Từ chối"
+      }
+    }
+  }
+  ,
+  "users": {
+    "title": "Sổ đăng ký người dùng",
+    "subtitle": "Hệ thống giám sát và định tuyến phân quyền Node (User).",
+    "totalActiveLabel": "TỔNG NODES HOẠT ĐỘNG:",
+    "searchPlaceholder": "QUÉT THEO TÊN, EMAIL HOẶC MSSV...",
+    "loading": "Đang truy xuất CSDL...",
+    "na": "N/A",
+    "empty": {
+      "title": "Không tìm thấy Node",
+      "hint": "Tham số lọc không khớp với bất kỳ bản ghi nào."
+    },
+    "filters": {
+      "allRoles": "TẤT CẢ PHÂN HỆ",
+      "allStatuses": "TẤT CẢ TRẠNG THÁI"
+    },
+    "status": {
+      "pending": "Chờ cấp phép",
+      "active": "Đang hoạt động",
+      "rejected": "Đã từ chối",
+      "locked": "Đã ban"
+    },
+    "table": {
+      "node": "Định danh Node",
+      "contact": "Giao thức liên hệ",
+      "department": "Phân khu (Khoa/BM)",
+      "role": "Phân hệ (Role)",
+      "createdAt": "Khởi tạo",
+      "actions": "Tác vụ",
+      "idPrefix": "ID"
+    },
+    "actions": {
+      "protected": "Được bảo vệ",
+      "ban": "Khóa",
+      "unban": "Mở khóa"
+    },
+    "pagination": {
+      "blockOf": "BLOCK {{page}} OF {{totalPages}}"
+    },
+    "toasts": {
+      "fetchFailed": "Giao thức tải dữ liệu thất bại",
+      "banned": "Đã khóa tài khoản",
+      "unbanned": "Đã mở khóa tài khoản",
+      "updateStatusFailed": "Không thể cập nhật trạng thái tài khoản"
+    }
+  }
+  ,
+  "audit": {
+    "title": "Bảo mật & nhật ký",
+    "subtitle": "Audit trail hệ thống — ghi nhận hành động đăng nhập, phê duyệt, tài liệu, dự án (theo backend).",
+    "total": "Tổng",
+    "dash": "—",
+    "filterPlaceholder": "Lọc theo action (chuỗi con)…",
+    "filterAction": "Lọc",
+    "loading": "Đang tải nhật ký…",
+    "empty": {
+      "title": "Không có bản ghi",
+      "hint": "Thử bỏ bộ lọc hoặc đổi từ khóa."
+    },
+    "toasts": {
+      "fetchFailed": "Không thể tải nhật ký kiểm toán"
+    },
+    "table": {
+      "time": "Thời điểm",
+      "action": "Hành động",
+      "performer": "Người thực hiện",
+      "target": "Đối tượng",
+      "metadata": "Metadata"
+    },
+    "pagination": {
+      "prev": "Trước",
+      "next": "Sau",
+      "pageOf": "Trang {{page}} / {{totalPages}}"
+    }
+  }
+}
+

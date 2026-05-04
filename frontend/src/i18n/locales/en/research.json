@@ -1,0 +1,373 @@
+{
+  "title": "Research",
+  "impact": {
+    "noRank": "No Rank"
+  },
+  "hero": {
+    "kicker": "Lab #5 Intelligence Hub",
+    "description": "A central repository and coordination hub for chip research, autonomous systems, and Edge AI.",
+    "actions": {
+      "approvals": "Review research submissions",
+      "submit": "Write research",
+      "mine": "My submissions"
+    }
+  },
+  "filters": {
+    "button": "Filters",
+    "title": "Filter by attributes",
+    "clear": "Clear filters",
+    "closeAria": "Close",
+    "tags": "Keywords (tags)",
+    "tagsHint": "Select one or more tags — items matching any selected tag will be shown.",
+    "impact": "Journal ranking (impact_rank)",
+    "impactHint": "No selection = all ranks.",
+    "source": "Source (source_type)",
+    "options": {
+      "all": "All",
+      "no": "No",
+      "yesPeerReviewed": "Yes (is_peer_reviewed)",
+      "yesOpenAccess": "Yes (is_open_access)",
+      "upload": "Upload (file)",
+      "link": "Link"
+    },
+    "apiHint": "Filters use API fields: tags, impact_rank, is_peer_reviewed, is_open_access, source_type."
+  },
+  "sidebar": {
+    "verifiedTitle": "Verified Research",
+    "verifiedHint": "All papers are reviewed by the Lab #5 scientific committee."
+  },
+  "database": {
+    "toasts": {
+      "fetchFailed": "Could not load research list"
+    },
+    "title": "Research Database",
+    "searchPlaceholder": "Search by title, author, journal, DOI, description, keywords (tags)...",
+    "loading": "Initializing stream...",
+    "emptyPublic": "There are no research papers currently published.",
+    "emptyFiltered": "No research papers match your filters or search.",
+    "sections": {
+      "downloadable": "Downloadable documents ({{count}})",
+      "links": "Link-only references ({{count}})"
+    },
+    "pagination": {
+      "pageOf": "Page {{page}} / {{totalPages}}",
+      "prevAriaDownload": "Previous page (downloadable)",
+      "nextAriaDownload": "Next page (downloadable)",
+      "prevAriaLinks": "Previous page (links)",
+      "nextAriaLinks": "Next page (links)"
+    },
+    "card": {
+      "journalFallback": "R&D Archive",
+      "rankPrefix": "Rank",
+      "na": "N/A",
+      "tagsAria": "Tags",
+      "downloadPdf": "PDF",
+      "externalLink": "External Link",
+      "unavailable": "Unavailable",
+      "citations": "{{count}}"
+    }
+  },
+  "submit": {
+    "toasts": {
+      "maxTags": "Up to 24 tags",
+      "maxTagLength": "Each tag can be up to 48 characters",
+      "requiredFields": "Please complete all required fields (*)",
+      "submitted": "Submitted to the approval queue.",
+      "directorPublished": "Recorded successfully (no approval required).",
+      "submitFailed": "Submission failed"
+    },
+    "actions": {
+      "back": "Back",
+      "mine": "My archive",
+      "submit": "Submit"
+    },
+    "kicker": "Data intake gateway",
+    "titlePrefix": "Submit",
+    "titleHighlight": "research",
+    "subtitle": "Submit new research data to the central repository. All entries will be reviewed by the Scientific Committee.",
+    "subtitleDirector": "Submit new research to the repository. As institute director, your entry is recorded without a separate approval step.",
+    "sections": {
+      "technical": "Technical information"
+    },
+    "impact": {
+      "noRankHint": "Not ranked in Scimago / Q1–Q4 not applicable",
+      "q1Hint": "Quartile 1",
+      "q2Hint": "Quartile 2",
+      "q3Hint": "Quartile 3",
+      "q4Hint": "Quartile 4"
+    },
+    "fields": {
+      "title": {
+        "label": "Research title *",
+        "sub": "Full title of the research paper",
+        "placeholder": "e.g., Advanced AI in healthcare"
+      },
+      "authors": {
+        "label": "Authors *",
+        "sub": "Separated by commas",
+        "placeholder": "Jane Doe, John Smith..."
+      },
+      "publishedDate": {
+        "label": "Published date *",
+        "sub": "Official publication date"
+      },
+      "journal": {
+        "label": "Journal / Conference *",
+        "sub": "Where it was published",
+        "placeholder": "IEEE Access, CVPR..."
+      },
+      "pages": {
+        "label": "Pages *",
+        "sub": "Page range (e.g. 10-20)",
+        "placeholder": "100-115"
+      },
+      "impact": {
+        "label": "Impact ranking (Scimago)",
+        "sub": "Select Q1–Q4 if the journal is in Scimago; default is No Rank."
+      },
+      "publisher": {
+        "label": "Publisher *",
+        "sub": "Publishing organization",
+        "placeholder": "Springer, Elsevier..."
+      },
+      "description": {
+        "label": "Abstract *",
+        "sub": "Brief summary of the core content",
+        "placeholder": "Enter the abstract here..."
+      },
+      "tags": {
+        "label": "Tags",
+        "sub": "Suggested project tags — or type custom; Enter / comma to add (up to 24)",
+        "projectTags": "Project tags",
+        "placeholder": "e.g., machine learning, FPGA, IoT…",
+        "removeAria": "Remove tag {{tag}}"
+      }
+    },
+    "source": {
+      "title": "Submission source",
+      "upload": "Upload file",
+      "link": "Link",
+      "pickFile": "Choose a research file",
+      "fileHint": "PDF, Word, Excel, PowerPoint, ODF, RTF, TXT — up to 25MB",
+      "externalPdf": "External PDF link"
+    },
+    "flags": {
+      "peerReviewed": "Peer-reviewed",
+      "openAccess": "Open access",
+      "directorPublic": "Show on the public page (institute director)"
+    },
+    "protocol": {
+      "prefix": "System protocol:",
+      "body": "After intake, data is encrypted and moved into the approval queue. You cannot edit during verification.",
+      "bodyDirector": "As institute director, your entry is recorded immediately. Use the option below to publish it on the public page."
+    },
+    "discard": {
+      "title": "Discard submission?",
+      "hint": "All information you entered will be permanently cleared from the intake portal. Are you sure you want to leave?",
+      "keepEditing": "Keep editing",
+      "confirm": "Confirm discard"
+    }
+  },
+  "mine": {
+    "toasts": {
+      "fetchFailed": "Could not load your submissions",
+      "deleted": "Research item withdrawn",
+      "deleteFailed": "Could not withdraw",
+      "restored": "Item restored"
+    },
+    "kicker": "Personal archive",
+    "titlePrefix": "Research",
+    "titleHighlight": "catalog",
+    "actions": {
+      "refresh": "Refresh",
+      "submit": "Submit research",
+      "delete": "Withdraw",
+      "restore": "Restore",
+      "deleteConfirm": "Withdraw this item? Published entries will no longer be visible."
+    },
+    "tabs": {
+      "all": "All",
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "deleted": "Withdrawn"
+    },
+    "status": {
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "withdrawn": "Withdrawn"
+    },
+    "searchPlaceholder": "Search by research title...",
+    "loading": "Syncing data...",
+    "dash": "—",
+    "empty": {
+      "title": "No data yet",
+      "hint": "No research submissions were found in your archive.",
+      "cta": "Create your first entry"
+    },
+    "source": {
+      "label": "Source"
+    },
+    "rejection": {
+      "title": "Rejection reason",
+      "resubmit": "Resubmit an updated version →"
+    },
+    "withdrawReason": {
+      "label": "Withdrawal note (recommended for approved items)",
+      "placeholder": "Short note for audit log…"
+    },
+    "confirmModal": {
+      "title": "Withdraw this research item?",
+      "confirm": "Withdraw",
+      "cancel": "Cancel"
+    }
+  },
+  "withdrawn": {
+    "title": "Withdrawn research",
+    "subtitle": "Restore when needed",
+    "backToApprovals": "← Approval queue",
+    "loading": "Loading…",
+    "empty": "No withdrawn items.",
+    "restore": "Restore",
+    "toasts": {
+      "fetchFailed": "Could not load list",
+      "restored": "Restored",
+      "restoreFailed": "Could not restore"
+    }
+  },
+  "approvals": {
+    "toasts": {
+      "fetchFailed": "Could not load pending approvals",
+      "approvedPublic": "Approved and published publicly",
+      "approvedInternal": "Approved (internal)",
+      "approveFailed": "Approval failed",
+      "rejectReasonRequired": "Please enter a rejection reason (feedback)",
+      "rejected": "Rejection feedback sent",
+      "actionFailed": "Action failed",
+      "withdrawn": "Item removed from queue"
+    },
+    "titlePrefix": "Review",
+    "titleHighlight": "research",
+    "queue": "Approval queue",
+    "role": "Dean",
+    "pending": "Pending",
+    "loading": "Loading list…",
+    "withdrawnLink": "Withdrawn items",
+    "confirmWithdraw": {
+      "title": "Remove from approval queue?",
+      "description": "This submission will be withdrawn from the queue until it is submitted again."
+    },
+    "empty": {
+      "title": "No pending items",
+      "hint": "There are no research proposals awaiting approval."
+    },
+    "badge": {
+      "pending": "Pending"
+    },
+    "submittedAt": "Submitted",
+    "public": {
+      "label": "Public",
+      "hint": "On: visible to unauthenticated visitors",
+      "footerHint": "If Public is enabled, visitors can see it; otherwise it’s internal only."
+    },
+    "note": {
+      "label": "Note / reason",
+      "placeholder": "Approval note or rejection reason…"
+    },
+    "actions": {
+      "approve": "Approve",
+      "reject": "Reject",
+      "withdraw": "Remove from queue"
+    }
+  },
+  "detail": {
+    "toasts": {
+      "fetchFailed": "Could not load research item",
+      "withdrawn": "Item withdrawn",
+      "restored": "Item restored"
+    },
+    "errors": {
+      "missingId": "Missing id"
+    },
+    "actions": {
+      "back": "Back to repository",
+      "withdraw": "Withdraw",
+      "restore": "Restore"
+    },
+    "deletedBanner": "This item has been withdrawn from the public catalog.",
+    "withdrawReason": {
+      "label": "Withdrawal note (recommended)",
+      "placeholder": "Short note…"
+    },
+    "loading": "Synchronizing node data...",
+    "empty": {
+      "title": "Entry expired",
+      "hint": "The requested data node is no longer accessible via the public gateway."
+    },
+    "attachment": {
+      "title": "Attachment (upload)",
+      "previewTitle": "Full text: {{title}}",
+      "hint": "Shown only when the item has an uploaded file; link-only items use the right-side button."
+    },
+    "badges": {
+      "globalNode": "GLOBAL NODE"
+    },
+    "tags": "Keywords",
+    "meta": {
+      "authors": "Principal Investigator",
+      "releaseEpoch": "Release Epoch",
+      "sourceType": "Source Type"
+    },
+    "summaryTitle": "Research Summary",
+    "tech": {
+      "doi": "Digital Object Identifier (DOI)",
+      "citations": "Intelligence Citations",
+      "references": "{{count}} References"
+    },
+    "gateway": {
+      "title": "Resource Gateway",
+      "hint": "Access the full text through a secure gateway.",
+      "fetchPdf": "Fetch PDF Document",
+      "external": "Access External Node",
+      "unavailable": "Node Content Unavailable"
+    },
+    "metadata": {
+      "title": "Metadata Context",
+      "publisher": "Publisher",
+      "journal": "Journal / Venue",
+      "volumeIssue": "Volume / Issue",
+      "volumeIssueValue": "VOL.{{volume}} // ISS.{{issue}}",
+      "pagination": "Pagination"
+    },
+    "verifiedFooter": "Verified Intelligence Node",
+    "fallback": {
+      "unspecified": "UNSPECIFIED",
+      "dataNotFound": "DATA_NOT_FOUND",
+      "na": "N/A"
+    }
+  },
+  "awards": {
+    "tagLabel": "Distinguished Publications",
+    "title": "Featured research.",
+    "rankPrefix": "Rank",
+    "noRank": "No Rank",
+    "journalFallback": "R&D Archive",
+    "openSource": "Open Source",
+    "confidential": "Confidential",
+    "citations": "{{count}} Citations",
+    "badges": {
+      "bestPaper": "Best Paper Award",
+      "topImpact": "Top 1% Impact"
+    },
+    "pagination": {
+      "showing": "Showing {{start}}–{{end}} / {{total}} items",
+      "prevAria": "Previous page",
+      "nextAria": "Next page",
+      "pageOf": "Page {{page}} / {{totalPages}}"
+    },
+    "toasts": {
+      "fetchFailed": "Couldn’t load featured research list"
+    }
+  }
+}
