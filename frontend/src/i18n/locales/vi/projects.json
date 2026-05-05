@@ -372,11 +372,12 @@
     "removeTitle": "Xóa thành viên",
     "confirmRemove": "Xác nhận loại bỏ {{name}} khỏi hệ thống dự án?",
     "setLeader": "Chỉ định chủ trì",
+    "pendingLeaderConfirmation": "Chờ xác nhận leader",
     "assignLeaderModal": {
       "title": "Chỉ định chủ trì dự án",
-      "description": "Xác nhận gán {{name}} làm chủ nhiệm (Leader) của dự án này? Vai trò chủ trì hiện tại (nếu có) sẽ được chuyển về thành viên.",
+      "description": "Xác nhận gửi đề nghị cho {{name}} làm chủ nhiệm (Leader) của dự án này? Thành viên này cần xác nhận trước khi chính thức trở thành chủ trì.",
       "confirm": "Xác nhận chỉ định",
-      "toastSuccess": "Đã chỉ định chủ trì thành công."
+      "toastSuccess": "Đã gửi đề nghị làm chủ trì. Đang chờ thành viên xác nhận."
     },
     "table": {
       "member": "Thành viên",
@@ -397,10 +398,17 @@
       "noResultsLine1": "Không tìm thấy người dùng",
       "noResultsLine2": "phù hợp",
       "typeToSearch": "Nhập từ khóa để bắt đầu tìm kiếm",
+      "selectAll": "Chọn tất cả (có thể mời)",
+      "clearSelection": "Bỏ chọn",
+      "inviteSelected": "Mời đã chọn ({{count}})",
+      "noneSelected": "Vui lòng chọn ít nhất một thành viên.",
       "toasts": {
         "added": "Đã thêm thành viên thành công",
         "alreadyInvited": "Đã có lời mời đang chờ. Đã gửi lại thông báo nhắc.",
-        "addFailed": "Thêm thành viên thất bại"
+        "addFailed": "Thêm thành viên thất bại",
+        "bulkSuccess": "Đã gửi mời {{count}} thành viên.",
+        "bulkPartial": "Đã gửi mời {{ok}} thành viên; {{fail}} lượt thất bại.",
+        "bulkFailed": "Không gửi được lời mời."
       }
     }
   }

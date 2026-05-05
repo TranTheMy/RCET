@@ -372,11 +372,12 @@
     "removeTitle": "Remove member",
     "confirmRemove": "Remove {{name}} from the project?",
     "setLeader": "Assign lead",
+    "pendingLeaderConfirmation": "Awaiting lead confirmation",
     "assignLeaderModal": {
       "title": "Assign project lead",
-      "description": "Assign {{name}} as the project lead? Any current lead will become a regular member.",
+      "description": "Send a lead invitation to {{name}} for this project? The member must confirm before officially becoming the project lead.",
       "confirm": "Confirm assignment",
-      "toastSuccess": "Lead assigned successfully."
+      "toastSuccess": "Lead invitation sent. Waiting for member confirmation."
     },
     "table": {
       "member": "Member",
@@ -397,10 +398,17 @@
       "noResultsLine1": "No matching users",
       "noResultsLine2": "found",
       "typeToSearch": "Type to start searching",
+      "selectAll": "Select all (invitable)",
+      "clearSelection": "Clear selection",
+      "inviteSelected": "Invite selected ({{count}})",
+      "noneSelected": "Select at least one member.",
       "toasts": {
         "added": "Member added",
         "alreadyInvited": "Invite already pending. Notification resent.",
-        "addFailed": "Failed to add member"
+        "addFailed": "Failed to add member",
+        "bulkSuccess": "Invites sent to {{count}} member(s).",
+        "bulkPartial": "Sent {{ok}} invite(s); {{fail}} failed.",
+        "bulkFailed": "Could not send invites."
       }
     }
   }

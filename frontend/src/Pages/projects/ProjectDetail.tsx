@@ -88,7 +88,6 @@ const ProjectDetail: React.FC = () => {
   const viewerMembership = project?.viewer_membership;
   const viewerPmRole = viewerMembership?.role != null ? String(viewerMembership.role).toLowerCase() : undefined;
   const isProjectLeader = viewerPmRole === 'leader';
-  const isTagMode = (project as any)?.participation_mode === 'TAG';
 
   // Mode 2: còn mở slot tự join (planning + chưa đủ required_members)
   const selfJoinSlotsFull = useMemo(() => {
@@ -148,7 +147,9 @@ const ProjectDetail: React.FC = () => {
 
     if (designatedLeader) return false;
 
-    if (!isOpen && invitePending) return true;
+    // Được mời đích danh thì luôn có thể bấm "Tham gia" để xác nhận lời mời
+    // (kể cả dự án SELF_JOIN đang mở slot).
+    if (invitePending) return true;
 
     if (isOpen && !myCommitment) return true;
 
@@ -156,18 +157,17 @@ const ProjectDetail: React.FC = () => {
   }, [designatedLeader, project, myCommitment, isOpen]);
 
   const isInviteAcceptJoin = Boolean(
-    !isOpen && myCommitment?.status === 'pending_b_approval',
+    myCommitment?.status === 'pending_b_approval',
   );
 
   const isLeaderPendingCommitment = Boolean(
     designatedLeader && !isOpen && myCommitment?.status === 'pending_b_approval',
   );
 
-  /** Đã tham gia (MEMBER) nhưng được đề cử chủ trì — chọn nhận hoặc từ chối vai trò chủ trì. */
+  /** Đã tham gia (MEMBER) nhưng được đề cử chủ trì — chọn nhận hoặc từ chối vai trò chủ trì (planning/paused). */
   const canShowLeaderRoleChoice = Boolean(
-    project?.status === 'planning' &&
-      !isOpen &&
-      isTagMode &&
+    (project?.status === 'planning' || project?.status === 'paused') &&
+      Boolean(project?.awaiting_leader_assignment) &&
       hasAcceptedParticipation &&
       designatedLeader &&
       viewerPmRole === 'member' &&
@@ -176,7 +176,6 @@ const ProjectDetail: React.FC = () => {
 
   const canShowRejectParticipation = Boolean(
     (project?.status === 'planning' || project?.status === 'paused') &&
-      !isOpen &&
       myCommitment?.status === 'pending_b_approval',
   );
 
@@ -738,6 +737,8 @@ const ProjectDetail: React.FC = () => {
               projectId={project.id}
               canEdit={canEdit}
               projectStatus={project.status}
+              awaitingLeaderAssignment={project.awaiting_leader_assignment}
+              pendingLeaderUserId={project.leader_id}
               onReloadProject={loadProject}
             />
           )}
