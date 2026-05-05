@@ -661,7 +661,7 @@ const options = {
           tags: ['Members'],
           summary: 'Add member to project',
           description:
-            'Only truong_lab or vien_truong. Project status must be paused; sends commitment invite.',
+            'Only truong_lab or vien_truong. Project status must be planning or paused; sends commitment invite.',
           security: [{ BearerAuth: [] }],
           parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string', format: 'uuid' } }],
           requestBody: {

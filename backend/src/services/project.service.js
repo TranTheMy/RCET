@@ -578,8 +578,8 @@ async function notifyNewLeaderAssigned(projectId, newLeaderUserId, adminId) {
     const url = projectAppUrl(projectId);
     await notificationService.createAndPushNotification({
       userId: newLeaderUserId,
-      title: 'Bạn được chỉ định chủ trì',
-      message: `${adminName} đã chỉ định bạn là chủ trì dự án "${project.name}".`,
+      title: 'Bạn được đề cử chủ trì',
+      message: `${adminName} đã đề cử bạn làm chủ trì dự án "${project.name}". Vui lòng xác nhận hoặc từ chối vai trò chủ trì.`,
       type: 'info',
       actionUrl: url,
       metadata: { project_id: projectId },
@@ -591,8 +591,8 @@ async function notifyNewLeaderAssigned(projectId, newLeaderUserId, adminId) {
       if (!uid || uid === newLeaderUserId || uid === adminId) continue;
       await notificationService.createAndPushNotification({
         userId: uid,
-        title: 'Chủ trì dự án mới',
-        message: `${adminName} đã chỉ định chủ trì mới cho dự án "${project.name}".`,
+        title: 'Đề cử chủ trì dự án',
+        message: `${adminName} đã đề cử chủ trì mới cho dự án "${project.name}" và đang chờ xác nhận.`,
         type: 'info',
         actionUrl: url,
         metadata: { project_id: projectId },
@@ -1286,9 +1286,6 @@ const getProjectDetail = async (projectId, user) => {
 const acceptLeaderRole = async (projectId, userId) => {
   const project = await Project.findByPk(projectId);
   if (!project) throw { status: 404, message: 'Dự án không tồn tại.' };
-  if (project.participation_mode !== 'TAG') {
-    throw { status: 400, message: 'Chỉ áp dụng cho dự án gán thành viên (TAG).' };
-  }
   if (project.leader_id !== userId) {
     throw { status: 403, message: 'Bạn không phải chủ trì dự kiến của dự án này.' };
   }
@@ -1321,14 +1318,14 @@ const acceptLeaderRole = async (projectId, userId) => {
 const declineLeaderRole = async (projectId, userId, reason) => {
   const project = await Project.findByPk(projectId);
   if (!project) throw { status: 404, message: 'Dự án không tồn tại.' };
-  if (project.participation_mode !== 'TAG') {
-    throw { status: 400, message: 'Chỉ áp dụng cho dự án gán thành viên (TAG).' };
-  }
   if (project.leader_id !== userId) {
     throw { status: 403, message: 'Bạn không phải chủ trì dự kiến của dự án này.' };
   }
-  if (project.status !== PROJECT_STATUS.PLANNING) {
-    throw { status: 400, message: 'Chỉ có thể từ chối vai trò chủ trì khi dự án đang lập kế hoạch.' };
+  if (![PROJECT_STATUS.PLANNING, PROJECT_STATUS.PAUSED].includes(project.status)) {
+    throw {
+      status: 400,
+      message: 'Chỉ có thể từ chối vai trò chủ trì khi dự án đang lập kế hoạch (planning) hoặc tạm dừng (paused).',
+    };
   }
   const pm = await ProjectMember.findOne({
     where: { project_id: projectId, user_id: userId },
@@ -1783,10 +1780,10 @@ const addMember = async (projectId, data, user) => {
       message: 'Chỉ trưởng lab hoặc viện trưởng mới được mời thêm thành viên.',
     };
   }
-  if (project.status !== PROJECT_STATUS.PAUSED) {
+  if (![PROJECT_STATUS.PLANNING, PROJECT_STATUS.PAUSED].includes(project.status)) {
     throw {
       status: 400,
-      message: 'Chỉ có thể mời thêm thành viên khi dự án đang tạm dừng (paused).',
+      message: 'Chỉ có thể mời thêm thành viên khi dự án đang lập kế hoạch (planning) hoặc tạm dừng (paused).',
     };
   }
 
@@ -2628,40 +2625,48 @@ const assignNewLeader = async (projectId, newLeaderId, adminId) => {
   const project = await Project.findByPk(projectId);
   if (!project) throw { status: 404, message: 'Dự án không tồn tại.' };
 
+  if (![PROJECT_STATUS.PLANNING, PROJECT_STATUS.PAUSED].includes(project.status)) {
+    throw {
+      status: 400,
+      message: 'Chỉ có thể chỉ định / đề cử chủ trì khi dự án đang lập kế hoạch (planning) hoặc tạm dừng (paused).',
+    };
+  }
+
   const t = await sequelize.transaction();
   try {
     await ensureMemberCanJoinMoreProjects(newLeaderId, t, { excludeProjectId: projectId });
 
     await demoteOtherProjectLeaders(projectId, newLeaderId, t);
 
-    // 1. Chỉ định chủ trì mới — giữ nguyên trạng thái dự án (active/paused/planning), không kéo về planning.
+    // 1. Chỉ định ứng viên chủ trì mới (pending xác nhận) — chưa fix cứng role LEADER.
     await project.update({
       leader_id: newLeaderId,
-      awaiting_leader_assignment: false,
+      awaiting_leader_assignment: true,
     }, { transaction: t });
 
-    // 2. Thêm Leader mới vào ProjectMember (nếu chưa có); chuẩn hóa role 'leader'
+    // 2. Đảm bảo ứng viên có trong roster với vai trò MEMBER (không nâng thẳng LEADER).
     const [pmRow] = await ProjectMember.findOrCreate({
       where: { project_id: projectId, user_id: newLeaderId },
-      defaults: { role: PROJECT_ROLES.LEADER, joined_at: new Date() },
+      defaults: { role: PROJECT_ROLES.MEMBER, joined_at: new Date() },
       transaction: t,
     });
-    if (pmRow.role !== PROJECT_ROLES.LEADER) {
-      await pmRow.update({ role: PROJECT_ROLES.LEADER }, { transaction: t });
+    if (pmRow.role !== PROJECT_ROLES.MEMBER) {
+      await pmRow.update({ role: PROJECT_ROLES.MEMBER }, { transaction: t });
     }
 
-    // 3. Tạo hoặc cập nhật Bản Cam Kết cho Leader mới thành B_APPROVED
+    // 3. Cam kết: nếu chưa có thì tạo pending để người được đề cử vẫn cần xác nhận tham gia.
+    // Nếu đã có bản cam kết (đa số là B_APPROVED vì đã là member), giữ nguyên trạng thái đó.
     const [commitment, created] = await Commitment.findOrCreate({
       where: { project_id: projectId, user_id: newLeaderId },
-      defaults: { status: 'b_approved' },
+      defaults: { status: COMMITMENT_STATUS.PENDING_B_APPROVAL },
       transaction: t
     });
 
-    if (!created) {
-      // Nếu đã tồn tại, chỉ cần cập nhật lại trạng thái
+    if (!created && commitment.status === COMMITMENT_STATUS.B_REJECTED) {
+      // Cho phép mời lại nếu trước đó đã từ chối.
       await commitment.update({
-        status: 'b_approved',
-        reject_reason: null // Xóa lý do từ chối cũ
+        status: COMMITMENT_STATUS.PENDING_B_APPROVAL,
+        reject_reason: null,
       }, { transaction: t });
     }
 
@@ -2672,7 +2677,7 @@ const assignNewLeader = async (projectId, newLeaderId, adminId) => {
 
     await t.commit();
     void notifyNewLeaderAssigned(projectId, newLeaderId, adminId);
-    return { message: 'Đã chỉ định chủ trì dự án mới.' };
+    return { message: 'Đã đề cử chủ trì mới. Đang chờ người được đề cử xác nhận hoặc từ chối vai trò chủ trì.' };
   } catch (error) {
     await t.rollback();
     throw error;
