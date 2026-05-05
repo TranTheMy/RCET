@@ -15,7 +15,7 @@ import ResearchAwark from '../components/ResearchAwark';
 import { useTranslation } from 'react-i18next';
 
 const getUploadsBaseUrl = () => {
-  const apiUrl = (import.meta.env.VITE_API_URL as string | undefined) || 'http://localhost:3000/api';
+  const apiUrl = (import.meta.env.VITE_API_URL as string | undefined) || '/api';
   return apiUrl.replace(/\/api\/?$/, '');
 };
 

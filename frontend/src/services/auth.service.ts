@@ -44,7 +44,7 @@ export const authService = {
     api.post<ApiResponse<{ access_token: string }>>('/auth/refresh-token', { refresh_token }).then((r) => r.data),
 
   getGoogleAuthUrl: () =>
-    `${import.meta.env.VITE_API_URL || 'http://localhost:3000/api'}/auth/google`,
+    `${import.meta.env.VITE_API_URL || '/api'}/auth/google`,
 
   verifyEmail: (token: string) =>
     api.get<ApiResponse<{ message: string }>>('/auth/verify-email', { params: { token } }).then((r) => r.data),
