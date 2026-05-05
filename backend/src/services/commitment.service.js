@@ -230,84 +230,100 @@ const exportCommitments = async (projectId, commitmentIds) => {
 
   const archive = archiver('zip', { zlib: { level: 9 } });
 
-  // Initialize Puppeteer
-  const browser = await puppeteer.launch({
-    headless: 'new',
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  });
+  const getFileBaseName = (memberName, memberId) => {
+    const safeProjectName = slugify(project.name || 'project', {
+      replacement: '_',
+      remove: /[*+~.()'"!:@]/g,
+      locale: 'vi',
+      strict: true,
+      trim: true,
+    }) || 'project';
+    const safeMemberName = slugify(memberName || `user-${memberId}`, {
+      replacement: '_',
+      remove: /[*+~.()'"!:@]/g,
+      locale: 'vi',
+      strict: true,
+      trim: true,
+    }) || `user-${memberId}`;
+
+    return `Ban_Cam_Ket_${safeProjectName}_${safeMemberName}`;
+  };
+
+  let browser = null;
+  try {
+    browser = await puppeteer.launch({
+      headless: 'new',
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+    });
+  } catch (launchError) {
+    console.error('[CommitmentExport] Puppeteer launch failed, fallback to HTML export.', launchError);
+  }
 
   const commonDate = new Date();
 
   for (const commitment of approvedCommitments) {
-    const page = await browser.newPage();
+    const templateData = {
+      projectName: project.name,
+      date: {
+        day: commonDate.getDate().toString().padStart(2, '0'),
+        month: (commonDate.getMonth() + 1).toString().padStart(2, '0'),
+        year: commonDate.getFullYear(),
+        location: 'TinLab',
+      },
+      partyA: {
+        name: project.partyA.full_name || '',
+        title: project.partyA.role || 'Giảng viên',
+        office: '',
+        email: project.partyA.email || '',
+      },
+      partyB: {
+        name: commitment.user.full_name || '',
+        mssv: commitment.user.student_code || '',
+        class: '',
+        email: commitment.user.email || '',
+      },
+      // SỬA LỖI ĐIỀU 5: Bỏ modelTypeMap, gán trực tiếp chuỗi từ database
+      modelType: project.model_type || 'UNKNOWN',
+    };
+
+    const htmlContent = getCommitmentHtml(templateData);
+    const fileBaseName = getFileBaseName(commitment.user.full_name, commitment.user_id);
+
+    if (!browser) {
+      archive.append(Buffer.from(htmlContent, 'utf-8'), { name: `${fileBaseName}.html` });
+      continue;
+    }
+
+    let page;
     try {
-      // 1. Prepare data
-      const templateData = {
-        projectName: project.name,
-        date: {
-          day: commonDate.getDate().toString().padStart(2, '0'),
-          month: (commonDate.getMonth() + 1).toString().padStart(2, '0'),
-          year: commonDate.getFullYear(),
-          location: 'TinLab',
-        },
-        partyA: {
-          name: project.partyA.full_name || '',
-          title: project.partyA.role || 'Giảng viên',
-          office: '',
-          email: project.partyA.email || '',
-        },
-        partyB: {
-          name: commitment.user.full_name || '',
-          mssv: commitment.user.student_code || '',
-          class: '',
-          email: commitment.user.email || '',
-        },
-        // SỬA LỖI ĐIỀU 5: Bỏ modelTypeMap, gán trực tiếp chuỗi từ database
-        modelType: project.model_type || 'UNKNOWN',
-      };
-
-      // 2. Generate HTML
-      const htmlContent = getCommitmentHtml(templateData);
-
-      // 3. Set content and wait for it to load
+      page = await browser.newPage();
       await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
 
-      // 4. Generate PDF data (Chỉ gọi 1 lần duy nhất)
       const pdfData = await page.pdf({
         format: 'A4',
         printBackground: true,
         margin: { top: '20mm', right: '20mm', bottom: '20mm', left: '30mm' },
       });
 
-      // 5. ÉP KIỂU SANG BUFFER CHUẨN CỦA NODE.JS Ở ĐÂY
       if (pdfData) {
-        const pdfBuffer = Buffer.from(pdfData); // <--- QUAN TRỌNG NHẤT
-
-        // Ensure the filename is safe.
-        const safeProjectName = slugify(project.name, {
-          replacement: '_',
-          remove: /[*+~.()'"!:@]/g,
-          locale: 'vi' // <--- Khai báo tiếng Việt ở đây
-        });
-        const safeName = slugify(commitment.user.full_name || `user-${commitment.user_id}`, {
-          replacement: '_',
-          remove: /[*+~.()'"!:@]/g,
-          locale: 'vi' // <--- Khai báo tiếng Việt ở đây
-        });
-
-        archive.append(pdfBuffer, { name: `Ban_Cam_Ket_${safeProjectName}_${safeName}.pdf` });
+        archive.append(Buffer.from(pdfData), { name: `${fileBaseName}.pdf` });
       } else {
         console.error(`[CommitmentExport] PDF generation returned empty data for user: ${commitment.user?.full_name}`);
+        archive.append(Buffer.from(htmlContent, 'utf-8'), { name: `${fileBaseName}.html` });
       }
-
     } catch (error) {
       console.error(`[CommitmentExport] Error during PDF generation for user ${commitment.user?.full_name}:`, error);
+      archive.append(Buffer.from(htmlContent, 'utf-8'), { name: `${fileBaseName}.html` });
     } finally {
-      await page.close();
+      if (page) {
+        await page.close();
+      }
     }
   }
 
-  await browser.close();
+  if (browser) {
+    await browser.close();
+  }
   archive.finalize();
 
   return {
