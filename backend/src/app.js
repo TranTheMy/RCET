@@ -41,21 +41,57 @@ const rawConfiguredOrigins = [
     .map((item) => item.trim())
     .filter(Boolean));
 
-const allowedOrigins = new Set([...localDevOrigins, 'null']);
+const fallbackHosts = [
+  'vkslab.id.vn',
+  process.env.CORS_FALLBACK_HOSTS,
+]
+  .filter(Boolean)
+  .flatMap((value) => String(value)
+    .split(',')
+    .map((item) => item.trim())
+    .filter(Boolean));
+
+const toCanonicalOrigin = (rawOrigin) => {
+  try {
+    const parsed = new URL(rawOrigin);
+    const protocol = parsed.protocol.toLowerCase();
+    const hostname = parsed.hostname.toLowerCase();
+    const defaultPort = protocol === 'http:' ? '80' : protocol === 'https:' ? '443' : '';
+    const port = parsed.port && parsed.port !== defaultPort ? `:${parsed.port}` : '';
+    return `${protocol}//${hostname}${port}`;
+  } catch {
+    return null;
+  }
+};
+
+const allowedOrigins = new Set(
+  [...localDevOrigins, 'null']
+    .map((origin) => toCanonicalOrigin(origin) || origin)
+    .filter(Boolean),
+);
+
+const addOriginVariant = (origin) => {
+  const canonical = toCanonicalOrigin(origin);
+  if (canonical) allowedOrigins.add(canonical);
+};
 
 const addHostVariants = (host) => {
   if (!host) return;
-  allowedOrigins.add(`http://${host}`);
-  allowedOrigins.add(`https://${host}`);
-  allowedOrigins.add(`http://www.${host}`);
-  allowedOrigins.add(`https://www.${host}`);
+  const cleanHost = String(host).toLowerCase().replace(/^www\./, '').trim();
+  if (!cleanHost) return;
+  addOriginVariant(`http://${cleanHost}`);
+  addOriginVariant(`https://${cleanHost}`);
+  addOriginVariant(`http://www.${cleanHost}`);
+  addOriginVariant(`https://www.${cleanHost}`);
 };
+
+fallbackHosts.forEach(addHostVariants);
 
 rawConfiguredOrigins.forEach((rawOrigin) => {
   try {
     const parsed = new URL(rawOrigin);
-    allowedOrigins.add(parsed.origin);
-    addHostVariants(parsed.hostname.replace(/^www\./, ''));
+    addOriginVariant(parsed.origin);
+    addHostVariants(parsed.hostname);
   } catch {
     const normalized = rawOrigin
       .replace(/^https?:\/\//, '')
@@ -65,16 +101,31 @@ rawConfiguredOrigins.forEach((rawOrigin) => {
   }
 });
 
+const isTrustedLabOrigin = (origin) => {
+  const canonical = toCanonicalOrigin(origin);
+  if (!canonical) return false;
+  try {
+    const hostname = new URL(canonical).hostname;
+    return hostname === 'vkslab.id.vn' || hostname.endsWith('.vkslab.id.vn');
+  } catch {
+    return false;
+  }
+};
+
 const corsOptions = {
   origin: (origin, callback) => {
     // allow requests with no origin (mobile, curl, Postman)
-    if (!origin || allowedOrigins.has(origin)) return callback(null, true);
+    if (!origin) return callback(null, true);
+    const canonicalOrigin = toCanonicalOrigin(origin) || origin;
+    if (allowedOrigins.has(canonicalOrigin) || isTrustedLabOrigin(canonicalOrigin)) {
+      return callback(null, true);
+    }
     callback(new Error('Not allowed by CORS'));
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   // Axios (hoặc client khác) có thể gửi Cache-Control / Pragma — phải có trong preflight.
-  allowedHeaders: ['Content-Type', 'Authorization', 'Cache-Control', 'Pragma'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Cache-Control', 'Pragma', 'Accept', 'X-Requested-With'],
 };
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions)); // handle all preflight requests
