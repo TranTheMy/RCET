@@ -104,12 +104,11 @@ router.put('/:id/milestones/:milestoneId', validate(updateMilestoneSchema), proj
 const checklistRoutes = require('./checklist.routes');
 router.use('/:id/milestones/:milestoneId/checklists', checklistRoutes);
 
-// ======== Git Repo (Tab 5 - truong_lab only) ========
+// ======== Git Repo (Tab 5 - project-aware permissions) ========
 
-router.get('/:id/git', checkRole(SYSTEM_ROLES.TRUONG_LAB), projectController.getGitRepo);
+router.get('/:id/git', projectController.getGitRepo);
 router.put(
   '/:id/git',
-  checkRole(SYSTEM_ROLES.TRUONG_LAB),
   validate(updateGitRepoSchema),
   projectController.updateGitRepo,
 );

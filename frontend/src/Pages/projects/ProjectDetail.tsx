@@ -82,6 +82,7 @@ const ProjectDetail: React.FC = () => {
   });
 
   const isTruongLab = user?.system_role === 'truong_lab';
+  const isVienTruong = user?.system_role === 'vien_truong';
   const isAdmin = user?.system_role === 'truong_lab' || user?.system_role === 'vien_truong';
   /** Được gán leader_id khi tạo dự án (chưa chắc đã là chủ trì trong ProjectMember). */
   const designatedLeader = project?.leader_id === user?.id;
@@ -128,8 +129,17 @@ const ProjectDetail: React.FC = () => {
     return hasAcceptedParticipation;
   }, [isAdmin, hasAcceptedParticipation]);
 
-  // Git tab must be visible to truong_lab only (aligned with backend route guard).
-  const canViewGit = Boolean(project && isTruongLab);
+  const hasValidProjectCommitment = Boolean(
+    myCommitment?.status && !['b_rejected', 'terminated'].includes(myCommitment.status),
+  );
+  // Viện trưởng không xem Git; các vai trò khác thấy khi có liên quan dự án.
+  const canViewGit = Boolean(
+    project &&
+      !isVienTruong &&
+      (isTruongLab || designatedLeader || hasAcceptedParticipation || hasValidProjectCommitment),
+  );
+  // Chỉ trưởng lab hoặc leader được chỉ định mới được cấu hình Git.
+  const canManageGit = Boolean(project && !isVienTruong && (isTruongLab || designatedLeader));
   /** Chỉnh sửa dự án khi admin hoặc đã là chủ trì (LEADER trong ProjectMember). */
   const canEdit = isAdmin || (isProjectLeader && hasAcceptedParticipation);
 
@@ -390,7 +400,7 @@ const ProjectDetail: React.FC = () => {
       { key: 'members', label: t('projects:detail.tabs.members'), icon: User },
       { key: 'masterplan', label: t('projects:detail.tabs.masterplan'), icon: Calendar },
     ] : []),
-    ...(canViewGit && isActualMember ? [{ key: 'git', label: t('projects:detail.tabs.git'), icon: GitBranch }] : []),
+    ...(canViewGit ? [{ key: 'git', label: t('projects:detail.tabs.git'), icon: GitBranch }] : []),
     ...(isActualMember && project.status === 'done' ? [{ key: 'rewards', label: t('projects:detail.tabs.rewards'), icon: Coins }] : []),
     ...(isAdmin ? [{ key: 'commitments', label: 'BẢN CAM KẾT', icon: FileText }] : []),
   ];
@@ -743,7 +753,7 @@ const ProjectDetail: React.FC = () => {
             />
           )}
           {activeTab === 'masterplan' && <MasterPlanTab projectId={project.id} canEdit={canEdit} />}
-          {activeTab === 'git' && canViewGit && <GitTab projectId={project.id} canManageGit={Boolean(isTruongLab)} />}
+          {activeTab === 'git' && canViewGit && <GitTab projectId={project.id} canManageGit={canManageGit} />}
           {activeTab === 'rewards' && project.status === 'done' && (
             <RewardsTab projectId={project.id} projectBudget={project.budget} />
           )}

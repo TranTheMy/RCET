@@ -268,7 +268,7 @@ const options = {
       { name: 'Comments', description: 'Comments on weekly reports — leader & members interaction' },
       { name: 'Forum', description: 'Forum posts, comments and likes for all roles' },
       { name: 'Member Dashboard', description: 'Personal dashboard for members' },
-      { name: 'Git', description: 'Git repository integration (truong_lab only)' },
+      { name: 'Git', description: 'Git repository integration with project-aware permissions' },
     ],
     paths: {
       '/auth/register': {
@@ -1026,19 +1026,19 @@ const options = {
       '/projects/{id}/git': {
         get: {
           tags: ['Git'],
-          summary: 'Get git repository info (truong_lab only)',
-          description: '🔒 Returns 403 immediately for any other role.',
+          summary: 'Get git repository info',
+          description: 'View permissions: all project-related roles except vien_truong (e.g. truong_lab, designated leader, invited/member users).',
           security: [{ BearerAuth: [] }],
           parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string', format: 'uuid' } }],
           responses: {
             200: { description: '{ repo_url, provider, default_branch, visibility, last_commit: { sha(7), author, message, date } }' },
-            403: { description: 'Forbidden — truong_lab only' },
+            403: { description: 'Forbidden — user is not allowed to view Git info for this project' },
           },
         },
         put: {
           tags: ['Git'],
-          summary: 'Link / update git repository (truong_lab only)',
-          description: 'Sets repo URL, provider, branch, visibility. Commit data is updated via webhook — no access token stored.',
+          summary: 'Link / update git repository',
+          description: 'Manage permissions: only truong_lab or designated leader of the project. Sets repo URL, provider, branch, visibility. Commit data is updated via webhook — no access token stored.',
           security: [{ BearerAuth: [] }],
           parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string', format: 'uuid' } }],
           requestBody: {
@@ -1047,7 +1047,7 @@ const options = {
           },
           responses: {
             200: { description: 'Git repo updated' },
-            403: { description: 'Forbidden — truong_lab only' },
+            403: { description: 'Forbidden — only truong_lab or designated leader can configure Git' },
           },
         },
       },

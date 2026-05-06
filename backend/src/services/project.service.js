@@ -2360,16 +2360,76 @@ function getWeekEndDate(year, weekNumber) {
 }
 
 // =====================================================
-// Git Repository (truong_lab only)
+// Git Repository Permissions
 // =====================================================
 
-const getGitRepo = async (projectId, user) => {
-  if (user.system_role !== SYSTEM_ROLES.TRUONG_LAB) {
-    throw { status: 403, message: 'Forbidden' };
+const hasValidProjectCommitment = async (projectId, userId) => {
+  const commitment = await Commitment.findOne({
+    where: {
+      project_id: projectId,
+      user_id: userId,
+      status: { [Op.notIn]: [COMMITMENT_STATUS.B_REJECTED, COMMITMENT_STATUS.TERMINATED] },
+    },
+    attributes: ['id'],
+  });
+  return Boolean(commitment);
+};
+
+const assertCanViewGitRepo = async (project, user) => {
+  if (user.system_role === SYSTEM_ROLES.VIEN_TRUONG) {
+    throw { status: 403, message: 'Viện trưởng không có quyền xem liên kết Git của dự án này.' };
   }
 
+  if (user.system_role === SYSTEM_ROLES.TRUONG_LAB) {
+    return;
+  }
+
+  if (project.leader_id === user.id) {
+    return;
+  }
+
+  const membership = await ProjectMember.findOne({
+    where: { project_id: project.id, user_id: user.id },
+    attributes: ['id'],
+  });
+  if (membership) {
+    return;
+  }
+
+  const hasCommitment = await hasValidProjectCommitment(project.id, user.id);
+  if (hasCommitment) {
+    return;
+  }
+
+  throw {
+    status: 403,
+    message: 'Bạn cần là thành viên hoặc được mời vào dự án để xem liên kết Git.',
+  };
+};
+
+const assertCanManageGitRepo = (project, user) => {
+  if (user.system_role === SYSTEM_ROLES.TRUONG_LAB) {
+    return;
+  }
+
+  if (user.system_role === SYSTEM_ROLES.VIEN_TRUONG) {
+    throw { status: 403, message: 'Viện trưởng không có quyền cấu hình Git của dự án này.' };
+  }
+
+  if (project.leader_id === user.id) {
+    return;
+  }
+
+  throw {
+    status: 403,
+    message: 'Chỉ trưởng lab hoặc leader được chỉ định mới có quyền cấu hình Git.',
+  };
+};
+
+const getGitRepo = async (projectId, user) => {
   const project = await Project.findByPk(projectId, {
     attributes: [
+      'leader_id',
       'id', 'code', 'git_repo_url', 'git_provider', 'git_default_branch',
       'git_visibility', 'git_last_commit_sha', 'git_last_commit_author',
       'git_last_commit_message', 'git_last_commit_date',
@@ -2377,6 +2437,7 @@ const getGitRepo = async (projectId, user) => {
   });
 
   if (!project) throw { status: 404, message: 'Project not found' };
+  await assertCanViewGitRepo(project, user);
 
   return {
     repo_url: project.git_repo_url,
@@ -2393,12 +2454,12 @@ const getGitRepo = async (projectId, user) => {
 };
 
 const updateGitRepo = async (projectId, data, user) => {
-  if (user.system_role !== SYSTEM_ROLES.TRUONG_LAB) {
-    throw { status: 403, message: 'Forbidden' };
-  }
-
-  const project = await Project.findByPk(projectId);
+  const project = await Project.findByPk(projectId, {
+    attributes: ['id', 'leader_id', 'git_repo_url'],
+  });
   if (!project) throw { status: 404, message: 'Project not found' };
+
+  assertCanManageGitRepo(project, user);
 
   await project.update({
     git_repo_url: data.git_repo_url,
